@@ -1,4 +1,4 @@
-# Project Title
+# Farmer's Marketplace
 
 ## 1. Project Description
 State your app in a nutshell, or one-sentence pitch. Give some elaboration on what the core features are.  
