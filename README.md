@@ -7,12 +7,9 @@ This browser based web application to ...
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
 
-=======
-=======
 * Hi, my name is Armaan Brar! I am excited to get this project started.
 * Hi, my name is Felix, and I like pistachios!
 * Hello, my name is Justin. I am passionate about UI / UX Design and I am excited to empower farmers and their communities.
-* ...
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
