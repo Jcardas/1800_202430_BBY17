@@ -21,3 +21,15 @@ body {
 .btn {
   background-color: #04442c;
 }
+
+#logo {
+  width: 12vh;
+  height: 12vh;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#logo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
