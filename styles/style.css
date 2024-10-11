@@ -9,8 +9,15 @@ body {
   height: 100%;
 }
 
+#banner-container > * {
+  color: black;
+}
 #caption-container {
   background-color: #f4fcf4;
-  opacity: 0.85;
-  border-radius: 12px;
+  opacity: 0.9;
+  border-radius: 10px;
+}
+
+.btn {
+  background-color: #04442c;
 }
