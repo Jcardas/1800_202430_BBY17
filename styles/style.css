@@ -1,1 +1,16 @@
+body {
+  margin: 2vw;
+  background-color: #f4fcf4;
+}
 
+#banner-container {
+  background-image: url("../assets/strawberries.jpg");
+  background-size: cover;
+  height: 100%;
+}
+
+#caption-container {
+  background-color: #f4fcf4;
+  opacity: 0.85;
+  border-radius: 12px;
+}
