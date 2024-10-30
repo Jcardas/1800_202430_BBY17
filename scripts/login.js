@@ -23,8 +23,9 @@ function getUserProfile(authResult) {
 
   const userProfile = document.getElementById("user-profile");
   userProfile.style.display = "";
+  userProfile.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  userProfile.addEventListener("submit", () => {
     const address = document.getElementById("inputAddress").value;
     const address2 = document.getElementById("inputAddress2").value;
     const city = document.getElementById("inputCity").value;
