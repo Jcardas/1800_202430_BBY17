@@ -1,6 +1,6 @@
 body {
   margin: 2vw;
-  background-color: #f4fcf4;
+  background-color: hsl(120, 33%, 97%);
 }
 
 #banner-container {
@@ -13,7 +13,7 @@ body {
   color: black;
 }
 #caption-container {
-  background-color: #f4fcf4;
+  background-color: hsl(120, 33%, 97%);;
   opacity: 0.9;
   border-radius: 10px;
 }
