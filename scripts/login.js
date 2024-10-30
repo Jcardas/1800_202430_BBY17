@@ -1,44 +1,43 @@
-// Initialize the FirebaseUI Widget using Firebase.
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 var uiConfig = {
   callbacks: {
-    signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-      // User successfully signed in.
-      // Return type determines whether we continue the redirect automatically
-      // or whether we leave that to developer to handle.
-      //------------------------------------------------------------------------------------------
-      // The code below is modified from default snippet provided by the FB documentation.
-      //
-      // If the user is a "brand new" user, then create a new "user" in your own database.
-      // Assign this user with the name and email provided.
-      // Before this works, you must enable "Firestore" from the firebase console.
-      // The Firestore rules must allow the user to write.
-      //------------------------------------------------------------------------------------------
-      var user = authResult.user; // get the user object from the Firebase authentication database
-      if (authResult.additionalUserInfo.isNewUser) {
-        //if new user
-      } else {
-        return true;
-      }
-      return false;
-    },
+    signInSuccessWithAuthResult: getUserProfile,
     uiShown: function () {
-      // The widget is rendered.
-      // Hide the loader.
       document.getElementById("loader").style.display = "none";
     },
   },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
   signInFlow: "popup",
   signInSuccessUrl: "main.html",
-  signInOptions: [
-    firebase.auth.EmailAuthProvider.PROVIDER_ID,
-  ],
-  // // Terms of service url.
-  // tosUrl: "<your-tos-url>",
-  // // Privacy policy url.
-  // privacyPolicyUrl: "<your-privacy-policy-url>",
+  signInOptions: [firebase.auth.EmailAuthProvider.PROVIDER_ID],
 };
 
 ui.start("#firebaseui-auth-container", uiConfig);
+
+function getUserProfile(authResult) {
+  var user = authResult.user;
+  if (authResult.additionalUserInfo.isNewUser) {
+    const userProfile = document.getElementById("user-profile");
+    userProfile.style.display = "";
+
+    userProfile.addEventListener("submit", () => {
+      const address = document.getElementById("inputAddress").value;
+      const address2 = document.getElementById("inputAddress2").value;
+      const city = document.getElementById("inputCity").value;
+      const zip = document.getElementById("inputZip").value;
+
+      db.collection("users")
+        .doc(user.uid)
+        .set({
+          name: user.displayName,
+          email: user.email,
+          address: address,
+          address2: address2,
+          city: city,
+          zip: zip,
+        })
+        .then(() => window.location.assign("main.html"));
+    });
+  }
+}
