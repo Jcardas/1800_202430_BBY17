@@ -22,7 +22,18 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Other libraries go here -->
+    <!-- JQuerry and Firebase -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+    />
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
     <!-- Link to our stylesheet -->
     <link rel="stylesheet" href="./styles/style.css" />
@@ -31,8 +42,14 @@
   <body>
     <!------------------------------>
     <!-- Your HTML Layout go here -->
+
     <!------------------------------>
     <!-- Stuff for body goes here -->
+
+    <!-- header -->
+    <div id="header-container"></div>
+
+    <!-- main -->
     <form>
       <div class="row">
         <!-- First Name and Last Name in two columns -->
@@ -137,11 +154,15 @@
       </button>
     </form>
 
+    <!-- footer -->
+    <div id="footer-container"></div>
+
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
 
     <!-- Link to scripts of your own -->
+     <script src="./scripts/skeleton.js"></script>
     <script src="./scripts/login.js"></script>
   </body>
 </html>
