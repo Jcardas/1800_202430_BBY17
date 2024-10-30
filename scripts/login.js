@@ -16,28 +16,31 @@ var uiConfig = {
 ui.start("#firebaseui-auth-container", uiConfig);
 
 function getUserProfile(authResult) {
-  var user = authResult.user;
-  if (authResult.additionalUserInfo.isNewUser) {
-    const userProfile = document.getElementById("user-profile");
-    userProfile.style.display = "";
-
-    userProfile.addEventListener("submit", () => {
-      const address = document.getElementById("inputAddress").value;
-      const address2 = document.getElementById("inputAddress2").value;
-      const city = document.getElementById("inputCity").value;
-      const zip = document.getElementById("inputZip").value;
-
-      db.collection("users")
-        .doc(user.uid)
-        .set({
-          name: user.displayName,
-          email: user.email,
-          address: address,
-          address2: address2,
-          city: city,
-          zip: zip,
-        })
-        .then(() => window.location.assign("main.html"));
-    });
+  if (!authResult.additionalUserInfo.isNewUser) {
+    window.location.assign("main.html");
+    return;
   }
+
+  const userProfile = document.getElementById("user-profile");
+  userProfile.style.display = "";
+
+  userProfile.addEventListener("submit", () => {
+    const address = document.getElementById("inputAddress").value;
+    const address2 = document.getElementById("inputAddress2").value;
+    const city = document.getElementById("inputCity").value;
+    const zip = document.getElementById("inputZip").value;
+    const user = authResult.user;
+
+    db.collection("users")
+      .doc(user.uid)
+      .set({
+        name: user.displayName,
+        email: user.email,
+        address: address,
+        address2: address2,
+        city: city,
+        zip: zip,
+      })
+      .then(() => window.location.assign("main.html"));
+  });
 }
