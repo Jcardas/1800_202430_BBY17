@@ -12,7 +12,6 @@
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-
         <img
           src="https://github.com/mdo.png"
           alt="mdo"
@@ -22,17 +21,20 @@
         />
       </a>
       <ul class="dropdown-menu text-small">
-        <li><a class="dropdown-item" href="#">Account Settings</a></li>
+        <li>
+          <a class="dropdown-item" onclick="showUserProfile()"
+            >Account Settings</a
+          >
+        </li>
         <li><a class="dropdown-item" href="#">My Listings</a></li>
         <li><a class="dropdown-item" href="#">Profile</a></li>
         <li><hr class="dropdown-divider" /></li>
         <li>
-          <a class="dropdown-item" onclick="logout()" href="./index.html"
-            >Sign out</a
-          >
+          <a class="dropdown-item" onclick="logout()">Sign out</a>
         </li>
       </ul>
     </div>
+
 
       <!-- <a
         id="logo"
@@ -69,7 +71,6 @@
           aria-label="Search"
         />
       </form>
-
     </div>
   </div>
 </header>
