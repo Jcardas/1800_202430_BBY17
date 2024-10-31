@@ -33,3 +33,27 @@ body {
   height: 100%;
   object-fit: cover;
 }
+.plus-sign {
+  text-decoration: none;
+  font-size: 30px; 
+  color: black; 
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 50%; 
+  border: 2px solid rgb(0, 0, 0); 
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 5px;
+}
+
+.plus-sign:hover {
+  background-color: black; 
+  color: white; 
+  
+}
+
+.form-control {
+  margin: 5px;
+}
