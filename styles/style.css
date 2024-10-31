@@ -14,17 +14,17 @@ body {
 }
 #caption-container {
   background-color: hsl(120, 33%, 97%);;
-  opacity: 0.9;
+  opacity: 1;
   border-radius: 10px;
 }
 
 .btn {
-  background-color: #04442c;
+  background-color: #08724b;
 }
 
 #logo {
-  width: 12vh;
-  height: 12vh;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   overflow: hidden;
 }
