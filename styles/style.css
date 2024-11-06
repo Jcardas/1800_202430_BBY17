@@ -13,7 +13,7 @@ body {
   color: black;
 }
 #caption-container {
-  background-color: hsl(120, 33%, 97%);;
+  background-color: hsl(120, 33%, 97%);
   opacity: 1;
   border-radius: 10px;
 }
@@ -35,43 +35,41 @@ body {
 }
 .plus-sign {
   text-decoration: none;
-  font-size: 30px; 
-  color: black; 
+  font-size: 30px;
+  color: black;
   display: inline-block;
   width: 30px;
   height: 30px;
   text-align: center;
   line-height: 20px;
-  border-radius: 50%; 
-  border: 2px solid rgb(0, 0, 0); 
+  border-radius: 50%;
+  border: 2px solid rgb(0, 0, 0);
   transition: background-color 0.3s ease, color 0.3s ease;
   margin: 5px;
 }
 
 .plus-sign:hover {
-  background-color: black; 
-  color: white; 
-  
+  background-color: black;
+  color: white;
 }
 
 .form-control {
   margin: 5px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 * {
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 .m_container {
-    width: 80%;
-    margin: auto;
-    margin-top: 2rem;
-    letter-spacing: 0.5px;
-    height: 80%;
+  width: 80%;
+  margin: auto;
+  margin-top: 2rem;
+  letter-spacing: 0.5px;
+  height: 80%;
 }
-
 
 .m_userprofile {
   width: 50px;
@@ -79,7 +77,6 @@ body {
   border-style: none;
   border-radius: 100%;
 }
-
 
 .msg-header {
   border: 1px solid #ccc;
@@ -100,7 +97,7 @@ body {
 
 .container1 {
   width: 270px;
-  height: auto; 
+  height: auto;
   float: left;
   margin: 0;
 }
@@ -113,7 +110,6 @@ body {
   font-weight: bold;
   margin: 0 0 0 5px;
   height: 10%;
-
 }
 
 .chat-page {
@@ -158,7 +154,7 @@ body {
   align-items: stretch;
 }
 
-.input-group>.form-control {
+.input-group > .form-control {
   position: relative;
   flex: 1 1 auto;
   width: 1%;
@@ -176,7 +172,7 @@ body {
   color: #495057;
   background-color: #fff;
   background-clip: padding-box;
-  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .input-group-text {
@@ -209,7 +205,39 @@ input:focus {
   font-weight: bold;
 }
 
+#user-profile {
+  #profile-pic-container {
+    display: flex;
+    margin-bottom: 2em;
+    position: relative;
 
+    #profile-pic-prompt {
+      position: absolute;
+      bottom: 1em;
+      width: 100%;
+      text-align: center;
+      font-size: 1.1em;
 
+      span {
+        background-color: hsl(120, 33%, 97%);
+      }
+    }
 
+    .profile-pic {
+      height: 200px;
+      width: 200px;
+      object-fit: cover;
+      border-radius: 100px;
+      margin: auto;
 
+      /* if hover is available */
+      @media not all and (hover: none) {
+        &:not(:hover) {
+          + p {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,6 @@
 const userProfile = document.getElementById("user-profile");
+const profilePicInput = document.getElementById("profile-pic-input");
+
 populateSettings();
 
 userProfile.addEventListener("submit", (e) => {
@@ -24,6 +26,21 @@ userProfile.addEventListener("submit", (e) => {
       zip: zip,
     })
     .then(closeSettings);
+});
+
+userProfile
+  .getElementsByClassName("profile-pic")[0]
+  .addEventListener("click", () => profilePicInput.click());
+
+profilePicInput.addEventListener("change", (e) => {
+  const image = profilePicInput.files[0];
+  const fileReader = new FileReader();
+  fileReader.readAsDataURL(image);
+  fileReader.onload = (e) => {
+    for (profilePic of document.getElementsByClassName("profile-pic")) {
+      profilePic.src = e.target.result;
+    }
+  };
 });
 
 function populateSettings() {
