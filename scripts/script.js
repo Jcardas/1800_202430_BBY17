@@ -30,3 +30,8 @@ function gotoURL(url) {
     window.location.assign(url);
   }
 }
+
+function showAccountSettings() {
+  sessionStorage.setItem("previousURL", window.location.href);
+  window.location.assign("./account.html");
+}
