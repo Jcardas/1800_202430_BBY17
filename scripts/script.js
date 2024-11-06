@@ -6,6 +6,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (["/", "/index.html"].includes(window.location.pathname)) {
       gotoURL("/main.html");
     }
+    setProfilePic(user);
   } else {
     $("#header-container").load("./skeleton/header_before_login.html");
     if (window.location.pathname != "/login.html") {
@@ -34,4 +35,18 @@ function gotoURL(url) {
 function showAccountSettings() {
   sessionStorage.setItem("previousURL", window.location.href);
   window.location.assign("./account.html");
+}
+
+function setProfilePic(user) {
+  db.collection("users")
+    .doc(user.uid)
+    .get()
+    .then((doc) => doc.data())
+    .then((data) => {
+      if (data.avatar) {
+        document.getElementById("avatar").src = data.avatar;
+      } else {
+        document.getElementById("avatar").src = "./assets/farmer.jpg";
+      }
+    });
 }
