@@ -22,6 +22,7 @@ function populateSettings() {
       .doc(user.uid)
       .get()
       .then((doc) => {
+        if (!doc.exists) return;
         const data = doc.data();
         document.getElementById("inputAddress").value = data.address;
         document.getElementById("inputAddress2").value = data.address2;
@@ -57,7 +58,10 @@ function saveProfile(e) {
           .put(profilePicInput.files[0])
           .then(() => storageref.getDownloadURL())
           .then((url) =>
-            db.collection("users").doc(user.uid).update({ avatar: url })
+            db
+              .collection("users")
+              .doc(user.uid)
+              .set({ avatar: url }, { merge: true })
           )
       );
     }
@@ -65,14 +69,17 @@ function saveProfile(e) {
     promises.push(user.updateEmail(email));
 
     promises.push(
-      db.collection("users").doc(user.uid).update({
-        name: name,
-        email: email,
-        address: address,
-        address2: address2,
-        city: city,
-        zip: zip,
-      })
+      db.collection("users").doc(user.uid).set(
+        {
+          name: name,
+          email: email,
+          address: address,
+          address2: address2,
+          city: city,
+          zip: zip,
+        },
+        { merge: true }
+      )
     );
 
     Promise.all(promises).then(closeSettings);

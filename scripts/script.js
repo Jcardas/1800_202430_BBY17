@@ -41,8 +41,9 @@ function setProfilePic(user) {
   db.collection("users")
     .doc(user.uid)
     .get()
-    .then((doc) => doc.data())
-    .then((data) => {
+    .then((doc) => {
+      if (!doc.exists) return;
+      data = doc.data();
       if (data.avatar) {
         document.getElementById("avatar").src = data.avatar;
       } else {
