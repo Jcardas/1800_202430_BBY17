@@ -3,7 +3,7 @@ $("#footer-container").load("./skeleton/footer.html");
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     $("#header-container").load("./skeleton/header_after_login.html");
-    if (window.location.pathname == "/index.html") {
+    if (["/", "/index.html"].includes(window.location.pathname)) {
       gotoURL("/main.html");
     }
   } else {
