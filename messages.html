@@ -49,10 +49,10 @@
 
       <!--  Message header section-->
       <div class="msg-header">
-        <div class="container1">
-          <img class="m_userprofile" src="#" class="msgimg" alt="profile">
-          <div class="active ">
-            <p>User name</p>
+        <div class="message-header-container " >
+          <img class="m_userprofile" id="incoming-username" src="/assets/farmer4.jpg"  alt="profile-photo">
+          <div class="username" >
+            <p>temp_user_name</p>
           </div>
         </div>
       </div>
@@ -65,17 +65,31 @@
           <div class="chats">
             <div class="msg-page">
               <!-- Contains the incoming and outgoing messages -->
+               <div class="outgoing-message">
+                <p>Message 2</p>
+                <img class="m_userprofile" src="/assets/farmer3.jpg" alt="profile-photo">
+              </div>
+               <div class="outgoing-message">
+                <p>Message 3</p>
+                <img class="m_userprofile" src="/assets/farmer3.jpg" alt="profile-photo">
+                
+              </div>
+               <div class="incoming-message">
+                <img class="m_userprofile" src="/assets/farmer4.jpg" alt="profile-photo">
+                <p>Message 4</p>
+              </div>
             </div>
           </div>
 
           <!--  Message bottom section starts -->
           <div class="msg-bottom">
 
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Write message...">
-              <div class="input-group-append ">
-                <span class="input-group-text send-icon "><i class="bi bi-send "></i>
-                </span>
+            <div class="message-bar">
+              <div class="message-input-group">
+                <input type="text" class="message-input" placeholder="Write a message...">
+                <button class="send-button">
+                  <i class="bi bi-send"></i>
+                </button>
               </div>
             </div>
           </div>
@@ -101,6 +115,7 @@
 <script src="./scripts/firebaseAuth.js"></script>
 <script src="./scripts/firebase.js"></script>
 <script src="./scripts/script.js"></script>
+<script src="./scripts/messages.js"></script>
 </body>
 
 </html>
