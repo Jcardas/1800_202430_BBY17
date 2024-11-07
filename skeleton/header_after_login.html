@@ -1,10 +1,27 @@
 <header class="p-3 mb-3 border-bottom">
   <div class="container">
     <div
-      class="d-flex flex-wrap align-items-center justify-content-center justify-content-between"
-    >
-      <h1>Farmer's Marketplace</h1>
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-between"> 
 
+    <!-- HOME, MESSAGES, PROFILE DROPDOWN -->
+    <div class="navbar-row1">
+      <!-- Page name Hidden for mobile -->
+      <h1 style="display: none;">Farmer's Marketplace</h1> 
+      <!-- TAB SELECTOR -->
+      <ul
+        id="tab-selector"
+      >
+        <li>
+          <a href="main.html" class="nav-link px-2 link-secondary">Home</a>
+        </li>
+        <li>
+          <a href="messages.html" class="nav-link px-2 link-body-emphasis"
+            >Messages</a
+          >
+        </li>
+      </ul>
+
+      <!-- Profile icon dropdown -->
       <div class="dropdown text-end">
         <a
           href="#"
@@ -16,61 +33,58 @@
             id="avatar"
             src="./assets/profile_photo.png"
             alt="avatar"
-            width="40px"
-            height="40px"
+            width="28px"
+            height="28px"
             style="object-fit: cover; border-radius: 20px"
           />
         </a>
         <ul class="dropdown-menu text-small">
+
+          <li><a class="dropdown-item" href="#">Profile</a></li>
           <li>
             <a class="dropdown-item" onclick="showAccountSettings()"
               >Account Settings</a
             >
           </li>
           <li><a class="dropdown-item" href="#">My Listings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li>
+            <a class="dropdown-item" onclick="showBookmarks()"
+              >Bookmarks</a
+            >
+          </li>
           <li><hr class="dropdown-divider" /></li>
           <li>
             <a class="dropdown-item" onclick="logout()">Sign out</a>
           </li>
         </ul>
       </div>
+    </div>
+    
 
-      <!-- <a
-        id="logo"
-        href="/"
-        class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none"
-      >
-        <img src="assets/farm.jpg" alt="" class""" />
-      </a> -->
 
-      <!-- removed temporarily for lab submission FIX LATER -->
-
-      <ul
-        class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-      >
-        <li>
-          <a href="main.html" class="nav-link px-2 link-secondary">Home</a>
-        </li>
-        <li>
-          <a href="messages.html" class="nav-link px-2 link-body-emphasis"
-            >Messages</a
-          >
-        </li>
-        <li>
-          <a href="#" class="nav-link px-2 link-body-emphasis">Bookmarks</a>
-        </li>
-      </ul>
-
-      <a href="listing.html" class="plus-sign">+</a>
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-        <input
+    <!-- SEARCH ICON, BAR, AND FILTER -->
+    <div class="navbar-row2">
+        <!-- Search Icon -->
+         <a href="#"><img id="search-icon" 
+          src="./assets/search.svg" 
+          alt="search-ico"
+          ></a>
+        <!-- Search Bar -->
+        <form role="search">
+        <input id="navbar-searchbar"
           type="search"
           class="form-control"
           placeholder="Search..."
           aria-label="Search"
         />
-      </form>
+        </form>
+        <!-- Filter Icon -->
+         <a href="#"><img id="filter-icon" 
+          src="./assets/filter.svg" 
+          alt="filter-ico"
+          ></a>
+    </div>
+      
     </div>
   </div>
 </header>

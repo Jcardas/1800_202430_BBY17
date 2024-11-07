@@ -37,6 +37,12 @@ function showAccountSettings() {
   window.location.assign("./account.html");
 }
 
+function showBookmarks()
+{
+  sessionStorage.setItem("previousURL", window.location.href);
+  window.location.assign("./bookmarks.html");
+}
+
 function setProfilePic(user) {
   db.collection("users")
     .doc(user.uid)

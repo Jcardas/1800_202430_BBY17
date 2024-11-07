@@ -3,6 +3,88 @@ body {
   background-color: hsl(120, 33%, 97%);
 }
 
+/* Navbar Styling ----------------------------------------------------------------------- */
+
+.navbar-row1
+{
+ display: flex;
+ justify-content: center;
+}
+
+#tab-selector {
+  display: flex; /* Makes the list items display in a row */
+  text-decoration: none;
+  list-style: none;
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+}
+
+#tab-selector li {
+  margin-right: 5px; /* Adds space between items */
+}
+
+.navbar-row2
+{
+  display: flex;
+}
+
+
+
+
+
+#search-icon
+{
+  width: 16px;
+  height: 16px;
+}
+
+#filter-icon
+{
+  width: 16px;
+  height: 16px;
+}
+
+#navbar-searchbar
+{
+  width: 70vw;
+}
+
+
+/* MOBILE SECTION ---------------------------------- */
+
+/* Basic styling for viewports that are 320px or wider */
+@media (min-width: 320px) {
+
+  #navbar-searchbar
+  {
+    width: 70vw;
+  }
+
+  body
+  {
+    background-color: rgba(0, 8, 255, 0.078);
+  }
+  
+}
+
+/* Additional adjustments for slightly larger screens (e.g., tablets) */
+@media (min-width: 480px) {
+  body
+  {
+    background-color: rgba(30, 255, 0, 0.181);
+  }
+}
+
+/* Adjustments for even wider viewports (e.g., small laptops) */
+@media (min-width: 768px) {
+  body
+  {
+    background-color: rgba(255, 0, 0, 0.25);
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+
 #banner-container {
   background-image: url("../assets/strawberries.jpg");
   background-size: cover;
@@ -182,8 +264,6 @@ body {
   border: solid 1px #a7a7a7;
 }
 
-/* ------------------------------------------------------- */
-
 /* Styling the msg-bottom container */
 .msg-bottom {
   border-top: 1px solid #a7a7a7;
@@ -236,6 +316,8 @@ body {
 {
   background-color: #373737;
 }
+
+/* ------------------------------------------------------- */
 
 #user-profile {
   #profile-pic-container {
