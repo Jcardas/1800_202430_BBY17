@@ -280,3 +280,19 @@ body {
     }
   }
 }
+
+
+
+.example-container
+{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: green;
+}
+
+.example-container > img
+{
+  margin-bottom: 5px;
+  border: solid red;
+}
