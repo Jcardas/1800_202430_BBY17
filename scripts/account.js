@@ -8,11 +8,17 @@ populateSettings();
 userProfile.addEventListener("submit", saveProfile);
 
 profilePic.addEventListener("click", () => profilePicInput.click());
-profileText.addEventListener("click", () => profilePicInput.click())
+profileText.addEventListener("click", () => profilePicInput.click());
 
 profilePicInput.addEventListener("change", () => {
   const imageURL = URL.createObjectURL(profilePicInput.files[0]);
   profilePic.src = imageURL;
+});
+
+window.addEventListener("beforeunload", (e) => {
+  if (sessionStorage.getItem("isNewUser")) {
+    e.preventDefault();
+  }
 });
 
 function populateSettings() {
@@ -83,6 +89,7 @@ function saveProfile(e) {
 }
 
 function closeSettings() {
+  sessionStorage.removeItem("isNewUser");
   let previousURL = sessionStorage.getItem("previousURL") ?? "/";
   sessionStorage.removeItem("previousURL");
 
