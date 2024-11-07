@@ -17,6 +17,7 @@ ui.start("#firebaseui-auth-container", uiConfig);
 
 function getUserProfile(authResult) {
   if (authResult.additionalUserInfo.isNewUser) {
+    sessionStorage.setItem("isNewUser", true);
     window.location.assign("account.html");
   } else {
     window.location.assign("main.html");

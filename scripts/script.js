@@ -1,12 +1,23 @@
 $("#footer-container").load("./skeleton/footer.html");
 
-firebase.auth().onAuthStateChanged(function (user) {
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     $("#header-container").load("./skeleton/header_after_login.html");
-    if (["/", "/index.html"].includes(window.location.pathname)) {
-      gotoURL("/main.html");
-    }
-    setProfilePic(user);
+    ifProfileIsNotComplete(
+      user,
+      () => {
+        if (window.location.pathname != "/account.html") {
+          sessionStorage.setItem("isNewUser", true);
+          gotoURL("/account.html");
+        }
+      },
+      () => {
+        if (["/", "/index.html"].includes(window.location.pathname)) {
+          gotoURL("/main.html");
+        }
+        setProfilePic(user);
+      }
+    );
   } else {
     $("#header-container").load("./skeleton/header_before_login.html");
     if (window.location.pathname != "/login.html") {
@@ -52,24 +63,19 @@ function setProfilePic(user) {
     });
 }
 
-// Inserts the user's name from firestore
-function insertNameFromFirestore() {
-  // Check if the user is logged in:
-  firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-          console.log(user.uid); // Let's know who the logged-in user is by logging their UID
-          currentUser = db.collection("users").doc(user.uid); // Go to the Firestore document of the user
-          currentUser.get().then(userDoc => {
-              // Get the user name
-              let userName = userDoc.data().name;
-              console.log(userName);
-              //$("#name-goes-here").text(userName); // jQuery
-              document.getElementById("name-goes-here").innerText = userName;
-          })
-      } else {
-          console.log("No user is logged in."); // Log a message when no user is logged in
-      }
-  })
-}
-insertNameFromFirestore();
+function ifProfileIsNotComplete(user, then, otherwise = (i) => i) {
+  if (sessionStorage.getItem("isNewUser")) {
+    return then();
+  }
 
+  db.collection("users")
+    .doc(user.uid)
+    .get()
+    .then((doc) => {
+      if (doc.exists && doc.data().name) {
+        otherwise();
+      } else {
+        then();
+      }
+    });
+}
