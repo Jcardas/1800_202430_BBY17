@@ -23,15 +23,13 @@ function populateSettings() {
       .get()
       .then((doc) => {
         if (!doc.exists) return;
+
         const data = doc.data();
         document.getElementById("inputAddress").value = data.address;
         document.getElementById("inputAddress2").value = data.address2;
         document.getElementById("inputCity").value = data.city;
         document.getElementById("inputZip").value = data.zip;
-
-        if (data.avatar) {
-          profilePic.src = data.avatar;
-        }
+        if (data.avatar) profilePic.src = data.avatar;
       });
   });
 }
@@ -50,7 +48,6 @@ function saveProfile(e) {
      * this page is closed only when all promises have been fullfilled
      */
     const promises = [];
-
     if (profilePicInput.files.length > 0) {
       const storageref = storage.ref(`profile-pic/${user.uid}.jpg`);
       promises.push(
@@ -65,9 +62,7 @@ function saveProfile(e) {
           )
       );
     }
-
     promises.push(user.updateEmail(email));
-
     promises.push(
       db.collection("users").doc(user.uid).set(
         {
@@ -81,7 +76,6 @@ function saveProfile(e) {
         { merge: true }
       )
     );
-
     Promise.all(promises).then(closeSettings);
   });
 }
