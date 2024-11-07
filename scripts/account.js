@@ -1,12 +1,14 @@
 const userProfile = document.getElementById("user-profile");
 const profilePic = document.getElementById("profile-pic");
 const profilePicInput = document.getElementById("profile-pic-input");
+const profileText = document.getElementById("profile-pic-prompt");
 
 populateSettings();
 
 userProfile.addEventListener("submit", saveProfile);
 
 profilePic.addEventListener("click", () => profilePicInput.click());
+profileText.addEventListener("click", () => profilePicInput.click())
 
 profilePicInput.addEventListener("change", () => {
   const imageURL = URL.createObjectURL(profilePicInput.files[0]);

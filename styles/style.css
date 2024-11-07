@@ -242,16 +242,20 @@ body {
     display: flex;
     margin-bottom: 2em;
     position: relative;
+    justify-content: center;
 
     #profile-pic-prompt {
       position: absolute;
       bottom: 1em;
-      width: 100%;
+      margin: auto;
+      width: 170px;
       text-align: center;
       font-size: 1.1em;
 
       span {
-        background-color: hsl(120, 33%, 97%);
+        text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.754);
+        color: white;
+        cursor: pointer;
       }
     }
 
@@ -262,14 +266,17 @@ body {
       border-radius: 100px;
       margin: auto;
 
-      /* if hover is available */
-      @media not all and (hover: none) {
-        &:not(:hover) {
-          + p {
-            display: none;
-          }
-        }
+
+      @media (hover:none)
+      {
+        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.522);
       }
+
+
+    }
+    #profile-pic:hover {
+      cursor: pointer;
+      box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.522);
     }
   }
 }
