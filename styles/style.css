@@ -444,18 +444,49 @@ header
   }
 }
 
-
-
-.example-container
+.listing-image
 {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: green;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
 
-.example-container > img
+.listing-type
 {
-  margin-bottom: 5px;
-  border: solid red;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+  background-image: linear-gradient(to bottom right, #019450, #26a47e);
+  border-radius: 20px;
+  margin: 0px 20px 0px 20px;
+  box-shadow: 5px 5px 20px #0000003f;
+}
+
+.listing-type:hover
+{
+  box-shadow: 5px 5px 20px #00502b;
+}
+
+.listing-type:active
+{
+  box-shadow: none;
+}
+
+.listing-text
+{
+  margin-top: 20px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.main-listing-container
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px;
 }
