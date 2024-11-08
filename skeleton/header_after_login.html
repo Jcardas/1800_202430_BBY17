@@ -1,31 +1,38 @@
-<header class="p-3 mb-3 border-bottom">
-  <div class="container">
-    <div
-      class="d-flex flex-wrap align-items-center justify-content-center justify-content-between"> 
-
+<header class="py-3 border-bottom">
     <!-- HOME, MESSAGES, PROFILE DROPDOWN -->
     <div class="navbar-row1">
       <!-- Page name Hidden for mobile -->
       <h1 style="display: none;">Farmer's Marketplace</h1> 
+
+      <!-- Logo -->
+      <div>
+        <a href="main.html">
+          <img 
+          src="/assets/farmers_marketplace.svg" alt="logo"
+          id="logo"
+          >
+        </a>
+
+      </div>
+
       <!-- TAB SELECTOR -->
       <ul
         id="tab-selector"
       >
-        <li>
-          <a href="main.html" class="nav-link px-2 link-secondary">Home</a>
+        <li id="selected-tab">
+          <a href="main.html" class="nav-link px-3" style="color: white;">Home</a>
         </li>
         <li>
-          <a href="messages.html" class="nav-link px-2 link-body-emphasis"
+          <a href="messages.html" class="nav-link px-3 link-body-emphasis"
             >Messages</a
           >
         </li>
       </ul>
-
       <!-- Profile icon dropdown -->
-      <div class="dropdown text-end">
+      <div id="profile-icon" class="dropdown">
         <a
           href="#"
-          class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+          class="d-block link-body-emphasis text-decoration-none"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
@@ -33,13 +40,12 @@
             id="avatar"
             src="./assets/profile_photo.png"
             alt="avatar"
-            width="28px"
-            height="28px"
+            width="30px"
+            height="30px"
             style="object-fit: cover; border-radius: 20px"
           />
         </a>
         <ul class="dropdown-menu text-small">
-
           <li><a class="dropdown-item" href="#">Profile</a></li>
           <li>
             <a class="dropdown-item" onclick="showAccountSettings()"
@@ -70,10 +76,9 @@
           alt="search-ico"
           ></a>
         <!-- Search Bar -->
-        <form role="search">
+        <form id="searchbar-form" role="search">
         <input id="navbar-searchbar"
           type="search"
-          class="form-control"
           placeholder="Search..."
           aria-label="Search"
         />
@@ -84,7 +89,4 @@
           alt="filter-ico"
           ></a>
     </div>
-      
-    </div>
-  </div>
 </header>

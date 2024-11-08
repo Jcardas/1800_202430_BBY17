@@ -1,41 +1,73 @@
 body {
+  background-color: hsl(0, 0%, 96%);
+}
+
+.main
+{
   margin: 2vw;
-  background-color: hsl(120, 33%, 97%);
 }
 
 /* Navbar Styling ----------------------------------------------------------------------- */
 
+header
+{
+  background-color: rgb(242, 246, 241);
+  background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(242, 249, 240));
+}
+
 .navbar-row1
 {
  display: flex;
- justify-content: center;
+ justify-content: space-between;
+ align-items: center;
+ padding-bottom: 5px;
+}
+
+#logo
+{
+  margin-left: 10px;
 }
 
 #tab-selector {
   display: flex; /* Makes the list items display in a row */
   text-decoration: none;
   list-style: none;
-  padding: 0; /* Removes default padding */
-  margin: 0; /* Removes default margin */
+  padding: 0; /* This line removes the random padding around list elements */
+  margin: 0;
+  align-items: center;
 }
 
 #tab-selector li {
+  padding: 0;
   margin-right: 5px; /* Adds space between items */
+  font-size: 15px;
 }
+
+#selected-tab
+{
+  border-radius: 20px; 
+  background-color: #019450;
+}
+
+#profile-icon
+{
+  margin-right: 18px;
+}
+
 
 .navbar-row2
 {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
 }
-
-
-
-
 
 #search-icon
 {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 }
 
 #filter-icon
@@ -44,9 +76,27 @@ body {
   height: 16px;
 }
 
+#searchbar-form
+{
+  padding: 0px 5px 0px 5px;
+}
+
 #navbar-searchbar
 {
+  background-color: rgb(224, 232, 225);
+  color: black;
+  font-size: 15px;
   width: 70vw;
+  border-radius: 20px;
+  border: none;
+  padding: 10px 15px;
+  outline: white;
+  transition: outline-color 0.3s ease-in-out; /* Smooth transition for outline */
+}
+
+#navbar-searchbar:focus {
+  outline: none;
+  outline: 2px solid #019450; /* Change outline color */
 }
 
 
@@ -55,14 +105,10 @@ body {
 /* Basic styling for viewports that are 320px or wider */
 @media (min-width: 320px) {
 
-  #navbar-searchbar
-  {
-    width: 70vw;
-  }
 
   body
   {
-    background-color: rgba(0, 8, 255, 0.078);
+    /* background-color: rgba(0, 8, 255, 0.078); */
   }
   
 }
@@ -71,7 +117,7 @@ body {
 @media (min-width: 480px) {
   body
   {
-    background-color: rgba(30, 255, 0, 0.181);
+    /* background-color: rgba(30, 255, 0, 0.181); */
   }
 }
 
@@ -79,7 +125,7 @@ body {
 @media (min-width: 768px) {
   body
   {
-    background-color: rgba(255, 0, 0, 0.25);
+    /* background-color: rgba(255, 0, 0, 0.25); */
   }
 }
 
