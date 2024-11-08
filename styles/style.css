@@ -133,7 +133,7 @@ header
 }
 
 /* Adjustments for even wider viewports (e.g., small laptops) */
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .navbar-row1 
   {
     justify-content:space-between;
