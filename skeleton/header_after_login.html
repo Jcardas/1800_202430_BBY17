@@ -19,18 +19,15 @@
 
       <!-- DESKTOP SEARCH BAR (Hidden in smaller view) -->
       <div class="desktop-search-bar">
-        <!-- Search Icon -->
-        <a href="#"><img id="search-icon" 
-          src="./assets/search.svg" 
-          alt="search-ico"
-          ></a>
+        
         <!-- Search Bar -->
         <form id="searchbar-form" role="search">
-        <input id="navbar-searchbar"
-          type="search"
-          placeholder="Search..."
-          aria-label="Search"
-        />
+
+          <input id="navbar-searchbar"
+            type="search"
+            placeholder="Search for produce..."
+            aria-label="Search"
+          >
         </form>
         <!-- Filter Icon -->
          <a href="#"><img id="filter-icon" 
@@ -43,11 +40,11 @@
       <ul
         id="tab-selector"
       >
-        <li id="selected-tab">
-          <a href="main.html" class="nav-link px-3" style="color: white;">Home</a>
+        <li id="main">
+          <a href="main.html" class="nav-link px-3">Home</a>
         </li>
-        <li>
-          <a href="messages.html" class="nav-link px-3 link-body-emphasis"
+        <li id="messages">
+          <a href="messages.html" class="nav-link px-3"
             >Messages</a
           >
         </li>
@@ -67,25 +64,28 @@
             id="avatar"
             src="./assets/profile_photo.png"
             alt="avatar"
-            width="30px"
-            height="30px"
+            width="30"
+            height="30"
             style="object-fit: cover; border-radius: 20px"
-          />
+          >
         </a>
         <ul class="dropdown-menu text-small">
-          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li id="profile"><a class="dropdown-item" href="#">Profile</a></li>
           <li>
-            <a class="dropdown-item" onclick="showAccountSettings()"
+            <a id="account" class="dropdown-item" onclick="showAccountSettings()"
               >Account Settings</a
             >
           </li>
-          <li><a class="dropdown-item" href="#">My Listings</a></li>
           <li>
-            <a class="dropdown-item" onclick="showBookmarks()"
+            <a id="mylistings" class="dropdown-item" href="#">My Listings
+            </a>
+          </li>
+          <li>
+            <a id="bookmarks" class="dropdown-item" onclick="showBookmarks()"
               >Bookmarks</a
             >
           </li>
-          <li><hr class="dropdown-divider" /></li>
+          <li><hr class="dropdown-divider"></li>
           <li>
             <a class="dropdown-item" onclick="logout()">Sign out</a>
           </li>
@@ -97,16 +97,13 @@
 
     <!-- SEARCH ICON, BAR, AND FILTER (Hidden in larger viewport)-->
     <div class="navbar-row2">
-        <!-- Search Icon -->
-         <a href="#"><img id="search-icon" 
-          src="./assets/search.svg" 
-          alt="search-ico"
-          ></a>
+
+      <div class="mobile-search-bar">
         <!-- Search Bar -->
         <form id="searchbar-form" role="search">
         <input id="navbar-searchbar"
           type="search"
-          placeholder="Search..."
+          placeholder="Search for produce..."
           aria-label="Search"
         />
         </form>
@@ -115,5 +112,9 @@
           src="./assets/filter.svg" 
           alt="filter-ico"
           ></a>
+      </div>
     </div>
 </header>
+
+<script src="./scripts/header.js"></script>
+
