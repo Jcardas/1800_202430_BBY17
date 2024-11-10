@@ -46,10 +46,10 @@
     <div id="header-container"></div>
 
     <!-- main -->
-     <form class="listing-form-info">
-      <div class="form-type-img">
-        <p>Add a photo or video</p>
-        <input class="form-photo-input" type="file" id="photo-video-input" accept="image/*, video/*">
+     <form id="listing-form-info">
+      <div id="form-type-img">
+        <p id="photo-text">Add a photo or video</p>
+        <input class="form-photo-input" type="file" id="photo-video-input" accept="image/*, video/*" style="display: none;">
       </div>
 
       <div class="form-type">
@@ -68,7 +68,7 @@
         <input type="text" class="form-text-description" id="description" placeholder="Description">
       </div>
 
-      <button type="submit" class="post">Post</button>
+      <button type="submit" id="post">Post</button>
     </form>
 
     <div id="header-container"></div>
@@ -82,5 +82,6 @@
     <script src="./scripts/firebaseAuth.js"></script>
     <script src="./scripts/firebase.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/listings.js"></script>
   </body>
 </html>

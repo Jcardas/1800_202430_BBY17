@@ -1,20 +1,38 @@
-const listingForm = document.querySelector(".lisiting-form-info");
+const listingForm = document.getElementById("lisiting-form-info");
+const fileContainer = document.getElementById("form-type-img");
 const listingFile = document.getElementById("photo-video-input");
-const productType  = document.getElementById("productType");
-const listingPrice  = document.getElementById("price");
-const listingUnits  = document.getElementById("unit");
-const listingDescription  = document.getElementById("description");
-const submit = document.querySelector("submit");
+const fileText = document.getElementById("photo-text");
+const submit = document.getElementById("post");
 
-submit.addEventlistener("click" , (e) => {
+populateSettings();
+
+
+submit.addEventListener("click", async (e) => {
     e.preventDefault();
-    db.collection('listing-form').doc().set({
-        listingFile: listingFile.value,
-        productType: productType.value,
-        listingPrice: listingPrice.value,
-        listingUnits: listingUnits.value,
-        listingDescription: listingDescription.value,   
-    }).then(() => {
-        listingForm.reset();
-    })
+});
+
+fileContainer.addEventListener("click", () => listingFile.click());
+fileText.addEventListener("click", () => listingFile.click());
+
+listingFile.addEventListener("change", () => {
+    const fileInput = URL.createObjectURL(listingFile.files[0]);
 })
+
+function populateSettings () {
+    firebase.auth().onAuthStateChanged((listing) =>{
+
+        db.collection("listing")
+        .doc(listing.uid)
+        .get()
+        .then((doc) => {
+            if (!doc.exists) return;
+
+            const data = doc.data();
+            document.getElementById("productType").value = data.productType;
+            document.getElementById("price").value = data.price;
+            document.getElementById("unit").value = data.unit;
+            document.getElementById("description").value = data.description;
+        })
+    })
+}
+

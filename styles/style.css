@@ -518,7 +518,7 @@ header
   margin: 50px;
 }
 
-.listing-form-info{
+#listing-form-info{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -526,11 +526,11 @@ header
   flex-direction: column;
 }
 
-.form-type-img {
-  background-color: red;
+#form-type-img {
   border-radius: 10px;
   width: 300px;
   height: 100px;
+  border: 2px solid;
 }
 
 .form-text {
@@ -552,7 +552,7 @@ header
   width: 75px;
 }
 
-.form-type-img > p{
+#form-type-img > p{
   text-align: center;
   margin-top: 10px;
   
