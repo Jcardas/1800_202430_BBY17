@@ -517,3 +517,44 @@ header
   justify-content: center;
   margin: 50px;
 }
+
+.listing-form-info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ;
+  flex-direction: column;
+}
+
+.form-type-img {
+  background-color: red;
+  border-radius: 10px;
+  width: 300px;
+  height: 100px;
+}
+
+.form-text {
+  border-radius: 10px;
+  margin: 5px;
+  width: 300px;
+  height: 50px;
+}
+
+.form-text-description {
+  border-radius: 10px;
+  margin: 5px;
+  width: 300px;
+  height: 100px;
+}
+
+.post{
+  background-color: green;
+  width: 75px;
+}
+
+.form-type-img > p{
+  text-align: center;
+  margin-top: 10px;
+  
+}
+

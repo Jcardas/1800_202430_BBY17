@@ -46,21 +46,30 @@
     <div id="header-container"></div>
 
     <!-- main -->
-    <div class="main-listing-container">
-      <a href="main.html">
-        <div class="listing-type">
-          <img class="listing-image" src="/assets/blueberries.jpg" alt="" width="100px"> 
-          <p class="listing-text">Seeds</p>
-        </div>
-      </a>
+     <form class="listing-form-info">
+      <div class="form-type-img">
+        <p>Add a photo or video</p>
+        <input class="form-photo-input" type="file" id="photo-video-input" accept="image/*, video/*">
+      </div>
 
-      <a href="main.html">
-        <div class="listing-type">
-          <img class="listing-image" src="/assets/corn.jpg" alt="" width="100px">
-          <p class="listing-text">Produce</p>
-        </div>
-      </a>
-    </div>
+      <div class="form-type">
+        <input class="form-text" type="text" id="productType" placeholder="Product Type" required/>
+      </div>
+
+      <div class="form-type">
+        <input class="form-text" type="text" id="price" placeholder="Price" required/>
+      </div>
+    
+      <div class="form-type">
+        <input class="form-text" type="text" id="unit" placeholder="Units" required/>
+      </div>
+
+      <div class="form-type">
+        <input type="text" class="form-text-description" id="description" placeholder="Description">
+      </div>
+
+      <button type="submit" class="post">Post</button>
+    </form>
 
     <div id="header-container"></div>
 
