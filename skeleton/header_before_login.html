@@ -1,12 +1,42 @@
-<header class="p-3 mb-3 border-bottom">
-  <div class="d-flex flex-wrap justify-content-between align-items-center">
-    <h1 class="justify-content-start">Farmer's Marketplace</h1>
+<header class="py-3 px-3 border-bottom">
+  <div class="navbar-row1">
     <a
       id="logo"
-      href="/"
+      href="/index.html"
       class="justify-content-end"
     >
-      <img src="assets/farm.jpg" alt="Logo" />
+      <img src="/assets/favicon.png" alt="Logo" />
     </a>
+
+          <!-- Profile icon dropdown -->
+          <div id="profile-icon" class="dropdown">
+            <a
+              href="#"
+              class="d-block link-body-emphasis text-decoration-none"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                id="avatar"
+                src="./assets/menu.svg"
+                alt="avatar"
+                width="28"
+                height="28"
+              >
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li id="login"><a class="dropdown-item" href="/login.html">Login</a></li>
+              <li>
+                <a id="about" class="dropdown-item" href="/about.html""
+                  >About</a
+                >
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="contact.html">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+
   </div>
 </header>

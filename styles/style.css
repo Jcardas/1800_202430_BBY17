@@ -1,5 +1,5 @@
 body {
-  background-color: hsl(0, 0%, 96%);
+  background-image: linear-gradient(to bottom right, #01944f13, #ffffff05);
 }
 
 .main
@@ -139,9 +139,19 @@ header
     
   }
 
+  .hero-text
+  {
+    text-align: center;
+  }
+
     .desktop-search-bar
   {
     display: none;
+  }
+
+    .landing-page-container
+  {
+    margin: 0px 20px 0px 20px;
   }
   
 }
@@ -153,17 +163,38 @@ header
     /* background-color: rgba(30, 255, 0, 0.181); */
   }
 
+  .hero-text
+  {
+    text-align: center;
+  }
+
   .desktop-search-bar
   {
     display: none;
   }
+
+    .landing-page-container
+  {
+    margin: 0px 20px 0px 20px;
+  }
 }
 
 /* Adjustments for even wider viewports (e.g., small laptops) */
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .navbar-row1 
   {
     justify-content:space-between;
+  }
+
+    .landing-page-container
+  {
+    margin-top: 10px;
+  }
+
+  .hero-text
+  {
+    margin-top: 50px;
+    text-align: left;
   }
 
   .desktop-search-bar
@@ -194,7 +225,7 @@ header
 /* -------------------------------------------------------------------------- */
 
 #banner-container {
-  background-image: url("../assets/strawberries.jpg");
+  background-color: #019450;
   background-size: cover;
   height: 100%;
 }
@@ -202,14 +233,58 @@ header
 #banner-container > * {
   color: black;
 }
-#caption-container {
+.caption-container {
   background-color: hsl(120, 33%, 97%);
   opacity: 1;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 
 .btn {
-  background-color: #08724b;
+  background-color: #019450;
+  border: none;
+  color: white;
+  font-weight: 500;
+}
+
+.btn:hover
+{
+  background-color: #00753e;
+  box-shadow: 0px 5px 8px #019450;
+  color: white;
+}
+
+.btn:active
+{
+  box-shadow: 0px 2px 10px #019450;
+  background-color: black;
+}
+
+.btn-gray 
+{
+  background-color: #a7a7a7;
+  border: none;
+  color: white;
+}
+
+.btn-gray:hover
+{
+  background-color: #8e8e8e;
+  color: white;
+  box-shadow: 0px 2px 5px rgb(20, 20, 20);
+}
+
+.btn-white
+{
+  background-color: white;
+  border: none;
+  color: #019450;
+}
+
+.btn-white:hover
+{
+  background-color: white;
+  color: #019450;
+  box-shadow: 0px 2px 5px white;
 }
 
 #logo {
