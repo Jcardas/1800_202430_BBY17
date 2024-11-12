@@ -1,117 +1,100 @@
 <header class="py-3 border-bottom">
-    <!-- HOME, MESSAGES, PROFILE DROPDOWN -->
-    <div class="navbar-row1">
-      <!-- Logo -->
-      <div>
-        <a href="main.html">
-          <img 
-          src="/assets/farmers_marketplace.svg" alt="logo"
-          id="logo"
-          >
-        </a>
+  <!-- HOME, MESSAGES, PROFILE DROPDOWN -->
+  <div class="navbar-row1">
+    <!-- Logo -->
+    <div>
+      <a href="main.html">
+        <img src="/assets/farmers_marketplace.svg" alt="logo" id="logo" />
+      </a>
+    </div>
 
-      </div>
-
-      <div id="center-nav-container">
-
+    <div id="center-nav-container">
       <!-- DESKTOP SEARCH BAR (Hidden in smaller view) -->
       <div class="desktop-search-bar">
-        
         <!-- Search Bar -->
         <form id="searchbar-form" role="search">
-
-          <input id="navbar-searchbar"
+          <input
+            id="navbar-searchbar"
             type="search"
             placeholder="Search for produce..."
             aria-label="Search"
-          >
+          />
         </form>
         <!-- Filter Icon -->
-         <a href="#"><img id="filter-icon" 
-          src="./assets/filter.svg" 
-          alt="filter-ico"
-          ></a>
+        <a href="#"
+          ><img id="filter-icon" src="./assets/filter.svg" alt="filter-ico"
+        /></a>
       </div>
 
       <!-- TAB SELECTOR -->
-      <ul
-        id="tab-selector"
-      >
+      <ul id="tab-selector">
         <li id="main">
           <a href="main.html" class="nav-link px-3">Home</a>
         </li>
         <li id="messages">
-          <a href="messages.html" class="nav-link px-3"
-            >Messages</a
-          >
+          <a href="messages.html" class="nav-link px-3">Messages</a>
         </li>
       </ul>
-
-      </div>
-
-      <!-- Profile icon dropdown -->
-      <div id="profile-icon" class="dropdown">
-        <a
-          href="#"
-          class="d-block link-body-emphasis text-decoration-none"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <img
-            id="avatar"
-            src="./assets/profile_photo.png"
-            alt="avatar"
-            width="30"
-            height="30"
-            style="object-fit: cover; border-radius: 20px"
-          >
-        </a>
-        <ul class="dropdown-menu text-small">
-          <li id="profile"><a class="dropdown-item" href="#">Profile</a></li>
-          <li>
-            <a id="account" class="dropdown-item" onclick="showAccountSettings()"
-              >Account Settings</a
-            >
-          </li>
-          <li>
-            <a id="mylistings" class="dropdown-item" href="#">My Listings
-            </a>
-          </li>
-          <li>
-            <a id="bookmarks" class="dropdown-item" onclick="showBookmarks()"
-              >Bookmarks</a
-            >
-          </li>
-          <li><hr class="dropdown-divider"></li>
-          <li>
-            <a class="dropdown-item" onclick="logout()">Sign out</a>
-          </li>
-        </ul>
-      </div>
     </div>
-    
 
+    <!-- Profile icon dropdown -->
+    <div id="profile-icon" class="dropdown">
+      <a
+        href="#"
+        class="d-block link-body-emphasis text-decoration-none"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          id="avatar"
+          src="./assets/profile_photo.png"
+          alt="avatar"
+          width="30"
+          height="30"
+          style="object-fit: cover; border-radius: 20px"
+        />
+      </a>
+      <ul class="dropdown-menu text-small">
+        <li id="profile"><a class="dropdown-item" href="#">Profile</a></li>
+        <li>
+          <a id="account" class="dropdown-item" onclick="showAccountSettings()"
+            >Account Settings</a
+          >
+        </li>
+        <li>
+          <a id="mylistings" class="dropdown-item" href="#">My Listings </a>
+        </li>
+        <li>
+          <a id="bookmarks" class="dropdown-item" onclick="showBookmarks()"
+            >Bookmarks</a
+          >
+        </li>
+        <li><hr class="dropdown-divider" /></li>
+        <li>
+          <a class="dropdown-item" onclick="logout()">Sign out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-    <!-- SEARCH ICON, BAR, AND FILTER (Hidden in larger viewport)-->
-    <div class="navbar-row2">
-
-      <div class="mobile-search-bar">
-        <!-- Search Bar -->
-        <form id="searchbar-form" role="search">
-        <input id="navbar-searchbar"
+  <!-- SEARCH ICON, BAR, AND FILTER (Hidden in larger viewport)-->
+  <div class="navbar-row2">
+    <div class="mobile-search-bar">
+      <!-- Search Bar -->
+      <form id="searchbar-form" role="search">
+        <input
+          id="navbar-searchbar"
           type="search"
           placeholder="Search for produce..."
           aria-label="Search"
         />
-        </form>
-        <!-- Filter Icon -->
-         <a href="#"><img id="filter-icon" 
-          src="./assets/filter.svg" 
-          alt="filter-ico"
-          ></a>
-      </div>
+      </form>
+      <!-- Filter Icon -->
+      <a href="#"
+        ><img id="filter-icon" src="./assets/filter.svg" alt="filter-ico"
+      /></a>
     </div>
+  </div>
 </header>
 
 <script src="./scripts/header.js"></script>
-
