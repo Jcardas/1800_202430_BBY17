@@ -48,8 +48,7 @@ function showAccountSettings() {
   window.location.assign("./account.html");
 }
 
-function showBookmarks()
-{
+function showBookmarks() {
   sessionStorage.setItem("previousURL", window.location.href);
   window.location.assign("./bookmarks.html");
 }

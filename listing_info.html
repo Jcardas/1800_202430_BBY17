@@ -3,7 +3,11 @@
   <head>
     <title>Farmer's Market - Main</title>
     <meta name="comp1800 template" content="My 1800 App" />
-    <link rel="icon" type="image/x-icon" href="/assets/farmers_marketplace.svg">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/assets/farmers_marketplace.svg"
+    />
 
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -41,31 +45,59 @@
   </head>
 
   <body>
-
     <!-- header and nav -->
     <div id="header-container"></div>
 
     <!-- main -->
-     <form id="listing-form-info">
+    <form id="listing-form-info">
       <div id="form-type-img">
         <p id="photo-text">Add a photo or video</p>
-        <input class="form-photo-input" type="file" id="photo-video-input" accept="image/*, video/*" style="display: none;">
+        <input
+          class="form-photo-input"
+          type="file"
+          id="photo-video-input"
+          accept="image/*, video/*"
+          style="display: none"
+        />
       </div>
 
       <div class="form-type">
-        <input class="form-text" type="text" id="productType" placeholder="Product Type" required/>
+        <input
+          class="form-text"
+          type="text"
+          id="productType"
+          placeholder="Product Type"
+          required
+        />
       </div>
 
       <div class="form-type">
-        <input class="form-text" type="text" id="price" placeholder="Price" required/>
-      </div>
-    
-      <div class="form-type">
-        <input class="form-text" type="text" id="unit" placeholder="Units" required/>
+        <input
+          class="form-text"
+          type="text"
+          id="price"
+          placeholder="Price"
+          required
+        />
       </div>
 
       <div class="form-type">
-        <input type="text" class="form-text-description" id="description" placeholder="Description">
+        <input
+          class="form-text"
+          type="text"
+          id="unit"
+          placeholder="Units"
+          required
+        />
+      </div>
+
+      <div class="form-type">
+        <input
+          type="text"
+          class="form-text-description"
+          id="description"
+          placeholder="Description"
+        />
       </div>
 
       <button type="submit" id="post">Post</button>

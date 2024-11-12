@@ -6,33 +6,30 @@ const submit = document.getElementById("post");
 
 populateSettings();
 
-
 submit.addEventListener("click", async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 });
 
 fileContainer.addEventListener("click", () => listingFile.click());
 fileText.addEventListener("click", () => listingFile.click());
 
 listingFile.addEventListener("change", () => {
-    const fileInput = URL.createObjectURL(listingFile.files[0]);
-})
+  const fileInput = URL.createObjectURL(listingFile.files[0]);
+});
 
-function populateSettings () {
-    firebase.auth().onAuthStateChanged((listing) =>{
+function populateSettings() {
+  firebase.auth().onAuthStateChanged((listing) => {
+    db.collection("listing")
+      .doc(listing.uid)
+      .get()
+      .then((doc) => {
+        if (!doc.exists) return;
 
-        db.collection("listing")
-        .doc(listing.uid)
-        .get()
-        .then((doc) => {
-            if (!doc.exists) return;
-
-            const data = doc.data();
-            document.getElementById("productType").value = data.productType;
-            document.getElementById("price").value = data.price;
-            document.getElementById("unit").value = data.unit;
-            document.getElementById("description").value = data.description;
-        })
-    })
+        const data = doc.data();
+        document.getElementById("productType").value = data.productType;
+        document.getElementById("price").value = data.price;
+        document.getElementById("unit").value = data.unit;
+        document.getElementById("description").value = data.description;
+      });
+  });
 }
-
