@@ -224,6 +224,64 @@ header
 
 /* -------------------------------------------------------------------------- */
 
+/* Login Form ----------------- */
+#firebaseui-auth-container
+{
+  margin: 40px 0px 40px 0px;
+}
+
+.firebaseui-container
+{
+  background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(244, 248, 242));
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px #01944f2d;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+
+}
+
+.firebaseui-container:hover
+{
+  transform: scale(1.01);
+  box-shadow: 0px 2px 10px #013d212d;
+}
+
+/* Button background and hover effects */
+.firebaseui-container .firebaseui-idp-button {
+  background-color: #019450;
+  border: none;
+  color: white;
+}
+
+.firebaseui-container .firebaseui-idp-button:hover {
+  background-color: #01783c; /* A slightly darker shade for hover effect */
+}
+
+/* Submit button style */
+.firebaseui-container .firebaseui-button {
+  border-radius: 10px;
+  background-color: #019450;
+  color: white;
+}
+
+.firebaseui-container .firebaseui-button:hover {
+  background-color: #01783c;
+}
+
+.mdl-textfield__input {
+  border-bottom: 2px solid #019450 !important;
+}
+
+.mdl-textfield__input:focus {
+  border-bottom: 2px solid #019450 !important;
+}
+
+.mdl-textfield.is-focused .mdl-textfield__label,
+.mdl-textfield.is-dirty .mdl-textfield__label {
+  color: #019450 !important;
+}
+
+/* Page Styling --------------- */
+
 #banner-container {
   background-color: #019450;
   background-size: cover;
@@ -249,13 +307,13 @@ header
 .btn:hover
 {
   background-color: #00753e;
-  box-shadow: 0px 5px 8px #019450;
+  box-shadow: 0px 5px 8px #00000023;
   color: white;
 }
 
 .btn:active
 {
-  box-shadow: 0px 2px 10px #019450;
+  box-shadow: 0px 2px 10px #000000;
   background-color: black;
 }
 
@@ -284,7 +342,7 @@ header
 {
   background-color: white;
   color: #019450;
-  box-shadow: 0px 2px 5px white;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.53);
 }
 
 #logo {
@@ -597,7 +655,6 @@ header
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ;
   flex-direction: column;
 }
 
