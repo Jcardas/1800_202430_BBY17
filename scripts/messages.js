@@ -34,42 +34,45 @@ recipientForm.addEventListener("submit", (event) => {
         alert("User ID does not exist");
         return;
       }
-      data = doc.data();
+      const userData = doc.data();
 
       // Set recipient profile pic
-      if (data.avatar) {
-        recipientPfp.src = recipientAvatar = data.avatar;
+      if (userData.avatar) {
+        recipientPfp.src = recipientAvatar = userData.avatar;
       }
 
       // Set recipient user name
       const recipientName = document.createElement("p");
-      recipientName.innerText = data.name;
+      recipientName.innerText = userData.name;
       recipientInput.replaceWith(recipientName);
 
-      // Populate with existing messages (if exist)
-      // the chatID might be "<our ID>+<their ID> or <their ID>+<our ID>"
-      // (depending on who initiated the chat first)
-      // so try both ids to see what work
-      messagePage.innerHTML = "";
-      chatDoc = db
-        .collection("messages")
-        .doc(`${recipientID}+${currentUser.uid}`);
+      // chat id is "<our ID>+<their ID>"" or "<their ID + ourID>", in lexicographical order
+      if (recipientID < currentUser.uid) {
+        chatDoc = db
+          .collection("messages")
+          .doc(`${recipientID}+${currentUser.uid}`);
+        console.log("here");
+      } else {
+        chatDoc = db
+          .collection("messages")
+          .doc(`${currentUser.uid}+${recipientID}`);
+        console.log("there");
+      }
+
+      // populate existing messages
       chatDoc.get().then((doc) => {
-        if (!doc.exists) {
-          chatDoc = db
-            .collection("messages")
-            .doc(`${currentUser.uid}+${recipientID}`);
-          chatDoc.get().then((doc) => {
-            if (!doc.exists) {
-              return;
-            }
-            data = doc.data();
-            data.messages.map(addMessage);
-          });
-          return;
-        }
-        data = doc.data();
-        data.messages.map(addMessage);
+        if (!doc.exists) return;
+        const chatData = doc.data();
+        chatData.messages.map(addMessageToPage);
+      });
+
+      // listen to the database for changes and add the last message to page
+      chatDoc.onSnapshot((doc) => {
+        if (!doc.exists) return;
+
+        const chatData = doc.data();
+        const latestMessage = chatData.messages[chatData.messages.length - 1];
+        addMessageToPage(latestMessage);
       });
 
       // Unhide the text input
@@ -88,7 +91,7 @@ function sendMessage() {
   const message = {
     from: currentUser.uid,
     text: messageText,
-    timestamp: Date.now(), // not used for now
+    timestamp: Date.now(), // not displayed in the UI (yet), but is used as id for message element
   };
   chatDoc
     .set(
@@ -97,12 +100,15 @@ function sendMessage() {
       },
       { merge: true }
     )
-    .then(() => addMessage(message))
     .catch(console.error);
   messageInput.value = "";
 }
 
-function addMessage(message) {
+function addMessageToPage(message) {
+  if (document.getElementById(message.timestamp)) {
+    return;
+  }
+
   let type;
   let avatar;
   if (message.from == currentUser.uid) {
@@ -119,7 +125,7 @@ function addMessage(message) {
   document.querySelector(".msg-page").insertAdjacentHTML(
     "beforeend",
     `
-    <div class=${type}>
+    <div id=${message.timestamp} class=${type}>
       <p>${message.text}</p>
       <img
         class="m_userprofile"
@@ -128,6 +134,9 @@ function addMessage(message) {
       />
     </div>`
   );
+
+  // scroll to end
+  messagePage.scrollTop = messagePage.scrollHeight;
 }
 
 //Functionality for the send button.
