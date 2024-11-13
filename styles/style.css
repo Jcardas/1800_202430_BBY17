@@ -321,20 +321,17 @@ header {
 }
 
 /* Main Page styling ------------------------------- */
-.card-container
-{
+.card-container {
   height: 50%;
 }
 
-.card
-{
+.card {
   height: 100%;
 }
 
-.card-img-top 
-{
+.card-img-top {
   height: 65%;
-  object-fit:cover;
+  object-fit: cover;
   width: 100%;
 }
 
