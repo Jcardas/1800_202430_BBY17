@@ -1,8 +1,13 @@
+const messagePage = document.querySelector(".msg-page");
+const messageBottom = document.querySelector(".msg-bottom");
+const recipientForm = document.querySelector("form.username");
+const messageInput = document.querySelector(".message-input");
+const sendButton = document.querySelector(".send-button");
+
 var currentUser;
 var senderAvatar;
 var recipientAvatar;
-var messagePage = document.querySelector(".msg-page");
-var messageBottom = document.querySelector(".msg-bottom");
+var chatDoc;
 
 firebase.auth().onAuthStateChanged((user) => {
   currentUser = user;
@@ -18,8 +23,6 @@ firebase.auth().onAuthStateChanged((user) => {
     });
 });
 
-var chatDoc;
-const recipientForm = document.querySelector("form.username");
 recipientForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const recipientInput = recipientForm.querySelector("input");
@@ -46,27 +49,26 @@ recipientForm.addEventListener("submit", (event) => {
       recipientName.innerText = userData.name;
       recipientInput.replaceWith(recipientName);
 
-      // chat id is "<our ID>+<their ID>"" or "<their ID + ourID>", in lexicographical order
+      // Set chat id, which is "<our ID>+<their ID>" or "<their ID>+<our ID>"
+      // depending on whose id comes first lexicographically
       if (recipientID < currentUser.uid) {
         chatDoc = db
           .collection("messages")
           .doc(`${recipientID}+${currentUser.uid}`);
-        console.log("here");
       } else {
         chatDoc = db
           .collection("messages")
           .doc(`${currentUser.uid}+${recipientID}`);
-        console.log("there");
       }
 
-      // populate existing messages
+      // Populate existing messages
       chatDoc.get().then((doc) => {
         if (!doc.exists) return;
         const chatData = doc.data();
         chatData.messages.map(addMessageToPage);
       });
 
-      // listen to the database for changes and add the last message to page
+      // Listen to the database for changes and add the last message to page
       chatDoc.onSnapshot((doc) => {
         if (!doc.exists) return;
 
@@ -80,9 +82,16 @@ recipientForm.addEventListener("submit", (event) => {
     });
 });
 
-// Select input and send button
-const messageInput = document.querySelector(".message-input");
-const sendButton = document.querySelector(".send-button");
+// Send button
+sendButton.addEventListener("click", sendMessage);
+
+// To send by pressing enter
+messageInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    sendMessage();
+  }
+});
 
 function sendMessage() {
   const messageText = messageInput.value.trim();
@@ -91,31 +100,29 @@ function sendMessage() {
   const message = {
     from: currentUser.uid,
     text: messageText,
-    timestamp: Date.now(), // not displayed in the UI (yet), but is used as id for message element
+    timestamp: Date.now(), // not displayed in the UI (yet), but is used as id for the message element
   };
   chatDoc
     .set(
-      {
-        messages: firebase.firestore.FieldValue.arrayUnion(message),
-      },
+      { messages: firebase.firestore.FieldValue.arrayUnion(message) },
       { merge: true }
     )
     .catch(console.error);
+  // no need to call addMessageToPage
+  // it's called by chatDoc.onSnapshot() when the server updates
   messageInput.value = "";
 }
 
 function addMessageToPage(message) {
-  if (document.getElementById(message.timestamp)) {
-    return;
-  }
+  if (document.getElementById(message.timestamp)) return;
 
-  let type;
+  let messageType;
   let avatar;
   if (message.from == currentUser.uid) {
-    type = "outgoing-message";
+    messageType = "outgoing-message";
     avatar = senderAvatar;
   } else {
-    type = "incoming-message";
+    messageType = "incoming-message";
     avatar = recipientAvatar;
   }
   if (!avatar) {
@@ -125,7 +132,7 @@ function addMessageToPage(message) {
   document.querySelector(".msg-page").insertAdjacentHTML(
     "beforeend",
     `
-    <div id=${message.timestamp} class=${type}>
+    <div id=${message.timestamp} class=${messageType}>
       <p>${message.text}</p>
       <img
         class="m_userprofile"
@@ -134,18 +141,6 @@ function addMessageToPage(message) {
       />
     </div>`
   );
-
-  // scroll to end
+  // Scroll to end
   messagePage.scrollTop = messagePage.scrollHeight;
 }
-
-//Functionality for the send button.
-sendButton.addEventListener("click", sendMessage);
-
-//Functionality for pressing enter to send a message.
-messageInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    sendMessage();
-  }
-});
