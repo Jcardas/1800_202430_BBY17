@@ -52,45 +52,48 @@
 
     <!-- main -->
     <div class="main">
-
-              <!-- Greeting Message -->
+      <!-- Greeting Message -->
       <h1 id="big-cap" class="display-5 fw-bold border-bottom">
         Hello <span id="name-goes-here"></span>
       </h1>
 
-
       <h1>Here's some fresh products</h1>
       <!-- Here is the products inserted from firebase  -->
-      <div id="products-go-here" class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3"></div>
-    
-    
+      <div
+        id="products-go-here"
+        class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3"
+      ></div>
 
       <!-- Post Button -->
       <a href="listing.html" class="plus-sign">+</a>
-    </div>          
+    </div>
 
-
-
-
+    <div>
       <!-- Product Template -->
       <template id="productCardTemplate">
         <div class="col">
           <div class="card rounded-4 shadow">
-            <img src="assets/blueberries.jpg" class="card-img rounded-4 p-2" alt="...">
+            <img
+              src="assets/blueberries.jpg"
+              class="card-img rounded-4 p-2"
+              alt="..."
+            />
             <div class="card-body">
               <h5 class="card-title">Price | Product</h5>
               <p class="card-text text-muted">$ / unit</p>
-              
+
               <div class="product-profile">
-                <img class="product-profile-icon" src="/assets/profile_photo.png" alt="">
+                <img
+                  class="product-profile-icon"
+                  src="/assets/profile_photo.png"
+                  alt=""
+                />
                 <p class="product-farmer-name">Farmer Name</p>
               </div>
-
             </div>
           </div>
         </div>
       </template>
-
     </div>
 
     <div id="footer-container"></div>
@@ -98,11 +101,11 @@
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
 
-      <!-- Link to scripts of your own -->
-      <script src="./scripts/firebaseAuth.js"></script>
-      <script src="./scripts/firebase.js"></script>
-      <script src="./scripts/script.js"></script>
-      <script src="./scripts/main.js"></script>
-      <script src="./scripts/eachListing.js"></script>
+    <!-- Link to scripts of your own -->
+    <script src="./scripts/firebaseAuth.js"></script>
+    <script src="./scripts/firebase.js"></script>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/main.js"></script>
+    <script src="./scripts/eachListing.js"></script>
   </body>
 </html>
