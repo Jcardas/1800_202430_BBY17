@@ -50,7 +50,7 @@ header {
 }
 
 #profile-icon {
-  margin-right: 18px;
+  margin-right: 10px;
 }
 
 .navbar-row2 {
@@ -321,6 +321,11 @@ header {
 }
 
 /* Main Page styling ------------------------------- */
+.welcome
+{
+  margin-bottom: 20px;
+}
+
 
 .product-profile
 {
@@ -344,12 +349,6 @@ header {
   display: flex;
 }
 
-.card
-{
-
-}
-
-
 .card-img {
   height: 240px;
   object-fit: cover;
@@ -357,6 +356,11 @@ header {
 }
 
 /* -------------------------------------------------- */
+
+.text-bg-success
+{
+  background-color: #019450 !important;
+}
 
 .plus-sign {
   align-items: center;
