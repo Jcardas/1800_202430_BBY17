@@ -100,7 +100,8 @@ function sendMessage() {
   const message = {
     from: currentUser.uid,
     text: messageText,
-    timestamp: Date.now(), // not displayed in the UI (yet), but is used as id for the message element
+    timestamp: Date.now(), // not displayed in the UI (yet)
+    // but is used as id for the message element
   };
   chatDoc
     .set(
@@ -114,6 +115,7 @@ function sendMessage() {
 }
 
 function addMessageToPage(message) {
+  // the message timestamp serves as the div's id
   if (document.getElementById(message.timestamp)) return;
 
   let messageType;

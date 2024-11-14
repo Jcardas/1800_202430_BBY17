@@ -53,70 +53,41 @@
     <!-- main -->
     <div class="main">
 
-      <!-- Example Cards -->
-        <div id="productCardTemplate" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2 gy-0">
-          <div class="col">
-            <div class="card h-100">
-              <img src="assets/blueberries.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Farmer</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="assets/strawberries.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Farmer</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="assets/farm2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Farmer</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="assets/milk.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Farmer</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-      <h1 id="big-cap" class="display-5 fw-bold">
+              <!-- Greeting Message -->
+      <h1 id="big-cap" class="display-5 fw-bold border-bottom">
         Hello <span id="name-goes-here"></span>
       </h1>
-    <a href="listing.html" class="plus-sign">+</a>
 
-    </div>
+
+      <h1>Here's some fresh products</h1>
+      <!-- Here is the products inserted from firebase  -->
+      <div id="products-go-here" class="row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3"></div>
+    
+    
+
+      <!-- Post Button -->
+      <a href="listing.html" class="plus-sign">+</a>
+    </div>          
+
 
 
 
       <!-- Product Template -->
       <template id="productCardTemplate">
-        <div class="card py-2 mx-2" style="width: 18rem">
-            <img class="card-image card-img-top" src=" ..." alt="..." />
+        <div class="col">
+          <div class="card rounded-4 shadow">
+            <img src="assets/blueberries.jpg" class="card-img rounded-4 p-2" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-length">placeholder</p>
-                <br />
-                <p class="card-text">
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </p>
-                <a class="btn btn-primary card-href">Read more ...</a>
+              <h5 class="card-title">Price | Product</h5>
+              <p class="card-text text-muted">$ / unit</p>
+              
+              <div class="product-profile">
+                <img class="product-profile-icon" src="/assets/profile_photo.png" alt="">
+                <p class="product-farmer-name">Farmer Name</p>
+              </div>
+
             </div>
+          </div>
         </div>
       </template>
 

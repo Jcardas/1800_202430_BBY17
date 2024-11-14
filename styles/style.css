@@ -321,16 +321,37 @@ header {
 }
 
 /* Main Page styling ------------------------------- */
-.card-container {
-  height: 50%;
+
+.product-profile
+{
+  display: flex;
+  align-items: center;
+  height: 50px;
 }
 
-.card {
-  height: 100%;
+.product-profile-icon
+{
+  object-fit: cover; 
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
 }
 
-.card-img-top {
-  height: 65%;
+.product-farmer-name
+{
+  margin-top: 13px; /* Cheating way to make the name centered because its not working :/ */
+  margin-left: 13px; /* Cheating way to make the name centered because its not working :/ */
+  display: flex;
+}
+
+.card
+{
+
+}
+
+
+.card-img {
+  height: 240px;
   object-fit: cover;
   width: 100%;
 }
