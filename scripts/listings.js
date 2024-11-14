@@ -33,3 +33,17 @@ function populateSettings() {
       });
   });
 }
+
+window.onload = function() {
+  // Extract the productType from the URL
+  const params = new URLSearchParams(window.location.search);
+  const productType = params.get('productType');
+
+  // If productType is present, autofill the product type field
+  if (productType) {
+    document.getElementById('productType').value = productType;
+  }
+};
+
+// Existing form population code
+populateSettings();
