@@ -1,0 +1,95 @@
+body
+{
+    background-image: none;
+    background-color: #00130a;
+}
+
+header
+{
+    background-image: none;
+    background-color: #00130a;
+}
+
+/* Menu Icon */
+#menu
+{
+  display: none;
+}
+
+#menu-white
+{
+  display: block !important;
+}
+
+/* Dropdown Menu */
+.dropdown-menu
+{
+    background-color: #001b0e !important;
+    box-shadow: 0px 0px 1px #019450;
+}
+
+.dropdown-item
+{
+    color: white;
+}
+
+.dropdown-divider
+{
+    color: #019450;
+}
+
+
+footer
+{
+    color: white;
+}
+
+.text-body-emphasis
+{
+    color: white !important;
+}
+
+.lead
+{
+    color: white;
+}
+
+.text-bg-success
+{
+    background-color: #001b0e !important;
+    box-shadow: 0px 0px 2px #019450;
+}
+
+.btn-white
+{
+    background-color: #00130a;
+    border: solid 1px #019450;
+}
+
+.btn
+{
+    background-color: #001b0e;
+    border: solid 1px #019450;
+    color: #019450;
+}
+
+.btn:hover
+{
+    background-color: white;
+    color: #019450;
+}
+
+.bg-body-tertiary
+{
+    background-color: #001b0e !important;
+    color: white;
+    box-shadow: 0px 0px 2px #019450;
+}
+
+:root {
+    --bs-border-color: #001b0e; 
+}
+
+:root{
+    --bs-body-color: #019450;
+}
