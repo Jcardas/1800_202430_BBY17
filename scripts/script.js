@@ -84,3 +84,24 @@ function ifProfileIsNotComplete(user, then, otherwise = (i) => i) {
       }
     });
 }
+
+
+// Dark Mode
+toggleDarkMode();
+
+function toggleDarkMode()
+{
+  const darkModeLink = document.getElementById('dark-mode-css');
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    // dark mode
+    console.log('Dark Mode')
+    darkModeLink.disabled = false;
+  }
+
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+  // light mode
+    console.log('Light Mode')
+    darkModeLink.disabled = true;
+
+  }
+}
