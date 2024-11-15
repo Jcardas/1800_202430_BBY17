@@ -10,6 +10,40 @@ header
     background-color: #00130a;
 }
 
+/* Navbar ---------------------------------------------- */
+
+#navbar-searchbar 
+{
+    background-color: rgb(20, 51, 37);
+  
+    color: black;
+    font-size: 15px;
+    width: 240px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: none;
+    padding: 10px 35px;
+    outline: rgb(20, 51, 37);
+    transition: outline-color 0.3s ease-in-out; /* Smooth transition for outline */
+  }
+
+  .desktop-search-bar {
+    background-image: linear-gradient(to left, #019450, #00130a);
+  }
+
+  .mobile-search-bar {
+    background-image: linear-gradient(to left, #019450, #00130a);
+  }
+  
+  .selected-tab {
+    border-radius: 20px;
+    background-color: #ffffff00;
+    border: 1px solid #019450;
+    color: #019450;
+  }
+
+/* ----------------------------------------------------- */
+
 /* Menu Icon --------------------------------------------*/
 #menu
 {
@@ -92,7 +126,7 @@ header
   .firebaseui-container .firebaseui-button:hover {
     background-color: white;
     color: #019450;
-    border-color: #019450;
+    border-color: #01944f57;
   }
 
   .mdl-textfield.is-focused .mdl-textfield__label,
@@ -101,6 +135,27 @@ header
   }
 
 /* ------------------------------------------------------- */
+
+
+/* Cards --------*/
+
+.card
+{
+    background-color: #001b0e;
+    border: solid 1px #01944f57;
+}
+
+.card-title
+{
+    color: white;
+}
+
+.card-text
+{
+    color: #019450 !important;
+}
+
+/* --------------- */
 
 footer
 {
