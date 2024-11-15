@@ -1,0 +1,158 @@
+body
+{
+    background-image: none;
+    background-color: #00130a;
+}
+
+header
+{
+    background-image: none;
+    background-color: #00130a;
+}
+
+/* Menu Icon --------------------------------------------*/
+#menu
+{
+  display: none;
+}
+
+#menu-white
+{
+  display: block !important;
+}
+
+/* Dropdown Menu */
+.dropdown-menu
+{
+    background-color: #001b0e !important;
+    box-shadow: 0px 0px 1px #019450;
+}
+
+.dropdown-item
+{
+    color: white;
+}
+
+.dropdown-divider
+{
+    color: #019450;
+}
+
+/* ------------------------------------------------------- */
+
+/* Login Form ------------------------------------------- */
+#firebaseui-auth-container {
+    margin: 40px 0px 40px 0px;
+  }
+
+  .firebaseui-title
+  {
+    color: white;
+  }
+  
+  .mdl-textfield__input
+  {
+    color: white;
+  }
+
+  .firebaseui-container {
+    background-image: none;
+    background-color: #001b0e;
+    border: solid 1px #019450;
+    box-shadow: none;
+  }
+  
+  .firebaseui-container:hover {
+    transform: scale(1.01);
+    box-shadow: 0px 2px 10px #013d212d;
+  }
+
+  .mdl-textfield__label{
+    color: white;
+  }
+  
+  .firebaseui-container .firebaseui-idp-button {
+    background-color: #fff;
+    border: none;
+    color: white;
+  }
+  
+  .firebaseui-container .firebaseui-idp-button:hover {
+    background-color: #01783c; /* A slightly darker shade for hover effect */
+  }
+  
+  /* Submit button style */
+  .firebaseui-container .firebaseui-button {
+    border-radius: 10px;
+    background-color: #01944f00;
+    color: white;
+    border: solid 1px white;
+  }
+  
+  .firebaseui-container .firebaseui-button:hover {
+    background-color: white;
+    color: #019450;
+    border-color: #019450;
+  }
+
+  .mdl-textfield.is-focused .mdl-textfield__label,
+  .mdl-textfield.is-dirty .mdl-textfield__label {
+    color: #019450 !important;
+  }
+
+/* ------------------------------------------------------- */
+
+footer
+{
+    color: white;
+}
+
+.text-body-emphasis
+{
+    color: white !important;
+}
+
+.lead
+{
+    color: white;
+}
+
+.text-bg-success
+{
+    background-color: #001b0e !important;
+    box-shadow: 0px 0px 2px #019450;
+}
+
+.btn-white
+{
+    background-color: #00130a;
+    border: solid 1px #019450;
+}
+
+.btn
+{
+    background-color: #001b0e;
+    border: solid 1px #019450;
+    color: #019450;
+}
+
+.btn:hover
+{
+    background-color: white;
+    color: #019450;
+}
+
+.bg-body-tertiary
+{
+    background-color: #001b0e !important;
+    color: white;
+    box-shadow: 0px 0px 2px #019450;
+}
+
+:root {
+    --bs-border-color: #001b0e; 
+}
+
+:root{
+    --bs-body-color: #019450;
+}
