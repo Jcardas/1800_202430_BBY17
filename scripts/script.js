@@ -12,7 +12,9 @@ firebase.auth().onAuthStateChanged((user) => {
         }
       },
       () => {
-        if (["/", "/index.html"].includes(window.location.pathname)) {
+        if (
+          ["/", "/index.html", "/login.html"].includes(window.location.pathname)
+        ) {
           gotoURL("/main.html");
         }
         setProfilePic(user);
