@@ -22,7 +22,11 @@ firebase.auth().onAuthStateChanged((user) => {
     );
   } else {
     $("#header-container").load("./skeleton/header_before_login.html");
-    if (window.location.pathname != "/login.html") {
+    if (
+      window.location.pathname !== "/login.html" &&
+      window.location.pathname !== "/about.html" &&
+      window.location.pathname !== "/contact.html"
+    ) {
       gotoURL("/index.html");
     }
   }
@@ -87,23 +91,26 @@ function ifProfileIsNotComplete(user, then, otherwise = (i) => i) {
     });
 }
 
-
 // Dark Mode
 toggleDarkMode();
 
-function toggleDarkMode()
-{
-  const darkModeLink = document.getElementById('dark-mode-css');
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+function toggleDarkMode() {
+  const darkModeLink = document.getElementById("dark-mode-css");
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
     // dark mode
-    console.log('Dark Mode')
+    console.log("Dark Mode");
     darkModeLink.disabled = false;
   }
 
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-  // light mode
-    console.log('Light Mode')
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: light)").matches
+  ) {
+    // light mode
+    console.log("Light Mode");
     darkModeLink.disabled = true;
-
   }
 }
