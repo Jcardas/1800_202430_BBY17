@@ -26,12 +26,23 @@ function populateSettings() {
         if (!doc.exists) return;
 
         const data = doc.data();
-        document.getElementById("productType").value = data.productType;
+        document.getElementById("productType").value = data.product;
         document.getElementById("price").value = data.price;
         document.getElementById("unit").value = data.unit;
         document.getElementById("description").value = data.description;
       });
   });
+}
+
+function saveListing(e) {
+  e.preventDefault();
+  firebase.auth.onAuthStateChanged((listing) => {
+    const product = document.getElementById("productType").value;
+    const price = document.getElementById("price").value;
+    const units = document.getElementById("unit").value;
+    const description = document.getElementById("description").value;
+  } 
+)
 }
 
 window.onload = function() {
@@ -47,3 +58,15 @@ window.onload = function() {
 
 // Existing form population code
 populateSettings();
+
+
+function checkInput(checkbox) {
+  if (checkbox.checked) {
+    console.log('Checked');
+    document.getElementById('form-text-resupplied').style.display="block";
+  } else {
+    console.log('not checked');
+    document.getElementById('form-text-resupplied').style.display="none";
+  }
+  
+}

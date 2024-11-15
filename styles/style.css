@@ -667,6 +667,13 @@ header {
   height: 100px;
 }
 
+#form-text-resupplied {
+  border-radius: 10px;
+  margin: 5px;
+  width: 300px;
+  height: 50px;
+}
+
 .post {
   width: 75px;
 }
