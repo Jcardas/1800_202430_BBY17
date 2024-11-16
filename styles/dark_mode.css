@@ -15,6 +15,8 @@ header
 #navbar-searchbar 
 {
     background-color: rgb(20, 51, 37);
+    background-image: url(/assets/search_white.svg);
+
   
     color: black;
     font-size: 15px;

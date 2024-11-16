@@ -86,7 +86,7 @@ header {
 
 #navbar-searchbar {
   background-color: rgb(224, 232, 225);
-  background-image: url(/assets/search_white.svg);
+  background-image: url(/assets/search.svg);
   background-position: 10px 12px;
   background-size: 18px;
   background-repeat: no-repeat;
