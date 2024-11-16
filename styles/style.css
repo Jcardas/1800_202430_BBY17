@@ -355,6 +355,101 @@ header {
   width: 100%;
 }
 
+/* Account page (Not Done)*/
+
+
+#account-header
+{
+  padding-top: 10px;
+  text-align: center;
+  color: white;
+  background-color: #019450;
+  padding-bottom: 10px ;
+}
+
+#user-profile {
+  #profile-pic-container {
+    display: flex;
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+    position: relative;
+    justify-content: center;
+
+    #profile-pic-prompt {
+      position: absolute;
+      bottom: 0.5em;
+      margin: auto;
+      width: 170px;
+      text-align: center;
+      font-size: 1.1em;
+
+      span {
+        text-shadow: 0px 2px 7px rgba(0, 0, 0, 0.754);
+        color: white;
+        cursor: pointer;
+      }
+    }
+
+    #profile-pic {
+      height: 100px;
+      width: 100px;
+      object-fit: cover;
+      border-radius: 100px;
+      margin: auto;
+
+      @media (hover: none) {
+        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.522);
+      }
+    }
+    #profile-pic:hover {
+      cursor: pointer;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.522);
+    }
+  }
+}
+
+.account-form
+{
+  margin-left: 20px;
+
+  div > div
+  {
+    margin-top: 10px;
+  }
+}
+
+.all-inputs
+{
+  background-position: 10px 12px;
+  background-size: 18px;
+  background-repeat: no-repeat;
+}
+#inputName
+{
+  background-image: url(/assets/user.svg);
+}
+#inputEmail
+{
+  background-image: url(/assets/mail.svg);
+}
+#inputAddress
+{
+  background-image: url(/assets/address.svg);
+}
+#inputAddress2
+{
+  background-image: url(/assets/address.svg);
+}
+#inputCity
+{
+  background-image: url(/assets/city.svg);
+}
+#inputZip
+{
+  background-image: url(/assets/zip.svg);
+}
+
+
 /* -------------------------------------------------- */
 
 .text-bg-success
@@ -559,46 +654,6 @@ header {
 }
 
 /* ------------------------------------------------------- */
-
-#user-profile {
-  #profile-pic-container {
-    display: flex;
-    margin-bottom: 2em;
-    position: relative;
-    justify-content: center;
-
-    #profile-pic-prompt {
-      position: absolute;
-      bottom: 1em;
-      margin: auto;
-      width: 170px;
-      text-align: center;
-      font-size: 1.1em;
-
-      span {
-        text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.754);
-        color: white;
-        cursor: pointer;
-      }
-    }
-
-    #profile-pic {
-      height: 200px;
-      width: 200px;
-      object-fit: cover;
-      border-radius: 100px;
-      margin: auto;
-
-      @media (hover: none) {
-        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.522);
-      }
-    }
-    #profile-pic:hover {
-      cursor: pointer;
-      box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.522);
-    }
-  }
-}
 
 .listing-image {
   height: 100px;
