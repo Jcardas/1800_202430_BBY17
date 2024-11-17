@@ -18,7 +18,7 @@ header
     background-image: url(/assets/search_white.svg);
 
   
-    color: black;
+    color: white;
     font-size: 15px;
     width: 240px;
     border-top-left-radius: 20px;
@@ -39,11 +39,15 @@ header
   
   .selected-tab {
     border-radius: 20px;
-    background-color: #ffffff00;
-    border: 1px solid #019450;
-    color: #019450;
+    background-color: #019450;
+    color: white;
   }
 
+  #dark-mode-toggle-container > p
+  {
+    color: white;
+    margin: 0;
+  }
 /* ----------------------------------------------------- */
 
 /* Menu Icon --------------------------------------------*/
@@ -61,17 +65,11 @@ header
 .dropdown-menu
 {
     background-color: #001b0e !important;
-    box-shadow: 0px 0px 1px #019450;
 }
 
 .dropdown-item
 {
     color: white;
-}
-
-.dropdown-divider
-{
-    color: #019450;
 }
 
 /* ------------------------------------------------------- */
@@ -143,8 +141,7 @@ header
 
 .card
 {
-    background-color: #001b0e;
-    border: solid 1px #01944f57;
+    background-color: #ffffff00;
 }
 
 .card-title
@@ -155,6 +152,11 @@ header
 .card-text
 {
     color: #019450 !important;
+}
+
+.card:hover
+{
+  box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.53);
 }
 
 /* --------------- */
@@ -188,6 +190,12 @@ footer
 
 .btn
 {
+    background-color: #019450;
+    color: #fff;
+}
+
+.btn-secondary
+{
     background-color: #001b0e;
     border: solid 1px #019450;
     color: #019450;
@@ -211,5 +219,5 @@ footer
 }
 
 :root{
-    --bs-body-color: #019450;
+    --bs-body-color: #fff;
 }

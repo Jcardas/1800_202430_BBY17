@@ -115,6 +115,15 @@ header {
   padding-right: 10px;
 }
 
+.dropdown-menu
+{
+  margin-top: 100px;
+}
+
+.dropdown-item
+{
+
+}
 /* MOBILE SECTION ---------------------------------- */
 
 /* Basic styling for viewports that are 320px or wider */
@@ -321,31 +330,54 @@ header {
 }
 
 /* Main Page styling ------------------------------- */
-.welcome
+.certified-fresh
 {
-  margin-bottom: 20px;
+  text-decoration: none;
+  color: #019450;
+}
+
+.certified-fresh:hover
+{
+  text-decoration: underline;
 }
 
 /* Product Styling ----------------------------------- */
+.productLink
+{
+  text-decoration: none;
+}
+
+.card
+{
+  margin-bottom: 50px;
+}
+
+.card-body
+{
+  padding: 6px;
+}
+
 .product-profile
 {
   display: flex;
+  height: 0;
+  margin: 20px 0;
   align-items: center;
-  height: 50px;
 }
 
 .product-profile-icon
 {
   object-fit: cover; 
   border-radius: 50%;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
 }
 
 .product-farmer-name
 {
-  margin-top: 13px; /* Cheating way to make the name centered because its not working :/ */
-  margin-left: 13px; /* Cheating way to make the name centered because its not working :/ */
+  font-size: small;
+  margin: 0;
+  margin-left: 12px;
   display: flex;
 }
 
@@ -354,6 +386,20 @@ header {
   object-fit: cover;
   width: 100%;
 }
+
+.card-title
+{
+  margin: 0;
+}
+
+/* Hover states */
+
+.card:hover
+{
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.53);
+}
+
+/* ---------------------------------- */
 
 /* Account page (Not Done)*/
 
@@ -760,7 +806,6 @@ header {
 
 #dark-mode-toggle-container > p
 {
-  color: white;
   margin: 0;
 }
 
