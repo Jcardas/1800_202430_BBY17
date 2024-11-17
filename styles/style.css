@@ -396,7 +396,7 @@ header {
 
 .card:hover
 {
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.53);
+  outline: 2px solid #019450;
 }
 
 /* ---------------------------------- */
@@ -408,12 +408,15 @@ header {
 {
   padding-top: 10px;
   text-align: center;
-  color: white;
-  background-color: #019450;
+  color: black;
+
   padding-bottom: 10px ;
 }
 
 #user-profile {
+
+  text-align: center;
+
   #profile-pic-container {
     display: flex;
     margin-top: 1.5em;
@@ -454,47 +457,109 @@ header {
   }
 }
 
-.account-form
+.centerer
 {
-  margin-left: 20px;
-
-  div > div
-  {
-    margin-top: 10px;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.all-inputs
-{
-  background-position: 10px 12px;
-  background-size: 18px;
+.all-inputs {
+  background-size: 16px;
   background-repeat: no-repeat;
+  padding-left: 35px;
+  border: none;
+  background-color: #ffffff00;
+  border-bottom: solid 1px black;
+  border-radius: 0px;
+  transition: border-bottom-width 0.1s ease;
+  outline: none;
+  box-shadow: none;
 }
+
+.all-inputs:focus {
+  background-color: #ffffff00;
+  border-bottom: solid 2px #019450;
+  outline: none;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 #inputName
 {
+  background-position: 10px 8px;
   background-image: url(/assets/user.svg);
 }
 #inputEmail
 {
+  background-position: 10px 13px;
   background-image: url(/assets/mail.svg);
 }
 #inputAddress
 {
+  background-size: 14px;
+  background-position: 10px 8px;
   background-image: url(/assets/address.svg);
 }
 #inputAddress2
 {
+  background-size: 14px;
+  background-position: 10px 8px;
   background-image: url(/assets/address.svg);
 }
 #inputCity
 {
+  background-position: 10px 12px;
   background-image: url(/assets/city.svg);
 }
 #inputZip
 {
+  background-position: 9px 10px;
   background-image: url(/assets/zip.svg);
 }
 
+.verification-group
+{
+  padding: 10px;
+  border-radius: 8px;
+  margin: 0 auto;
+  background-color: #ffffff00;
+  border: none;
+}
+
+input[type="file"] 
+{
+  display: none;
+}
+
+.proof-card:hover
+{
+  outline: none;
+}
+
+#proof-button
+{
+  margin: 0;
+  margin-top: 10px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 6px 0px;
+  font-weight: bold;
+}
+
+#proof-button:hover
+{
+  background-color: #019450;
+  color: white;
+  cursor: pointer;
+  border-color: #019450;
+}
 
 /* -------------------------------------------------- */
 

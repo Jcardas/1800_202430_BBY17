@@ -154,12 +154,76 @@ header
     color: #019450 !important;
 }
 
-.card:hover
+.listing-card:hover
 {
-  box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.53);
+  outline: 1px solid white !important;
 }
 
 /* --------------- */
+
+
+/* Account Page ----------------*/
+
+#account-header
+{
+  color: white;
+}
+
+.all-inputs::placeholder 
+{
+  color: #727272;
+}
+
+.all-inputs
+{
+  border-bottom: solid 1px #cdcdcd;
+}
+
+#inputName
+{
+  background-image: url(/assets/user_white.svg);
+}
+#inputEmail
+{
+  background-image: url(/assets/mail_white.svg);
+}
+#inputAddress
+{
+  background-image: url(/assets/address_white.svg);
+}
+#inputAddress2
+{
+  background-image: url(/assets/address_white.svg);
+}
+#inputCity
+{
+  background-image: url(/assets/city_white.svg);
+}
+#inputZip
+{
+  background-image: url(/assets/zip_white.svg);
+}
+
+.verification-group
+{
+  padding: 10px;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+#proof-button
+{
+  border: 1px solid #ccc;
+}
+
+#proof-button:hover
+{
+  background-color: white;
+  color: #019450;
+}
+
+/* ----------------------------- */
+
 
 footer
 {
