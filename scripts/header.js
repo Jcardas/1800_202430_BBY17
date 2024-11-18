@@ -1,24 +1,15 @@
-var currentPage = window.location.pathname;
-currentPage = currentPage.replace("/", "").replace(".html", "");
+const darkModeLink = document.getElementById("dark-mode-css");
+const darkModeToggle = document.getElementById("dark-mode-toggle");
 
-console.log(currentPage);
+initializeDarkMode();
 
-var selectedTab = document.getElementById(currentPage);
-if (selectedTab) {
-  console.log(selectedTab);
-
-  selectedTab.classList.add("selected-tab");
+function initializeDarkMode() {
+  const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  darkModeLink.disabled = !dark;
+  darkModeToggle.checked = true;
+  console.log(dark);
 }
 
-const f = document.getElementById("searchbar-form");
-const q = document.getElementById("navbar-searchbar");
-const google = "https://www.google.com/search?q=";
-
-function submitted(event) {
-  event.preventDefault();
-  const url = google + q.value;
-  const win = window.open(url, "_blank");
-  win.focus();
+function toggleDarkMode() {
+  darkModeLink.disabled = !darkModeToggle.checked;
 }
-
-f.addEventListener("submit", submitted);
