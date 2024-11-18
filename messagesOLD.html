@@ -56,7 +56,49 @@
     <div id="header-container"></div>
 
     <!-- main -->
-     
+      <!-- Main container  -->
+      <div class="m_container">
+        <!--  Message header section-->
+        <div class="msg-header">
+          <div class="message-header-container">
+            <form class="username">
+              <img
+                class="m_userprofile"
+                id="incoming-username"
+                src="/assets/profile_photo.png"
+                alt="profile-photo"
+              />
+              <input placeholder="Recipient's ID" />
+            </form>
+          </div>
+        </div>
+
+        <!-- Chat inbox section-->
+
+        <div class="chat-page">
+          <div class="msg-inbox">
+            <div class="chats">
+              <div class="msg-page"></div>
+            </div>
+
+            <!--  Message bottom section starts -->
+            <div class="msg-bottom" style="display: none">
+              <div class="message-bar">
+                <div class="message-input-group">
+                  <input
+                    type="text"
+                    class="message-input"
+                    placeholder="Write a message..."
+                  />
+                  <button class="send-button">
+                    <i class="bi bi-send"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </body>
 
     <!-- footer -->
