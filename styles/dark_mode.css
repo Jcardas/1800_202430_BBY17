@@ -340,6 +340,8 @@ footer
 {
   background-color: rgb(20, 51, 37);
   color: white;
+  outline: rgb(20, 51, 37);
+  transition: outline-color 0.3s ease-in-out;
 }
 
 #message-bar > input:focus
