@@ -286,3 +286,85 @@ footer
 :root{
     --bs-body-color: #fff;
 }
+
+/* Message Board ---------------------------------------- */
+
+
+#contacts-list
+{
+  background-color: rgb(20, 51, 37);
+  border-right: 2px solid rgb(12, 31, 22);
+}
+
+#selected-contact {
+  background-color: #019450;
+  border-radius: 10px;
+}
+
+#current-chat
+{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#chat-header
+{
+  background-color: rgb(20, 51, 37);
+}
+
+#chat-content
+{
+  background-color: rgb(14, 35, 26);
+}
+
+#messages-container
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.incoming-message
+{
+  background-color: rgb(84, 84, 84);
+  color: white;
+}
+
+.outgoing-message
+{
+  background-color: #01944fc3;
+  color: white;
+}
+
+#message-bar > input
+{
+  background-color: rgb(20, 51, 37);
+  color: white;
+}
+
+#message-bar > input:focus
+{
+  outline: none;
+  outline: solid 2px #019450;
+}
+
+#message-send-button
+{
+  position:absolute;
+  right: 0;
+
+  background-color: #019450;
+  color: white;
+  font-size: 14px;
+  height: 31px;
+  margin: auto;
+  aspect-ratio: 1/1;
+  border: none;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+#message-send-button:hover
+{
+  background-color: #00753e;
+}
