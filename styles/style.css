@@ -31,6 +31,7 @@ header {
 
 #tab-selector {
   display: flex; /* Makes the list items display in a row */
+  flex-direction: row;
   text-decoration: none;
   list-style: none;
   padding: 0; /* This line removes the random padding around list elements */
@@ -614,24 +615,6 @@ input[type="file"]
   border-radius: 100%;
 }
 
-.msg-header {
-  border: 1px solid #ccc;
-  width: 100%;
-  border-bottom: none;
-  display: inline-block;
-  background-color: #ffffff;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
-.message-header-container {
-  width: 270px;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 /* User-name */
 .username {
   text-align: center;
@@ -641,129 +624,91 @@ input[type="file"]
   margin-top: 16px; /* This is a cheating way to get the text centered*/
 }
 
-.chat-page {
-  padding: 0 0 50px 0;
-}
-
-.msg-inbox {
-  border: 1px solid #ccc;
-  overflow: hidden;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-.chats {
-  padding: 20px;
-}
-
-.msg-page {
-  max-height: 500px;
-  overflow-y: auto;
-}
-
-.msg-page > * {
-  margin-bottom: 10px;
-}
-
-.msg-page > *:last-child {
-  margin-bottom: 0; /* Removes extra space after the last element */
-}
-
 /* Message board styling ---------------------------------*/
 
-.incoming-message {
-  display: flex;
-  align-self: flex-start;
-  text-align: left;
-  margin-right: 45%;
-  background-color: #ffffff;
-  padding: 5px;
-  border-radius: 10px;
-  border: solid 1px #a7a7a7;
-}
-
-.incoming-message > img {
-  margin-top: 12px; /* This is a cheating way to get the image centered*/
-  margin-right: 10px;
-}
-
-.incoming-message > p {
-  margin-top: 16px; /* This is a cheating way to get the text centered*/
-}
-
-.outgoing-message > img {
-  margin-top: 12px; /* This is a cheating way to get the image centered*/
-  margin-left: 10px;
-}
-
-.outgoing-message > p {
-  margin-top: 16px; /* This is a cheating way to get the text centered*/
-}
-
-.outgoing-message {
-  display: flex;
-  justify-content: flex-end;
-  align-self: flex-end;
-  text-align: right;
-  margin-left: 45%;
-  background-color: #ccc;
-  padding: 5px;
-  border-radius: 10px;
-  border: solid 1px #a7a7a7;
-}
-
-/* Styling the msg-bottom container */
-.msg-bottom {
-  border-top: 1px solid #a7a7a7;
-  position: relative;
-  height: 11%;
-  background-color: rgb(255, 255, 255);
-}
-/* Styling the input field */
-.message-bar {
-  padding: 10px;
-  background-color: #ffffff;
+#chat-container
+{
   display: flex;
   justify-content: center;
+  border: solid red;
+  height: 100vh;
+  margin: auto;
 }
 
-.message-input-group {
+#contacts-list
+{
+  border: solid rgb(238, 255, 0);
+  max-width: 100px;
+  min-width: 80px;
+}
+
+#current-chat
+{
   display: flex;
-  align-items: center;
-  border: 1px solid #a7a7a7; /* Light gray border */
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100%;
+  border: solid rgb(0, 255, 195);
+}
+
+#chat-header
+{
+  padding: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  background-color: beige;
+}
+
+#chat-content
+{
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: solid rebeccapurple;
+}
+
+.incoming-message
+{
+  margin-top: 10px;
+  align-self: flex-start;
+  min-width: 60%;
+  max-width: 70%;
+  padding: 10px;
+  background-color: beige;
   border-radius: 20px;
-  width: 100%;
-  max-width: 600px;
-  overflow: hidden;
+
+  color: gray;
 }
 
-.message-input {
-  flex: 1;
-  padding: 10px 15px;
+.outgoing-message
+{
+  margin-top: 10px;
+  align-self: flex-end;
+  min-width: 60%;
+  max-width: 70%;
+  padding: 10px;
+  background-color: #d6dbff;
+  border-radius: 20px;
+
+  color: blue;
+}
+
+#message-bar
+{
+  margin: 10px;
+  align-self: center;
+}
+
+#message-bar > input
+{
+  min-width: 50%;
+  max-width: 100%;
   border: none;
-  outline: none;
-  font-size: 16px;
-  color: #000000;
-  background-color: #fff;
-  border-radius: 20px 0 0 20px; /* Rounded on left side */
+  background-color: #00753e;
+  border-radius: 20px;
+  padding: 5px 10px;
 }
-
-.message-input::placeholder {
-  color: #a7a7a7;
-}
-
-.send-button {
-  background-color: #a7a7a7;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.send-button:hover {
-  background-color: #373737;
-}
-
 /* ------------------------------------------------------- */
 
 .listing-image {

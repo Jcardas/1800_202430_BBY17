@@ -56,6 +56,49 @@
     <div id="header-container"></div>
 
     <!-- main -->
+
+    <!-- Entire Chat Container -->
+    <div id="chat-container">
+
+      <!-- Contacts List Sidebar -->
+      <aside id="contacts-list">
+        <!-- Auto populated contact photos -->
+        <div id="contacts-go-here">contqacts</div>
+      </aside>
+
+      <!-- The current initialized chat (This should be the flexbox for the send bar, the header, and the messages) -->
+      <article id="current-chat">
+
+        <!-- The header for the chat (e.g farmer name) -->
+        <section id="chat-header">Name of Farmer</section>
+
+        <!-- The Contents of the chat (Messages) -->
+        <section id="chat-content">
+
+          <div class="outgoing-message">This is an example user message, Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident cupiditate nulla aliquam ipsum, neque autem laudantium iusto facere, tempora eius sed earum, consectetur delectus rerum distinctio suscipit soluta inventore debitis!</div>
+          <div class="incoming-message">This is an example incoming message</div>
+
+        <!-- The message bar with send button -->
+        <div id="message-bar">
+          <input type="text" id="message-bar-input">
+
+          <button id="message-send-button">
+            ↑
+          </button>
+        </div>
+
+        </section>
+
+
+
+      </article>
+
+    </div>
+
+
+    <template>
+      <img src="/assets/profile_photo.png" alt="profile icon">
+    </template>
      
     </body>
 
