@@ -4,9 +4,9 @@ const darkModeToggle = document.getElementById("dark-mode-toggle");
 initializeDarkMode();
 
 function initializeDarkMode() {
-  let darkMode = localStorage.getItem("dark-mode");
-  if (darkMode) {
-    darkMode = darkMode == "true";
+  let darkMode;
+  if (localStorage.getItem("dark-mode")) {
+    darkMode = localStorage.getItem("dark-mode") == "true";
   } else {
     darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
@@ -14,7 +14,7 @@ function initializeDarkMode() {
   darkModeToggle.checked = darkMode;
 }
 
-function toggleDarkMode() {
+darkModeToggle.addEventListener("input", () => {
   darkModeLink.disabled = !darkModeToggle.checked;
   localStorage.setItem("dark-mode", !darkModeLink.disabled);
-}
+});
