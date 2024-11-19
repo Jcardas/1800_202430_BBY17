@@ -866,14 +866,13 @@ input[type="file"]
   flex-direction: column;
   width: 200px;
   height: 200px;
-  background-image: linear-gradient(to bottom right, #019450, #26a47e);
   border-radius: 20px;
   margin: 0px 20px 0px 20px;
   box-shadow: 5px 5px 20px #0000003f;
 }
 
 .listing-type:hover {
-  box-shadow: 5px 5px 20px #00502b;
+  outline: 2px solid #019450;
 }
 
 .listing-type:active {
@@ -882,7 +881,7 @@ input[type="file"]
 
 .listing-text {
   margin-top: 20px;
-  color: white;
+  color: #1f1f1f;
   font-weight: bold;
   text-decoration: none;
 }
@@ -892,6 +891,11 @@ input[type="file"]
   align-items: center;
   justify-content: center;
   margin: 50px;
+}
+
+.listing-type-link
+{
+  text-decoration: none;
 }
 
 #listing-form-info {

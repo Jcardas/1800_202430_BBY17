@@ -383,6 +383,16 @@ footer
   color: black;
 }
 
+/* Posting */
+
+.listing-type:hover {
+  outline: 2px solid #fff;
+}
+
+.listing-text {
+  color: #fff;
+}
+
 /* THING */
 
 #product-desc
