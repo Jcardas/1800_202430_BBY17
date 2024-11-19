@@ -370,3 +370,15 @@ footer
 {
   background-color: #00753e;
 }
+
+.plus-sign
+{
+  border-color: white;
+  color: white;
+}
+
+.plus-sign:hover
+{
+  background-color: white;
+  color: black;
+}

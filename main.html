@@ -54,20 +54,22 @@
     <!-- main -->
     <div class="main">
 
-
+      <!-- Post Button -->
+      <div style="display: flex; text-align: center; align-items: center;">
+        <p style="margin-top: 13px; margin-right: 5px;">Make a Post</p>
+        <a href="listing.html" class="plus-sign">+</a>
+      </div>
       <a class="certified-fresh" href="#"><h2>Certitied Fresh</h2></a>
-      
+  
       <!-- Here is the products inserted from firebase  -->
       <div id="products-go-here" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3"></div>
     
-      <!-- Post Button -->
-      <a href="listing.html" class="plus-sign">+</a>
     </div>          
 
       <!-- Product Template -->
       <template id="productCardTemplate">
         <div class="col">
-          <a href="#" class="productLink">
+          <a href="/each_product.html" class="productLink">
             <div class="listing-card card rounded-4 bg-transparent border-0">
               <img
                 src="assets/blueberries.jpg"

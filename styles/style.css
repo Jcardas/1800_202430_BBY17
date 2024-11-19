@@ -987,3 +987,44 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+/* Each Product Styling ------------- */
+
+#product-content-container
+{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  width: 380px;
+}
+
+#product-photo
+{
+  border-radius: 12px;
+  width: 380px;
+  aspect-ratio: 1/1;
+}
+
+#price-type
+{
+  margin-top: 20px;
+  margin-bottom: 30px;
+  align-self: flex-start;
+}
+
+#product-info-container
+{
+  align-items: start;
+}
+
+#product-desc
+{
+  color: rgb(204, 204, 204);
+}
+
+.line-divider
+{
+  margin-top: 30px;
+}
