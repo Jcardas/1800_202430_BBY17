@@ -44,7 +44,7 @@
 
     <!-- Link to our stylesheets -->
     <link rel="stylesheet" href="./styles/style.css" />
-    <link id="dark-mode-css" rel="stylesheet" href="./styles/dark_mode.css">
+    <link id="dark-mode-css" rel="stylesheet" href="./styles/dark_mode.css" />
   </head>
 
   <body>
@@ -54,10 +54,12 @@
     <!-- main STUFF GOES HERE. -->
 
     <div id="product-content-container">
-      <img id="product-photo" src="/assets/blueberries.jpg" alt="">
+      <img id="product-photo" alt="" />
 
       <div id="product-info-container">
-        <h3 id="price-type">$12 | Blueberries</h3>
+        <h3 id="price-type">
+          $<span id="price"></span> | <span id="product-type"></span>
+        </h3>
 
         <div class="product-profile">
           <img
@@ -65,19 +67,18 @@
             src="/assets/profile_photo.png"
             alt=""
           />
-          <p class="product-farmer-name">Farmer Name</p>
+          <p class="product-farmer-name"></p>
         </div>
 
-        <hr class="line-divider">
+        <hr class="line-divider" />
 
-        <p id="product-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic eius necessitatibus numquam libero veniam. Eligendi, deserunt! Ipsum, asperiores? Quaerat sit, harum quis explicabo suscipit vero laudantium voluptate animi ipsum dolores?</p>
+        <p id="product-desc"></p>
       </div>
 
-      <button class="btn" onclick="location.href='messages.html'">Message Farmer</button>
-    
+      <button class="btn" onclick="location.href='messages.html'">
+        Message Farmer
+      </button>
     </div>
-
-
 
     <div id="footer-container"></div>
     <!---------------------------------------------->
@@ -88,5 +89,6 @@
     <script src="./scripts/firebaseAuth.js"></script>
     <script src="./scripts/firebase.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/product.js"></script>
   </body>
 </html>

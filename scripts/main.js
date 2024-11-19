@@ -18,7 +18,9 @@ function displayCardsDynamically(collection) {
         var productProfileIcon = doc.data().productPhoto; // TEMPORARY --------------
 
         let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
-        // var docID = doc.id;
+        newcard
+          .querySelector("a")
+          .setAttribute("href", `/each_product.html?id=${doc.id}`);
 
         //update title and text and image
         newcard.querySelector(".card-title").innerHTML =
