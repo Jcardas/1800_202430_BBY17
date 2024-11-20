@@ -2,39 +2,37 @@ displayCardsDynamically();
 determineFarmerStatus();
 
 function displayCardsDynamically() {
-  let cardTemplate = document.getElementById("productCardTemplate"); // Retrieve the HTML element with the ID "productCardTemplate" and store it in the cardTemplate variable.
+  let cardTemplate = document.getElementById("productCardTemplate");
 
-  db.collection("products")
-    .get() //the collection called "products"
+  db.collection("listing")
+    .get()
     .then((allProducts) => {
-      //var i = 1;  //Optional: if you want to have a unique ID for each product
       allProducts.forEach((doc) => {
-        //iterate through each doc
-        var productType = doc.data().product_type; // get value of the "product_type" key
-        var price = doc.data().price; // get the price.
-        var pricePerUnit = doc.data().unit; // get value of the "unit" key
-        var productPhoto = doc.data().product_photo;
-        var productFarmerName = doc.data().farmer;
+        const data = doc.data();
+        var type = data.type;
+        var unit = data.units;
+        var price = data.price;
+        var productPhoto = data.fileURL;
 
-        var productProfileIcon = doc.data().productPhoto; // TEMPORARY --------------
-
-        let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
+        let newcard = cardTemplate.content.cloneNode(true);
         newcard
           .querySelector("a")
           .setAttribute("href", `/each_product.html?id=${doc.id}`);
-
-        //update title and text and image
-        newcard.querySelector(".card-title").innerHTML =
-          "$" + price + " | " + productType;
-        newcard.querySelector(".card-text").innerHTML = pricePerUnit;
-        newcard.querySelector(".product-profile-icon").innerHTML =
-          productProfileIcon;
-        newcard.querySelector(".product-farmer-name").innerHTML =
-          productFarmerName;
+        newcard.querySelector(".card-title").innerText = `\$${price} | ${type}`;
+        newcard.querySelector(".card-text").innerText = unit;
         newcard.querySelector(".card-img").src = productPhoto;
-        // newcard.querySelector("a").href = "eachProduct.html?docID=" + docID;
 
-        document.getElementById("products-go-here").appendChild(newcard);
+        db.collection("users")
+          .doc(data.userID)
+          .get()
+          .then((doc) => {
+            const data = doc.data();
+            const avatar = data.avatar || "/assets/profile_photo.png";
+            const name = data.name;
+            newcard.querySelector(".product-profile-icon").src = avatar;
+            newcard.querySelector(".product-farmer-name").innerText = name;
+            document.getElementById("products-go-here").appendChild(newcard);
+          });
       });
     });
 }

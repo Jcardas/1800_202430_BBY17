@@ -1,23 +1,40 @@
-const product = document.getElementById("product-content-container");
+const productContainer = document.getElementById("product-content-container");
 
-const urlParams = new URLSearchParams(window.location.search);
-const id = urlParams.get("id");
+var sellerID;
+retrieveProductData().then(retrieveSellerData);
 
-db.collection("products")
-  .doc(id)
-  .get()
-  .then((doc) => {
-    const data = doc.data();
-    const type = data.product_type;
-    const price = data.price;
-    const photo = data.product_photo;
-    const farmername = data.farmer;
-    const description = data.description;
+function retrieveProductData() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const listingID = urlParams.get("id");
 
-    product.querySelector("#product-photo").src = photo;
-    product.querySelector("#price").innerText = price;
-    product.querySelector("#product-type").innerText = type;
-    // product.querySelector(".product-profile-icon").src;
-    product.querySelector(".product-farmer-name").innerText = farmername;
-    product.querySelector("#product-desc").innerText = description;
-  });
+  return db
+    .collection("listing")
+    .doc(listingID)
+    .get()
+    .then((doc) => {
+      const data = doc.data();
+      const type = data.type;
+      const price = data.price;
+      const photo = data.fileURL;
+      const description = data.description;
+      sellerID = data.userID;
+
+      productContainer.querySelector("#product-photo").src = photo;
+      productContainer.querySelector("#price").innerText = price;
+      productContainer.querySelector("#product-type").innerText = type;
+      productContainer.querySelector("#product-desc").innerText = description;
+    });
+}
+
+function retrieveSellerData() {
+  db.collection("users")
+    .doc(sellerID)
+    .get()
+    .then((doc) => {
+      const data = doc.data();
+      const avatar = data.avatar || "/assets/profile_photo.png";
+      const name = data.name;
+      productContainer.querySelector(".product-profile-icon").src = avatar;
+      productContainer.querySelector(".product-farmer-name").innerText = name;
+    });
+}
