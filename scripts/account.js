@@ -1,29 +1,40 @@
 const userProfile = document.getElementById("user-profile");
 const profilePic = document.getElementById("profile-pic");
 const profilePicInput = document.getElementById("profile-pic-input");
-const profileText = document.getElementById("profile-pic-prompt");
+const profilePicPrompt = document.getElementById("profile-pic-prompt");
+const farmerProofContainer = document.getElementById("farmer-proof-container");
+const farmerProofInput = document.getElementById("farmer-proof-input");
+const farmerProof = document.getElementById("farmer-proof");
+const submitBtn = document.querySelector("button[type=submit]");
 
-populateSettings();
+let isFarmer = false;
+
+populateData();
 
 userProfile.addEventListener("submit", saveProfile);
-
 profilePic.addEventListener("click", () => profilePicInput.click());
-profileText.addEventListener("click", () => profilePicInput.click());
-
+profilePicPrompt.addEventListener("click", () => profilePicInput.click());
 profilePicInput.addEventListener("change", () => {
-  const imageURL = URL.createObjectURL(profilePicInput.files[0]);
-  profilePic.src = imageURL;
+  profilePic.src = URL.createObjectURL(profilePicInput.files[0]);
 });
-
+farmerProofInput.addEventListener("change", () => {
+  farmerProof.src = URL.createObjectURL(farmerProofInput.files[0]);
+  farmerProof.style.display = "";
+  isFarmer = true;
+});
 window.addEventListener("beforeunload", (e) => {
   if (sessionStorage.getItem("isNewUser")) {
     e.preventDefault();
   }
 });
 
-function populateSettings() {
+function populateData() {
   firebase.auth().onAuthStateChanged((user) => {
+    // it should already be impossible for non-users to access this page
+    // so no need to check if user exists
+
     document.getElementById("inputName").value = user.displayName;
+    document.getElementById("name-goes-here").innerText = user.displayName;
     document.getElementById("inputEmail").value = user.email;
 
     db.collection("users")
@@ -38,6 +49,14 @@ function populateSettings() {
         document.getElementById("inputCity").value = data.city;
         document.getElementById("inputZip").value = data.zip;
         if (data.avatar) profilePic.src = data.avatar;
+        isFarmer ||= data.isFarmer;
+      })
+      .then(() => {
+        if (isFarmer) {
+          farmerProofContainer.innerHTML = `<p>You are a verified farmer.</p>`;
+        }
+        farmerProofContainer.style.display = "";
+        submitBtn.style.display = "";
       });
   });
 }
@@ -80,31 +99,12 @@ function saveProfile(e) {
           address2: address2,
           city: city,
           zip: zip,
+          isFarmer: isFarmer,
         },
         { merge: true }
       )
     );
     Promise.all(promises).then(closeSettings);
-  });
-}
-
-// Copied from main.js
-insertNameFromFirestore();
-
-function insertNameFromFirestore() {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      console.log(`${user.uid} is logged in.`);
-      currentUser = db.collection("users").doc(user.uid);
-      currentUser.get().then((userDoc) => {
-        if (!userDoc.exists) return;
-        let userName = userDoc.data().name;
-        console.log(userName);
-        document.getElementById("name-goes-here").innerText = userName;
-      });
-    } else {
-      console.log("No user is logged in.");
-    }
   });
 }
 

@@ -44,7 +44,7 @@
 
     <!-- Link to our stylesheets -->
     <link rel="stylesheet" href="./styles/style.css" />
-    <link id="dark-mode-css" rel="stylesheet" href="./styles/dark_mode.css">
+    <link id="dark-mode-css" rel="stylesheet" href="./styles/dark_mode.css" />
   </head>
 
   <body>
@@ -53,47 +53,49 @@
 
     <!-- main -->
     <div class="main">
-
       <!-- Post Button -->
-      <div style="display: flex; text-align: center; align-items: center;">
-        <p style="margin-top: 13px; margin-right: 5px;">Make a Post</p>
-        <a href="listing.html" class="plus-sign">+</a>
+      <div class="make-a-post" style="display: none">
+        <div style="display: flex; text-align: center; align-items: center">
+          <p style="margin-top: 13px; margin-right: 5px">Make a Post</p>
+          <a href="listing.html" class="plus-sign">+</a>
+        </div>
       </div>
       <a class="certified-fresh" href="#"><h2>Certitied Fresh</h2></a>
-  
+
       <!-- Here is the products inserted from firebase  -->
-      <div id="products-go-here" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3"></div>
-    
-    </div>          
+      <div
+        id="products-go-here"
+        class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3"
+      ></div>
+    </div>
 
-      <!-- Product Template -->
-      <template id="productCardTemplate">
-        <div class="col">
-          <a href="/each_product.html" class="productLink">
-            <div class="listing-card card rounded-4 bg-transparent border-0">
-              <img
-                src="assets/blueberries.jpg"
-                class="card-img rounded-4 p-2"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">Price | Product</h5>
-                <p class="card-text text-secondary">$ / unit</p>
+    <!-- Product Template -->
+    <template id="productCardTemplate">
+      <div class="col">
+        <a href="/each_product.html" class="productLink">
+          <div class="listing-card card rounded-4 bg-transparent border-0">
+            <img
+              src="assets/blueberries.jpg"
+              class="card-img rounded-4 p-2"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">Price | Product</h5>
+              <p class="card-text text-secondary">$ / unit</p>
 
-                <div class="product-profile">
-                  <img
-                    class="product-profile-icon"
-                    src="/assets/profile_photo.png"
-                    alt=""
-                  />
-                  <p class="product-farmer-name">Farmer Name</p>
-                </div>
+              <div class="product-profile">
+                <img
+                  class="product-profile-icon"
+                  src="/assets/profile_photo.png"
+                  alt=""
+                />
+                <p class="product-farmer-name">Farmer Name</p>
               </div>
             </div>
-          </a>
-        </div>
-      </template>
-    </div>
+          </div>
+        </a>
+      </div>
+    </template>
 
     <div id="footer-container"></div>
     <!---------------------------------------------->

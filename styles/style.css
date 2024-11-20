@@ -24,7 +24,6 @@ header {
   padding-bottom: 5px;
 }
 
-
 #logo {
   margin-left: 10px;
 }
@@ -116,14 +115,11 @@ header {
   padding-right: 10px;
 }
 
-.dropdown-menu
-{
+.dropdown-menu {
   margin-top: 100px;
 }
 
-.dropdown-item
-{
-
+.dropdown-item {
 }
 /* MOBILE SECTION ---------------------------------- */
 
@@ -145,30 +141,23 @@ header {
     margin: 0px 20px 0px 20px;
   }
 
-  #current-chat
-  {
+  #current-chat {
     width: 100%;
   }
-  #chat-container
-  {
+  #chat-container {
     padding: 0;
     padding-bottom: 20px;
   }
 
-
   /* Each Product */
 
-#product-content-container
-{
+  #product-content-container {
+    width: 300px;
+  }
 
-  width: 300px;
-}
-
-#product-photo
-{
-  width: 300px;
-}
-
+  #product-photo {
+    width: 300px;
+  }
 }
 
 /* Additional adjustments for slightly larger screens (e.g., tablets) */
@@ -189,26 +178,21 @@ header {
     margin: 0px 20px 0px 20px;
   }
 
-  #current-chat
-  {
+  #current-chat {
     width: 400px;
   }
 
-  #chat-container
-  {
+  #chat-container {
     padding: 10px;
   }
 
-  #product-content-container
-  {
+  #product-content-container {
     width: 350px;
   }
 
-  #product-photo
-  {
+  #product-photo {
     width: 350px;
   }
-
 }
 
 /* Adjustments for even wider viewports (e.g., small laptops) */
@@ -246,23 +230,19 @@ header {
     justify-content: space-between;
   }
 
-  #current-chat
-  {
+  #current-chat {
     width: 600px;
   }
 
-  #chat-container
-  {
+  #chat-container {
     padding: 10px;
   }
 
-  #product-content-container
-  {
+  #product-content-container {
     width: 500px;
   }
 
-  #product-photo
-  {
+  #product-photo {
     width: 500px;
   }
 }
@@ -397,51 +377,43 @@ header {
 }
 
 /* Main Page styling ------------------------------- */
-.certified-fresh
-{
+.certified-fresh {
   text-decoration: none;
   color: #019450;
 }
 
-.certified-fresh:hover
-{
+.certified-fresh:hover {
   text-decoration: underline;
 }
 
 /* Product Styling ----------------------------------- */
-.productLink
-{
+.productLink {
   text-decoration: none;
 }
 
-.card
-{
+.card {
   margin-bottom: 50px;
 }
 
-.card-body
-{
+.card-body {
   padding: 6px;
 }
 
-.product-profile
-{
+.product-profile {
   display: flex;
   height: 0;
   margin: 20px 0;
   align-items: center;
 }
 
-.product-profile-icon
-{
-  object-fit: cover; 
+.product-profile-icon {
+  object-fit: cover;
   border-radius: 50%;
   height: 30px;
   width: 30px;
 }
 
-.product-farmer-name
-{
+.product-farmer-name {
   font-size: small;
   margin: 0;
   margin-left: 12px;
@@ -454,15 +426,13 @@ header {
   width: 100%;
 }
 
-.card-title
-{
+.card-title {
   margin: 0;
 }
 
 /* Hover states */
 
-.card:hover
-{
+.card:hover {
   outline: 2px solid #019450;
 }
 
@@ -470,18 +440,15 @@ header {
 
 /* Account page (Not Done)*/
 
-
-#account-header
-{
+#account-header {
   padding-top: 10px;
   text-align: center;
   color: black;
 
-  padding-bottom: 10px ;
+  padding-bottom: 10px;
 }
 
 #user-profile {
-
   text-align: center;
 
   #profile-pic-container {
@@ -510,7 +477,7 @@ header {
       height: 100px;
       width: 100px;
       object-fit: cover;
-      border-radius: 100px;
+      border-radius: 50%;
       margin: auto;
 
       @media (hover: none) {
@@ -522,10 +489,18 @@ header {
       box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.522);
     }
   }
+
+  #farmer-proof-container {
+    #farmer-proof {
+      max-width: 100%;
+      height: 40vh;
+      object-fit: cover;
+      margin: auto;
+    }
+  }
 }
 
-.centerer
-{
+.centerer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -557,41 +532,34 @@ header {
   box-shadow: none;
 }
 
-#inputName
-{
+#inputName {
   background-position: 10px 8px;
   background-image: url(/assets/user.svg);
 }
-#inputEmail
-{
+#inputEmail {
   background-position: 10px 13px;
   background-image: url(/assets/mail.svg);
 }
-#inputAddress
-{
+#inputAddress {
   background-size: 14px;
   background-position: 10px 8px;
   background-image: url(/assets/address.svg);
 }
-#inputAddress2
-{
+#inputAddress2 {
   background-size: 14px;
   background-position: 10px 8px;
   background-image: url(/assets/address.svg);
 }
-#inputCity
-{
+#inputCity {
   background-position: 10px 12px;
   background-image: url(/assets/city.svg);
 }
-#inputZip
-{
+#inputZip {
   background-position: 9px 10px;
   background-image: url(/assets/zip.svg);
 }
 
-.verification-group
-{
+.verification-group {
   padding: 10px;
   border-radius: 8px;
   margin: 0 auto;
@@ -599,18 +567,15 @@ header {
   border: none;
 }
 
-input[type="file"] 
-{
+input[type="file"] {
   display: none;
 }
 
-.proof-card:hover
-{
+.proof-card:hover {
   outline: none;
 }
 
-#proof-button
-{
+#proof-button {
   margin: 0;
   margin-top: 10px;
   border: 1px solid #000000;
@@ -620,8 +585,7 @@ input[type="file"]
   font-weight: bold;
 }
 
-#proof-button:hover
-{
+#proof-button:hover {
   background-color: #019450;
   color: white;
   cursor: pointer;
@@ -630,8 +594,7 @@ input[type="file"]
 
 /* -------------------------------------------------- */
 
-.text-bg-success
-{
+.text-bg-success {
   background-color: #019450 !important;
 }
 
@@ -692,10 +655,7 @@ input[type="file"]
 
 /* Message board styling ---------------------------------*/
 
-
-
-#chat-container
-{
+#chat-container {
   display: flex;
   justify-content: center;
   width: fit-content;
@@ -704,8 +664,7 @@ input[type="file"]
   border-radius: 10px;
 }
 
-#contacts-list
-{
+#contacts-list {
   width: 100px;
   background-color: rgb(224, 232, 225);
   border-right: 2px solid #a7a7a7;
@@ -714,15 +673,13 @@ input[type="file"]
 }
 
 /* TEMPORARY FOR EXAMPLE */
-#contacts-go-here
-{
+#contacts-go-here {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.contact
-{
+.contact {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -730,8 +687,7 @@ input[type="file"]
   aspect-ratio: 1/1;
 }
 
-.contact-photo
-{
+.contact-photo {
   aspect-ratio: 1/1;
   height: 55%;
   border-radius: 50%;
@@ -742,15 +698,13 @@ input[type="file"]
   border-radius: 10px;
 }
 
-#current-chat
-{
+#current-chat {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-#chat-header
-{
+#chat-header {
   padding: 20px;
 
   text-align: center;
@@ -759,8 +713,7 @@ input[type="file"]
   border-top-right-radius: 12px;
 }
 
-#chat-content
-{
+#chat-content {
   max-width: 100%;
   height: 100%;
   display: flex;
@@ -770,14 +723,12 @@ input[type="file"]
   border-bottom-right-radius: 12px;
 }
 
-#messages-container
-{
+#messages-container {
   display: flex;
   flex-direction: column;
 }
 
-.incoming-message
-{
+.incoming-message {
   margin: 10px;
   align-self: flex-start;
   min-width: 60%;
@@ -791,8 +742,7 @@ input[type="file"]
   color: #1f1f1f;
 }
 
-.outgoing-message
-{
+.outgoing-message {
   margin: 10px;
   align-self: flex-end;
   min-width: 60%;
@@ -806,16 +756,14 @@ input[type="file"]
   color: white;
 }
 
-#message-bar
-{
+#message-bar {
   display: inline-block;
   position: relative;
   width: 90%;
   margin: 10px;
 }
 
-#message-bar > input
-{
+#message-bar > input {
   width: 100%;
   border: none;
   background-color: rgb(224, 232, 225);
@@ -826,14 +774,12 @@ input[type="file"]
   transition: outline-color 0.3s ease-in-out;
 }
 
-#message-bar > input:focus
-{
+#message-bar > input:focus {
   outline: solid 2px #019450;
 }
 
-#message-send-button
-{
-  position:absolute;
+#message-send-button {
+  position: absolute;
   right: 0;
 
   background-color: #019450;
@@ -847,8 +793,7 @@ input[type="file"]
   border-bottom-right-radius: 50%;
 }
 
-#message-send-button:hover
-{
+#message-send-button:hover {
   background-color: #00753e;
 }
 /* ------------------------------------------------------- */
@@ -893,8 +838,7 @@ input[type="file"]
   margin: 50px;
 }
 
-.listing-type-link
-{
+.listing-type-link {
   text-decoration: none;
 }
 
@@ -936,11 +880,9 @@ input[type="file"]
   margin-top: 10px;
 }
 
-
 /* Dark Mode Toggle Switch (Light Mode) -------- */
 
-#dark-mode-toggle-container
-{
+#dark-mode-toggle-container {
   display: flex;
   align-items: center;
   justify-content: start;
@@ -948,8 +890,7 @@ input[type="file"]
   gap: 0.2rem;
 }
 
-#dark-mode-toggle-container > p
-{
+#dark-mode-toggle-container > p {
   margin: 0;
 }
 
@@ -977,8 +918,8 @@ input[type="file"]
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -989,8 +930,8 @@ input[type="file"]
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
@@ -1018,8 +959,7 @@ input:checked + .slider:before {
 
 /* Each Product Styling ------------- */
 
-#product-content-container
-{
+#product-content-container {
   padding-top: 30px;
   padding-bottom: 30px;
   display: flex;
@@ -1028,28 +968,24 @@ input:checked + .slider:before {
   margin: auto;
 }
 
-#product-photo
-{
+#product-photo {
   border-radius: 12px;
   aspect-ratio: 1/1;
 }
 
-#price-type
-{
+#price-type {
   margin-top: 20px;
   margin-bottom: 30px;
   align-self: flex-start;
 }
 
-.product-profile-info-container
-{
+.product-profile-info-container {
   background-color: red;
   display: flex;
   justify-content: space-between;
 }
 
-.product-timestamp
-{
+.product-timestamp {
   color: #019450;
   justify-self: flex-end;
   font-size: small;
@@ -1057,17 +993,14 @@ input:checked + .slider:before {
   display: flex;
 }
 
-#product-info-container
-{
+#product-info-container {
   align-items: start;
 }
 
-#product-desc
-{
+#product-desc {
   color: #1f1f1f;
 }
 
-.line-divider
-{
+.line-divider {
   margin-top: 30px;
 }
