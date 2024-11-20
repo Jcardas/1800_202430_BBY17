@@ -48,7 +48,7 @@
 
     <!-- Link to our stylesheets -->
     <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/dark_mode.css">
+    <link id="dark-mode-css" rel="stylesheet" href="./styles/dark_mode.css">
   </head>
 
   <body>
@@ -56,50 +56,68 @@
     <div id="header-container"></div>
 
     <!-- main -->
-    <body>
-      <!-- Main container  -->
-      <div class="m_container">
-        <!--  Message header section-->
-        <div class="msg-header">
-          <div class="message-header-container">
-            <form class="username">
-              <img
-                class="m_userprofile"
-                id="incoming-username"
-                src="/assets/profile_photo.png"
-                alt="profile-photo"
-              />
-              <input placeholder="Recipient's ID" />
-            </form>
+
+    <!-- Entire Chat Container -->
+    <div id="chat-container">
+
+      <!-- Contacts List Sidebar -->
+      <aside id="contacts-list">
+        <!-- Auto populated contact photos -->
+        <div id="contacts-go-here">
+          
+          <div class="contact">
+            <img src="/assets/profile_photo.png" class="contact-photo">
           </div>
-        </div>
 
-        <!-- Chat inbox section-->
-
-        <div class="chat-page">
-          <div class="msg-inbox">
-            <div class="chats">
-              <div class="msg-page"></div>
-            </div>
-
-            <!--  Message bottom section starts -->
-            <div class="msg-bottom" style="display: none">
-              <div class="message-bar">
-                <div class="message-input-group">
-                  <input
-                    type="text"
-                    class="message-input"
-                    placeholder="Write a message..."
-                  />
-                  <button class="send-button">
-                    <i class="bi bi-send"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
+          <div class="contact" id="selected-contact">
+            <img src="/assets/profile_photo.png" class="contact-photo">
           </div>
+
+          <div class="contact">
+            <img src="/assets/profile_photo.png" class="contact-photo">
+          </div>
+
+          <div class="contact">
+            <img src="/assets/profile_photo.png" class="contact-photo">
+          </div>
+
+          <div class="contact">
+            <img src="/assets/profile_photo.png" class="contact-photo">
+          </div>
+          
         </div>
-      </div>
+      </aside>
+
+      <!-- The current initialized chat (This should be the flexbox for the send bar, the header, and the messages) -->
+      <article id="current-chat">
+
+        <!-- The header for the chat (e.g farmer name) -->
+        <section id="chat-header">Name of Farmer</section>
+
+        <!-- The Contents of the chat (Messages) -->
+        <section id="chat-content">
+
+          <div id="messages-container">
+            <div class="outgoing-message">This is an example outgoing message.</div>
+            <div class="incoming-message">This is an example incoming message</div>
+          </div>
+          <!-- The message bar with send button -->
+          <div id="message-bar">
+            <input type="text" id="message-bar-input" placeholder="Type a message...">
+
+            <button id="message-send-button">
+              ↑
+            </button>
+          </div>
+        </section>
+      </article>
+    </div>
+
+
+    <template>
+      <img src="/assets/profile_photo.png" alt="profile icon">
+    </template>
+     
     </body>
 
     <!-- footer -->

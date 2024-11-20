@@ -15,8 +15,10 @@ header
 #navbar-searchbar 
 {
     background-color: rgb(20, 51, 37);
+    background-image: url(/assets/search_white.svg);
+
   
-    color: black;
+    color: white;
     font-size: 15px;
     width: 240px;
     border-top-left-radius: 20px;
@@ -37,11 +39,15 @@ header
   
   .selected-tab {
     border-radius: 20px;
-    background-color: #ffffff00;
-    border: 1px solid #019450;
-    color: #019450;
+    background-color: #019450;
+    color: white;
   }
 
+  #dark-mode-toggle-container > p
+  {
+    color: white;
+    margin: 0;
+  }
 /* ----------------------------------------------------- */
 
 /* Menu Icon --------------------------------------------*/
@@ -59,17 +65,11 @@ header
 .dropdown-menu
 {
     background-color: #001b0e !important;
-    box-shadow: 0px 0px 1px #019450;
 }
 
 .dropdown-item
 {
     color: white;
-}
-
-.dropdown-divider
-{
-    color: #019450;
 }
 
 /* ------------------------------------------------------- */
@@ -141,8 +141,7 @@ header
 
 .card
 {
-    background-color: #001b0e;
-    border: solid 1px #01944f57;
+    background-color: #ffffff00;
 }
 
 .card-title
@@ -153,9 +152,79 @@ header
 .card-text
 {
     color: #019450 !important;
+
+}
+
+.listing-card:hover
+{
+  outline: 1px solid rgba(255, 255, 255, 0.715) !important;
 }
 
 /* --------------- */
+
+
+/* Account Page ----------------*/
+
+#account-header
+{
+  color: white;
+}
+
+.all-inputs::placeholder 
+{
+  color: #727272;
+}
+
+.all-inputs
+{
+  border-bottom: solid 1px #cdcdcd;
+}
+
+#inputName
+{
+  background-image: url(/assets/user_white.svg);
+}
+#inputEmail
+{
+  background-image: url(/assets/mail_white.svg);
+}
+#inputAddress
+{
+  background-image: url(/assets/address_white.svg);
+}
+#inputAddress2
+{
+  background-image: url(/assets/address_white.svg);
+}
+#inputCity
+{
+  background-image: url(/assets/city_white.svg);
+}
+#inputZip
+{
+  background-image: url(/assets/zip_white.svg);
+}
+
+.verification-group
+{
+  padding: 10px;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+#proof-button
+{
+  border: 1px solid #ccc;
+}
+
+#proof-button:hover
+{
+  background-color: white;
+  color: #019450;
+}
+
+/* ----------------------------- */
+
 
 footer
 {
@@ -186,6 +255,12 @@ footer
 
 .btn
 {
+    background-color: #019450;
+    color: #fff;
+}
+
+.btn-secondary
+{
     background-color: #001b0e;
     border: solid 1px #019450;
     color: #019450;
@@ -209,5 +284,118 @@ footer
 }
 
 :root{
-    --bs-body-color: #019450;
+    --bs-body-color: #fff;
+}
+
+/* Message Board ---------------------------------------- */
+
+
+#contacts-list
+{
+  background-color: rgb(20, 51, 37);
+  border-right: 2px solid rgb(12, 31, 22);
+}
+
+#selected-contact {
+  background-color: #019450;
+  border-radius: 10px;
+}
+
+#current-chat
+{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#chat-header
+{
+  background-color: rgb(20, 51, 37);
+}
+
+#chat-content
+{
+  background-color: rgb(14, 35, 26);
+}
+
+#messages-container
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.incoming-message
+{
+  background-color: rgb(84, 84, 84);
+  color: white;
+}
+
+.outgoing-message
+{
+  background-color: #01944fc3;
+  color: white;
+}
+
+#message-bar > input
+{
+  background-color: rgb(20, 51, 37);
+  color: white;
+  outline: rgb(20, 51, 37);
+  transition: outline-color 0.3s ease-in-out;
+}
+
+#message-bar > input:focus
+{
+  outline: none;
+  outline: solid 2px #019450;
+}
+
+#message-send-button
+{
+  position:absolute;
+  right: 0;
+
+  background-color: #019450;
+  color: white;
+  font-size: 14px;
+  height: 31px;
+  margin: auto;
+  aspect-ratio: 1/1;
+  border: none;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+#message-send-button:hover
+{
+  background-color: #00753e;
+}
+
+.plus-sign
+{
+  border-color: white;
+  color: white;
+}
+
+.plus-sign:hover
+{
+  background-color: white;
+  color: black;
+}
+
+/* Posting */
+
+.listing-type:hover {
+  outline: 2px solid #fff;
+}
+
+.listing-text {
+  color: #fff;
+}
+
+/* THING */
+
+#product-desc
+{
+  color: #e5e5e5;
 }

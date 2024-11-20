@@ -31,6 +31,7 @@ header {
 
 #tab-selector {
   display: flex; /* Makes the list items display in a row */
+  flex-direction: row;
   text-decoration: none;
   list-style: none;
   padding: 0; /* This line removes the random padding around list elements */
@@ -86,7 +87,7 @@ header {
 
 #navbar-searchbar {
   background-color: rgb(224, 232, 225);
-  background-image: url(/assets/search_white.svg);
+  background-image: url(/assets/search.svg);
   background-position: 10px 12px;
   background-size: 18px;
   background-repeat: no-repeat;
@@ -115,6 +116,15 @@ header {
   padding-right: 10px;
 }
 
+.dropdown-menu
+{
+  margin-top: 100px;
+}
+
+.dropdown-item
+{
+
+}
 /* MOBILE SECTION ---------------------------------- */
 
 /* Basic styling for viewports that are 320px or wider */
@@ -134,6 +144,31 @@ header {
   .landing-page-container {
     margin: 0px 20px 0px 20px;
   }
+
+  #current-chat
+  {
+    width: 100%;
+  }
+  #chat-container
+  {
+    padding: 0;
+    padding-bottom: 20px;
+  }
+
+
+  /* Each Product */
+
+#product-content-container
+{
+
+  width: 300px;
+}
+
+#product-photo
+{
+  width: 300px;
+}
+
 }
 
 /* Additional adjustments for slightly larger screens (e.g., tablets) */
@@ -153,6 +188,27 @@ header {
   .landing-page-container {
     margin: 0px 20px 0px 20px;
   }
+
+  #current-chat
+  {
+    width: 400px;
+  }
+
+  #chat-container
+  {
+    padding: 10px;
+  }
+
+  #product-content-container
+  {
+    width: 350px;
+  }
+
+  #product-photo
+  {
+    width: 350px;
+  }
+
 }
 
 /* Adjustments for even wider viewports (e.g., small laptops) */
@@ -188,6 +244,26 @@ header {
     padding: 0px 20px;
     display: flex;
     justify-content: space-between;
+  }
+
+  #current-chat
+  {
+    width: 600px;
+  }
+
+  #chat-container
+  {
+    padding: 10px;
+  }
+
+  #product-content-container
+  {
+    width: 500px;
+  }
+
+  #product-photo
+  {
+    width: 500px;
   }
 }
 
@@ -321,31 +397,54 @@ header {
 }
 
 /* Main Page styling ------------------------------- */
-.welcome
+.certified-fresh
 {
-  margin-bottom: 20px;
+  text-decoration: none;
+  color: #019450;
+}
+
+.certified-fresh:hover
+{
+  text-decoration: underline;
 }
 
 /* Product Styling ----------------------------------- */
+.productLink
+{
+  text-decoration: none;
+}
+
+.card
+{
+  margin-bottom: 50px;
+}
+
+.card-body
+{
+  padding: 6px;
+}
+
 .product-profile
 {
   display: flex;
+  height: 0;
+  margin: 20px 0;
   align-items: center;
-  height: 50px;
 }
 
 .product-profile-icon
 {
   object-fit: cover; 
   border-radius: 50%;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
 }
 
 .product-farmer-name
 {
-  margin-top: 13px; /* Cheating way to make the name centered because its not working :/ */
-  margin-left: 13px; /* Cheating way to make the name centered because its not working :/ */
+  font-size: small;
+  margin: 0;
+  margin-left: 12px;
   display: flex;
 }
 
@@ -353,6 +452,180 @@ header {
   height: 240px;
   object-fit: cover;
   width: 100%;
+}
+
+.card-title
+{
+  margin: 0;
+}
+
+/* Hover states */
+
+.card:hover
+{
+  outline: 2px solid #019450;
+}
+
+/* ---------------------------------- */
+
+/* Account page (Not Done)*/
+
+
+#account-header
+{
+  padding-top: 10px;
+  text-align: center;
+  color: black;
+
+  padding-bottom: 10px ;
+}
+
+#user-profile {
+
+  text-align: center;
+
+  #profile-pic-container {
+    display: flex;
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+    position: relative;
+    justify-content: center;
+
+    #profile-pic-prompt {
+      position: absolute;
+      bottom: 0.5em;
+      margin: auto;
+      width: 170px;
+      text-align: center;
+      font-size: 1.1em;
+
+      span {
+        text-shadow: 0px 2px 7px rgba(0, 0, 0, 0.754);
+        color: white;
+        cursor: pointer;
+      }
+    }
+
+    #profile-pic {
+      height: 100px;
+      width: 100px;
+      object-fit: cover;
+      border-radius: 100px;
+      margin: auto;
+
+      @media (hover: none) {
+        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.522);
+      }
+    }
+    #profile-pic:hover {
+      cursor: pointer;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.522);
+    }
+  }
+}
+
+.centerer
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.all-inputs {
+  background-size: 16px;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  border: none;
+  background-color: #ffffff00;
+  border-bottom: solid 1px black;
+  border-radius: 0px;
+  transition: border-bottom-width 0.1s ease;
+  outline: none;
+  box-shadow: none;
+}
+
+.all-inputs:focus {
+  background-color: #ffffff00;
+  border-bottom: solid 2px #019450;
+  outline: none;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#inputName
+{
+  background-position: 10px 8px;
+  background-image: url(/assets/user.svg);
+}
+#inputEmail
+{
+  background-position: 10px 13px;
+  background-image: url(/assets/mail.svg);
+}
+#inputAddress
+{
+  background-size: 14px;
+  background-position: 10px 8px;
+  background-image: url(/assets/address.svg);
+}
+#inputAddress2
+{
+  background-size: 14px;
+  background-position: 10px 8px;
+  background-image: url(/assets/address.svg);
+}
+#inputCity
+{
+  background-position: 10px 12px;
+  background-image: url(/assets/city.svg);
+}
+#inputZip
+{
+  background-position: 9px 10px;
+  background-image: url(/assets/zip.svg);
+}
+
+.verification-group
+{
+  padding: 10px;
+  border-radius: 8px;
+  margin: 0 auto;
+  background-color: #ffffff00;
+  border: none;
+}
+
+input[type="file"] 
+{
+  display: none;
+}
+
+.proof-card:hover
+{
+  outline: none;
+}
+
+#proof-button
+{
+  margin: 0;
+  margin-top: 10px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  display: inline-block;
+  padding: 6px 0px;
+  font-weight: bold;
+}
+
+#proof-button:hover
+{
+  background-color: #019450;
+  color: white;
+  cursor: pointer;
+  border-color: #019450;
 }
 
 /* -------------------------------------------------- */
@@ -408,24 +681,6 @@ header {
   border-radius: 100%;
 }
 
-.msg-header {
-  border: 1px solid #ccc;
-  width: 100%;
-  border-bottom: none;
-  display: inline-block;
-  background-color: #ffffff;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
-.message-header-container {
-  width: 270px;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 /* User-name */
 .username {
   text-align: center;
@@ -435,170 +690,168 @@ header {
   margin-top: 16px; /* This is a cheating way to get the text centered*/
 }
 
-.chat-page {
-  padding: 0 0 50px 0;
-}
-
-.msg-inbox {
-  border: 1px solid #ccc;
-  overflow: hidden;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-.chats {
-  padding: 20px;
-}
-
-.msg-page {
-  max-height: 500px;
-  overflow-y: auto;
-}
-
-.msg-page > * {
-  margin-bottom: 10px;
-}
-
-.msg-page > *:last-child {
-  margin-bottom: 0; /* Removes extra space after the last element */
-}
-
 /* Message board styling ---------------------------------*/
 
-.incoming-message {
-  display: flex;
-  align-self: flex-start;
-  text-align: left;
-  margin-right: 45%;
-  background-color: #ffffff;
-  padding: 5px;
-  border-radius: 10px;
-  border: solid 1px #a7a7a7;
-}
 
-.incoming-message > img {
-  margin-top: 12px; /* This is a cheating way to get the image centered*/
-  margin-right: 10px;
-}
 
-.incoming-message > p {
-  margin-top: 16px; /* This is a cheating way to get the text centered*/
-}
-
-.outgoing-message > img {
-  margin-top: 12px; /* This is a cheating way to get the image centered*/
-  margin-left: 10px;
-}
-
-.outgoing-message > p {
-  margin-top: 16px; /* This is a cheating way to get the text centered*/
-}
-
-.outgoing-message {
-  display: flex;
-  justify-content: flex-end;
-  align-self: flex-end;
-  text-align: right;
-  margin-left: 45%;
-  background-color: #ccc;
-  padding: 5px;
-  border-radius: 10px;
-  border: solid 1px #a7a7a7;
-}
-
-/* Styling the msg-bottom container */
-.msg-bottom {
-  border-top: 1px solid #a7a7a7;
-  position: relative;
-  height: 11%;
-  background-color: rgb(255, 255, 255);
-}
-/* Styling the input field */
-.message-bar {
-  padding: 10px;
-  background-color: #ffffff;
+#chat-container
+{
   display: flex;
   justify-content: center;
+  width: fit-content;
+  height: 80vh;
+  margin: auto;
+  border-radius: 10px;
 }
 
-.message-input-group {
+#contacts-list
+{
+  width: 100px;
+  background-color: rgb(224, 232, 225);
+  border-right: 2px solid #a7a7a7;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+/* TEMPORARY FOR EXAMPLE */
+#contacts-go-here
+{
   display: flex;
+  flex-direction: column;
   align-items: center;
-  border: 1px solid #a7a7a7; /* Light gray border */
+}
+
+.contact
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  aspect-ratio: 1/1;
+}
+
+.contact-photo
+{
+  aspect-ratio: 1/1;
+  height: 55%;
+  border-radius: 50%;
+}
+
+#selected-contact {
+  background-color: #019450;
+  border-radius: 10px;
+}
+
+#current-chat
+{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#chat-header
+{
+  padding: 20px;
+
+  text-align: center;
+  background-color: rgb(224, 232, 225);
+  height: 64px;
+  border-top-right-radius: 12px;
+}
+
+#chat-content
+{
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgb(208, 216, 209);
+  border-bottom-right-radius: 12px;
+}
+
+#messages-container
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.incoming-message
+{
+  margin: 10px;
+  align-self: flex-start;
+  min-width: 60%;
+  max-width: 70%;
+  padding: 10px;
   border-radius: 20px;
-  width: 100%;
-  max-width: 600px;
-  overflow: hidden;
+
+  font-size: 14px;
+
+  background-color: rgb(255, 255, 255);
+  color: #1f1f1f;
 }
 
-.message-input {
-  flex: 1;
-  padding: 10px 15px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  color: #000000;
-  background-color: #fff;
-  border-radius: 20px 0 0 20px; /* Rounded on left side */
-}
+.outgoing-message
+{
+  margin: 10px;
+  align-self: flex-end;
+  min-width: 60%;
+  max-width: 70%;
+  padding: 10px;
+  border-radius: 20px;
 
-.message-input::placeholder {
-  color: #a7a7a7;
-}
+  font-size: 14px;
 
-.send-button {
-  background-color: #a7a7a7;
-  border: none;
+  background-color: #01944fc3;
   color: white;
-  padding: 10px 20px;
-  cursor: pointer;
 }
 
-.send-button:hover {
-  background-color: #373737;
+#message-bar
+{
+  display: inline-block;
+  position: relative;
+  width: 90%;
+  margin: 10px;
 }
 
+#message-bar > input
+{
+  width: 100%;
+  border: none;
+  background-color: rgb(224, 232, 225);
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 14px;
+  outline: rgb(225, 244, 223);
+  transition: outline-color 0.3s ease-in-out;
+}
+
+#message-bar > input:focus
+{
+  outline: solid 2px #019450;
+}
+
+#message-send-button
+{
+  position:absolute;
+  right: 0;
+
+  background-color: #019450;
+  color: white;
+  font-size: 14px;
+  height: 31px;
+  margin: auto;
+  aspect-ratio: 1/1;
+  border: none;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+#message-send-button:hover
+{
+  background-color: #00753e;
+}
 /* ------------------------------------------------------- */
-
-#user-profile {
-  #profile-pic-container {
-    display: flex;
-    margin-bottom: 2em;
-    position: relative;
-    justify-content: center;
-
-    #profile-pic-prompt {
-      position: absolute;
-      bottom: 1em;
-      margin: auto;
-      width: 170px;
-      text-align: center;
-      font-size: 1.1em;
-
-      span {
-        text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.754);
-        color: white;
-        cursor: pointer;
-      }
-    }
-
-    #profile-pic {
-      height: 200px;
-      width: 200px;
-      object-fit: cover;
-      border-radius: 100px;
-      margin: auto;
-
-      @media (hover: none) {
-        box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.522);
-      }
-    }
-    #profile-pic:hover {
-      cursor: pointer;
-      box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.522);
-    }
-  }
-}
 
 .listing-image {
   height: 100px;
@@ -613,14 +866,13 @@ header {
   flex-direction: column;
   width: 200px;
   height: 200px;
-  background-image: linear-gradient(to bottom right, #019450, #26a47e);
   border-radius: 20px;
   margin: 0px 20px 0px 20px;
   box-shadow: 5px 5px 20px #0000003f;
 }
 
 .listing-type:hover {
-  box-shadow: 5px 5px 20px #00502b;
+  outline: 2px solid #019450;
 }
 
 .listing-type:active {
@@ -629,7 +881,7 @@ header {
 
 .listing-text {
   margin-top: 20px;
-  color: white;
+  color: #1f1f1f;
   font-weight: bold;
   text-decoration: none;
 }
@@ -639,6 +891,11 @@ header {
   align-items: center;
   justify-content: center;
   margin: 50px;
+}
+
+.listing-type-link
+{
+  text-decoration: none;
 }
 
 #listing-form-info {
@@ -693,7 +950,6 @@ header {
 
 #dark-mode-toggle-container > p
 {
-  color: white;
   margin: 0;
 }
 
@@ -758,4 +1014,60 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/* Each Product Styling ------------- */
+
+#product-content-container
+{
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+#product-photo
+{
+  border-radius: 12px;
+  aspect-ratio: 1/1;
+}
+
+#price-type
+{
+  margin-top: 20px;
+  margin-bottom: 30px;
+  align-self: flex-start;
+}
+
+.product-profile-info-container
+{
+  background-color: red;
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-timestamp
+{
+  color: #019450;
+  justify-self: flex-end;
+  font-size: small;
+  margin: 0;
+  display: flex;
+}
+
+#product-info-container
+{
+  align-items: start;
+}
+
+#product-desc
+{
+  color: #1f1f1f;
+}
+
+.line-divider
+{
+  margin-top: 30px;
 }

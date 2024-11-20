@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Farmer's Marketplace - Main</title>
+    <title>Farmer's Marketplace - Messages</title>
     <meta name="comp1800 template" content="My 1800 App" />
     <link
       rel="icon"
@@ -21,6 +21,10 @@
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
     />
     <!-- Bootstrap JS CDN -->
     <script
@@ -44,7 +48,7 @@
 
     <!-- Link to our stylesheets -->
     <link rel="stylesheet" href="./styles/style.css" />
-    <link id="dark-mode-css" rel="stylesheet" href="./styles/dark_mode.css">
+    <!-- <link rel="stylesheet" href="./styles/dark_mode.css"> -->
   </head>
 
   <body>
@@ -52,50 +56,54 @@
     <div id="header-container"></div>
 
     <!-- main -->
-    <div class="main">
-
-      <!-- Post Button -->
-      <div style="display: flex; text-align: center; align-items: center;">
-        <p style="margin-top: 13px; margin-right: 5px;">Make a Post</p>
-        <a href="listing.html" class="plus-sign">+</a>
-      </div>
-      <a class="certified-fresh" href="#"><h2>Certitied Fresh</h2></a>
-  
-      <!-- Here is the products inserted from firebase  -->
-      <div id="products-go-here" class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3"></div>
-    
-    </div>          
-
-      <!-- Product Template -->
-      <template id="productCardTemplate">
-        <div class="col">
-          <a href="/each_product.html" class="productLink">
-            <div class="listing-card card rounded-4 bg-transparent border-0">
+      <!-- Main container  -->
+      <div class="m_container">
+        <!--  Message header section-->
+        <div class="msg-header">
+          <div class="message-header-container">
+            <form class="username">
               <img
-                src="assets/blueberries.jpg"
-                class="card-img rounded-4 p-2"
-                alt="..."
+                class="m_userprofile"
+                id="incoming-username"
+                src="/assets/profile_photo.png"
+                alt="profile-photo"
               />
-              <div class="card-body">
-                <h5 class="card-title">Price | Product</h5>
-                <p class="card-text text-secondary">$ / unit</p>
+              <input placeholder="Recipient's ID" />
+            </form>
+          </div>
+        </div>
 
-                <div class="product-profile">
-                  <img
-                    class="product-profile-icon"
-                    src="/assets/profile_photo.png"
-                    alt=""
+        <!-- Chat inbox section-->
+
+        <div class="chat-page">
+          <div class="msg-inbox">
+            <div class="chats">
+              <div class="msg-page"></div>
+            </div>
+
+            <!--  Message bottom section starts -->
+            <div class="msg-bottom" style="display: none">
+              <div class="message-bar">
+                <div class="message-input-group">
+                  <input
+                    type="text"
+                    class="message-input"
+                    placeholder="Write a message..."
                   />
-                  <p class="product-farmer-name">Farmer Name</p>
+                  <button class="send-button">
+                    <i class="bi bi-send"></i>
+                  </button>
                 </div>
               </div>
             </div>
-          </a>
+          </div>
         </div>
-      </template>
-    </div>
+      </div>
+    </body>
 
+    <!-- footer -->
     <div id="footer-container"></div>
+
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
@@ -104,6 +112,6 @@
     <script src="./scripts/firebaseAuth.js"></script>
     <script src="./scripts/firebase.js"></script>
     <script src="./scripts/script.js"></script>
-    <script src="./scripts/main.js"></script>
+    <script src="./scripts/messages.js"></script>
   </body>
 </html>
