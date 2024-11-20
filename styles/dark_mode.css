@@ -385,6 +385,10 @@ footer
 
 /* Posting */
 
+.listing-type {
+  box-shadow: 0px 0px 2px #ffffff;
+}
+
 .listing-type:hover {
   outline: 2px solid #fff;
 }
