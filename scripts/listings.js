@@ -8,21 +8,21 @@ var currentUser;
 var listingAvatar;
 
 firebase.auth().onAuthStateChanged((user) => {
- if (user) {
-  currentUser = user;
-  db.collection("users")
-    .doc(user.uid)
-    .get()
-    .then((doc) => {
-      if (!doc.exists) return;
-      data = doc.data();
-      if (data.avatar) {
-        listingAvatar = data.avatar;
-      }
-    })
-    .catch((error) => {
-      console.error("Error getting user data", error);
-    });
+  if (user) {
+    currentUser = user;
+    db.collection("users")
+      .doc(user.uid)
+      .get()
+      .then((doc) => {
+        if (!doc.exists) return;
+        data = doc.data();
+        if (data.avatar) {
+          listingAvatar = data.avatar;
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting user data", error);
+      });
   } else {
     console.warn("No user is signed in.");
     currentUser = null;
@@ -47,13 +47,16 @@ submit.addEventListener("click", async (e) => {
   if (listingFile.files.length > 0) {
     const file = listingFile.files[0];
     const storageref = firebase.storage().ref();
-    const fileRef = storageref.child(`listings/${currentUser.uid}/${file.name}`);
+    const fileRef = storageref.child(
+      `listings/${currentUser.uid}/${file.name}`
+    );
 
     await fileRef.put(file);
     fileURL = await fileRef.getDownloadURL();
   }
 
-  db.collection("listing").add({
+  db.collection("listing")
+    .add({
       type: type,
       price: parseFloat(price),
       units: units,
@@ -69,12 +72,8 @@ submit.addEventListener("click", async (e) => {
     })
     .catch((error) => {
       console.error("Error saving listing", error);
-      alert("Failed to submit listing");
-      });
-  });
-
-submit.addEventListener("click", async (e) => {
-  e.preventDefault();
+      alert("Failed to submit listing. Please try again.");
+    });
 });
 
 fileContainer.addEventListener("click", () => listingFile.click());
