@@ -1,9 +1,10 @@
-displayCardsDynamically("products"); //input param is the name of the collection
+displayCardsDynamically();
+determineFarmerStatus();
 
-function displayCardsDynamically(collection) {
+function displayCardsDynamically() {
   let cardTemplate = document.getElementById("productCardTemplate"); // Retrieve the HTML element with the ID "productCardTemplate" and store it in the cardTemplate variable.
 
-  db.collection(collection)
+  db.collection("products")
     .get() //the collection called "products"
     .then((allProducts) => {
       //var i = 1;  //Optional: if you want to have a unique ID for each product
@@ -33,9 +34,29 @@ function displayCardsDynamically(collection) {
         newcard.querySelector(".card-img").src = productPhoto;
         // newcard.querySelector("a").href = "eachProduct.html?docID=" + docID;
 
-        document.getElementById(collection + "-go-here").appendChild(newcard);
+        document.getElementById("products-go-here").appendChild(newcard);
       });
     });
+}
+
+function determineFarmerStatus() {
+  firebase.auth().onAuthStateChanged((user) => {
+    db.collection("users")
+      .doc(user.uid)
+      .get()
+      .then((doc) => {
+        if (!doc.exists) return;
+
+        if (doc.data().isFarmer) {
+          // currently there is only one "make-a-post" button,
+          // but loop through all in case we add more in the future
+          // (e.g. one floating in the cards, one in the navbar)
+          for (const button of document.querySelectorAll(".make-a-post")) {
+            button.style.display = "";
+          }
+        }
+      });
+  });
 }
 
 // Temporary function to write 10 listings to the firebase
