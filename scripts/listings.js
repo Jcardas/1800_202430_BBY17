@@ -5,35 +5,18 @@ const fileText = document.getElementById("photo-text");
 const submit = document.getElementById("post");
 
 var currentUser;
-var listingAvatar;
-
 firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    currentUser = user;
-    db.collection("users")
-      .doc(user.uid)
-      .get()
-      .then((doc) => {
-        if (!doc.exists) return;
-        data = doc.data();
-        if (data.avatar) {
-          listingAvatar = data.avatar;
-        }
-      })
-      .catch((error) => {
-        console.error("Error getting user data", error);
-      });
-  } else {
-    console.warn("No user is signed in.");
-    currentUser = null;
-  }
+  // no need to check if user exists,
+  // it's impossible for a non-user to access this page in the first place
+  currentUser = user;
 });
 
 submit.addEventListener("click", async (e) => {
   e.preventDefault();
 
   if (!currentUser) {
-    alert("You need to login to submit a listing.");
+    // the user is definitely logged in, but we still need this check
+    // in case they click "submit" before firebase.auth().onAuthStateChanged responds
     return;
   }
 
@@ -44,16 +27,15 @@ submit.addEventListener("click", async (e) => {
   const description = document.getElementById("description").value;
   const resupplies = document.getElementById("form-text-resupplied").value;
 
-  if (listingFile.files.length > 0) {
-    const file = listingFile.files[0];
-    const storageref = firebase.storage().ref();
-    const fileRef = storageref.child(
-      `listings/${currentUser.uid}/${file.name}`
-    );
-
-    await fileRef.put(file);
-    fileURL = await fileRef.getDownloadURL();
+  if (listingFile.files.length == 0) {
+    alert("You must provide a photo.");
+    return;
   }
+
+  // TODO: allow uploading multiple files
+  const file = listingFile.files[0];
+  const fileRef = storage.ref(`listings/${currentUser.uid}/${file.name}`);
+  fileURL = await fileRef.put(file).then(() => fileRef.getDownloadURL());
 
   db.collection("listing")
     .add({
@@ -63,7 +45,6 @@ submit.addEventListener("click", async (e) => {
       description: description,
       resupplies: resupplies,
       userID: currentUser.uid,
-      avatar: listingAvatar || null,
       fileURL: fileURL || null,
     })
     .then(() => {
