@@ -1,4 +1,5 @@
 const productContainer = document.getElementById("product-content-container");
+const messageButton = document.getElementById("message-button");
 
 var sellerID;
 retrieveProductData().then(retrieveSellerData);
@@ -38,3 +39,17 @@ function retrieveSellerData() {
       productContainer.querySelector(".product-farmer-name").innerText = name;
     });
 }
+
+messageButton.addEventListener("click", () => {
+  // in case the button is clicked before firebase responds with how the seller is
+  if (!sellerID) return;
+
+  firebase.auth().onAuthStateChanged((user) => {
+    db.collection("users")
+      .doc(user.uid)
+      .update({
+        contacts: firebase.firestore.FieldValue.arrayUnion(sellerID),
+      })
+      .then(() => location.assign(`messages.html?to=${sellerID}`));
+  });
+});
