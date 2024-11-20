@@ -7,7 +7,7 @@ const submit = document.getElementById("post");
 var currentUser;
 var listingAvatar;
 
-firebase.auth().onAuthStateChanged((users) => {
+firebase.auth().onAuthStateChanged((user) => {
  if (user) {
   currentUser = user;
   db.collection("users")
@@ -59,7 +59,7 @@ submit.addEventListener("click", async (e) => {
       units: units,
       description: description,
       resupplies: resupplies,
-      userID: user.uid,
+      userID: currentUser.uid,
       avatar: listingAvatar || null,
       fileURL: fileURL || null,
     })
