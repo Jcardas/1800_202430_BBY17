@@ -41,7 +41,7 @@ function retrieveSellerData() {
 }
 
 messageButton.addEventListener("click", () => {
-  // in case the button is clicked before firebase responds with how the seller is
+  // in case the button is clicked before firebase responds with who the seller is
   if (!sellerID) return;
 
   firebase.auth().onAuthStateChanged((user) => {
