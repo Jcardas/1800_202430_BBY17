@@ -4,7 +4,7 @@ determineFarmerStatus();
 function displayCardsDynamically() {
   let cardTemplate = document.getElementById("productCardTemplate");
 
-  db.collection("listing")
+  db.collection("listings")
     .get()
     .then((allProducts) => {
       allProducts.forEach((doc) => {

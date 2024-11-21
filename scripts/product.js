@@ -9,7 +9,7 @@ function retrieveProductData() {
   const listingID = urlParams.get("id");
 
   return db
-    .collection("listing")
+    .collection("listings")
     .doc(listingID)
     .get()
     .then((doc) => {

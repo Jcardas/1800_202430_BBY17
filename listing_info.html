@@ -51,8 +51,17 @@
 
     <!-- main -->
     <form id="listing-form-info">
-      <div id="form-type-img">
-        <p id="photo-text">Add a photo or video</p>
+
+      <!-- Product Image Box -->
+      <div id="form-type-img" class="form-img-container">
+        <div id="input-product-photo-container">
+          <img 
+            id="input-product-photo"
+            src="./assets/farmers_marketplace.png"
+            alt="input photo"
+            >
+        </div>
+        <p id="photo-text"><span>Add a photo or video</span></p>
         <input
           class="form-photo-input"
           type="file"
@@ -62,45 +71,91 @@
         />
       </div>
 
-      <div class="form-type">
-        <input
-          class="form-text"
-          type="text"
-          id="productType"
-          placeholder="Product Type"
-          required
-        />
-      </div>
-
-      <div class="form-type">
-        <input
-          class="form-text"
-          type="text"
-          id="price"
-          placeholder="Price"
-          required
-        />
-      </div>
-
-      <div class="form-type">
-        <input
-          class="form-text"
-          type="text"
-          id="unit"
-          placeholder="Units"
-          required
-        />
-      </div>
+      <!-- Product Name Input (e.g Carrots, Beans) -->
 
       <div class="form-type">
         <input
           type="text"
-          class="form-text-description"
+          class="form-input name-input"
+          id="name"
+          placeholder="Product (e.g Carrots)"
+        />
+      </div>
+
+
+      <!-- Product Type input (Produce or Seeds) -->
+      <div class="form-type">
+        <label>
+          <input
+            type="radio"
+            id="Produce"
+            name="productType"
+            value="Produce"
+            required
+          />
+          Produce
+        </label>
+        <label>
+          <input
+            type="radio"
+            id="Seeds"
+            name="productType"
+            value="Seeds"
+            required
+          />
+          Seeds
+        </label>
+      </div>
+
+      <!-- Price and Units group -->
+
+      <div class="form-group-2">
+        <!-- Price Input (In dollars) -->
+        <div class="form-type">
+          <input
+            class="price-input form-input"
+            type="number"
+            id="price"
+            placeholder="Price"
+            max="1000"
+            step="0.05"
+            required
+          />
+        </div>
+
+      <!-- Product Units Dropdown -->
+      <div class="form-type">
+        <label for="unit">Unit:</label>
+        <select class="form-text" id="unit" required>
+          <option value="" disabled selected>Select a unit</option>
+          <option value="$ / unit">$ / unit</option>
+          <option value="$ / lbs">$ / lbs</option>
+          <option value="$ / can">$ / can</option>
+          <option value="$ / kg">$ / kg</option>
+          <option value="$ / tray">$ / tray</option>
+          <option value="$ / pint">$ / pint</option>
+          <option value="$ / quart">$ / quart</option>
+          <option value="$ / gallon">$ / gallon</option>
+          <option value="$ / box">$ / box</option>
+          <option value="$ / basket">$ / basket</option>
+          <option value="$ / bundle">$ / bundle</option>
+          <option value="$ / crate">$ / crate</option>
+          <option value="$ / sack">$ / sack</option>
+        </select>
+      </div>
+      </div>
+
+      <!-- Product Description Input-->
+      <div class="form-type">
+        <input
+          type="text"
+          class="form-input form-text-description"
           id="description"
           placeholder="Description"
         />
       </div>
 
+      <!-- Recurring Checkbox Input-->
       <div class="form-type">
         <label>
         <input
@@ -113,6 +168,7 @@
         </label>
       </div>
 
+      <!-- Bazinga -->
       <div class="form-type">
         <input
         type="text"

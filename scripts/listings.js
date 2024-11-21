@@ -21,7 +21,16 @@ submit.addEventListener("click", async (e) => {
   }
 
   let fileURL = "";
-  const type = document.getElementById("productType").value;
+  // This code gets the selected product type (e.g Seeds or Produce)
+  const type = document.querySelector('input[name="productType"]:checked')?.value;
+
+  if (type) {
+    console.log(`Selected type: ${type}`);
+  } else {
+    console.log("No product type selected");
+  }
+
+
   const price = document.getElementById("price").value;
   const units = document.getElementById("unit").value;
   const description = document.getElementById("description").value;
@@ -37,7 +46,7 @@ submit.addEventListener("click", async (e) => {
   const fileRef = storage.ref(`listings/${currentUser.uid}/${file.name}`);
   fileURL = await fileRef.put(file).then(() => fileRef.getDownloadURL());
 
-  db.collection("listing")
+  db.collection("listings")
     .add({
       type: type,
       price: parseFloat(price),
@@ -72,7 +81,11 @@ window.onload = function () {
 
   // If productType is present, autofill the product type field
   if (productType) {
-    document.getElementById("productType").value = productType;
+    console.log('Product type was: ' + productType);
+    document.getElementById(productType).checked = true;
+  }
+  else{
+    console.log('No product was previously selected');
   }
 };
 

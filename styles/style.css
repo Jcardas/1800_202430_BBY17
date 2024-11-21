@@ -798,87 +798,100 @@ input[type="file"] {
 }
 /* ------------------------------------------------------- */
 
-.listing-image {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-}
+/* Product listing Info Page -------------- */
 
-.listing-type {
-  justify-content: center;
-  align-items: center;
+#listing-form-info
+{
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-img-container
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 12px;
+  width: fit-content;
+  border: solid #019450;
+}
+
+.form-img-container:hover
+{
+  background-color: #00502b48;
+  color: white;
+  cursor: pointer;
+}
+
+#input-product-photo-container
+{
+  background-color: #eeeeee93;
+  border-radius: 12px;
   width: 200px;
-  height: 200px;
-  border-radius: 20px;
-  margin: 0px 20px 0px 20px;
-  box-shadow: 5px 5px 20px #0000003f;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-.listing-type:hover {
-  outline: 2px solid #019450;
+#input-product-photo
+{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
-.listing-type:active {
+#photo-text
+{
+  margin-top: 40px;
+}
+
+.form-input
+{
+  background-size: 16px;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  border: none;
+  background-color: #ffffff00;
+  border-bottom: solid 1px black;
+  border-radius: 0px;
+  transition: border-bottom-width 0.1s ease;
+  outline: none;
   box-shadow: none;
 }
 
-.listing-text {
-  margin-top: 20px;
-  color: #1f1f1f;
-  font-weight: bold;
-  text-decoration: none;
+.form-input:focus 
+{
+  background-color: #ffffff00;
+  border-bottom: solid 2px #019450;
+  outline: none;
+  box-shadow: none;
 }
 
-.main-listing-container {
+.name-input
+{
+  background-position: 0px 9px;
+  background-image: url(/assets/leaf.svg);
+}
+
+.form-group-2
+{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 50px;
+  gap: 20px;
 }
 
-.listing-type-link {
-  text-decoration: none;
+.price-input
+{
+  width: 100px;
+  background-position: 0px 5px;
+  background-image: url(/assets/dollar.svg);
 }
 
-#listing-form-info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-#form-type-img {
-  border-radius: 10px;
-  width: 300px;
-  height: 100px;
-  border: 2px solid;
-}
-
-.form-text {
-  border-radius: 10px;
-  margin: 5px;
-  width: 300px;
-  height: 50px;
-}
-
-.form-text-description {
-  border-radius: 10px;
-  margin: 5px;
-  width: 300px;
-  height: 100px;
-}
-
-.post {
-  background-color: green;
-  width: 75px;
-}
-
-#form-type-img > p {
-  text-align: center;
-  margin-top: 10px;
-}
 
 /* Dark Mode Toggle Switch (Light Mode) -------- */
 
