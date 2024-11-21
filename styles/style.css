@@ -723,7 +723,7 @@ input[type="file"] {
   border-bottom-right-radius: 12px;
 }
 
-#messages-container {
+.messages-container {
   display: flex;
   flex-direction: column;
 }

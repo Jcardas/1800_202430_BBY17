@@ -1,6 +1,5 @@
 const chatHeader = document.getElementById("chat-header");
 const contactsContainer = document.getElementById("contacts-go-here");
-const messagesContainer = document.getElementById("messages-container");
 const messageBar = document.getElementById("message-bar");
 const messageInput = messageBar.querySelector("input");
 const sendButton = messageBar.querySelector("button");
@@ -14,6 +13,7 @@ firebase.auth().onAuthStateChanged((user) => {
   populateContactsList();
   openCurrentChat();
 });
+var chats = {};
 
 function populateContactsList() {
   db.collection("users")
@@ -61,51 +61,37 @@ function openChat(recipientID) {
     .get()
     .then((doc) => (chatHeader.innerText = doc.data().name));
 
-  const chatDoc = getChat(recipientID);
-
-  // Clear previous messages
-  messagesContainer.innerHTML = "";
-
-  // Populate existing messages
-  chatDoc.get().then((doc) => {
-    if (!doc.exists) return;
-    doc.data().messages.forEach(renderMessage);
+  getChat(recipientID).then((chat) => {
+    document.querySelector(".messages-container").replaceWith(chat.page);
+    messageInput.onkeydown = function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        chat.send();
+      }
+    };
+    sendButton.onclick = function () {
+      chat.send();
+    };
+    messageBar.style.display = "";
   });
-
-  // Listen to new messages
-  chatDoc.onSnapshot((doc) => {
-    if (!doc.exists) return;
-    const messages = doc.data().messages;
-    const lastMessage = messages[messages.length - 1];
-    renderMessage(lastMessage);
-  });
-
-  // Setup message bar
-  messageInput.onkeydown = function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      chatDoc.send();
-    }
-  };
-  sendButton.onclick = function () {
-    chatDoc.send();
-  };
-  messageBar.style.display = "";
 }
 
 function getChat(recipientID) {
-  var chatDoc;
-  if (recipientID < currentUser.uid) {
-    chatDoc = db
-      .collection("messages")
-      .doc(`${recipientID}+${currentUser.uid}`);
-  } else {
-    chatDoc = db
-      .collection("messages")
-      .doc(`${currentUser.uid}+${recipientID}`);
+  if (Object.hasOwn(chats, recipientID)) {
+    return Promise.resolve(chats[recipientID]);
   }
 
-  chatDoc.send = function () {
+  var chat;
+  if (recipientID < currentUser.uid) {
+    chat = db.collection("messages").doc(`${recipientID}+${currentUser.uid}`);
+  } else {
+    chat = db.collection("messages").doc(`${currentUser.uid}+${recipientID}`);
+  }
+  chats[recipientID] = chat;
+
+  chat.page = document.querySelector(".messages-container").cloneNode();
+
+  chat.send = function () {
     const messageText = messageInput.value.trim();
     if (!messageText) return;
 
@@ -115,42 +101,56 @@ function getChat(recipientID) {
       timestamp: Date.now(), // not displayed in the UI (yet)
       // but is used as id for the message element
     };
-    this.set(
-      { messages: firebase.firestore.FieldValue.arrayUnion(message) },
-      { merge: true }
-    ).catch(console.error);
-    // no need to call addMessageToPage
-    // it's called by chatDoc.onSnapshot() when the server updates
-    messageInput.value = "";
 
     db.collection("users")
       .doc(recipientID)
       .update({
         contacts: firebase.firestore.FieldValue.arrayUnion(currentUser.uid),
       });
+
+    this.set(
+      { messages: firebase.firestore.FieldValue.arrayUnion(message) },
+      { merge: true }
+    )
+      .then(() => {
+        messageInput.value = "";
+        this.messages.push(message);
+        // do not call chat.render()
+        // it's called by chat.onSnapshot() when the server updates
+      })
+      .catch(console.error);
   };
 
-  return chatDoc;
-}
+  chat.render = function (message) {
+    if (this.page.querySelector(`#T${message.timestamp}`)) return;
 
-function renderMessage(message) {
-  // the message timestamp serves as the div's id
-  if (document.getElementById(message.timestamp)) return;
+    let messageType;
+    if (message.from == currentUser.uid) {
+      messageType = "outgoing-message";
+    } else {
+      messageType = "incoming-message";
+    }
 
-  let messageType;
-  if (message.from == currentUser.uid) {
-    messageType = "outgoing-message";
-  } else {
-    messageType = "incoming-message";
-  }
+    this.page.insertAdjacentHTML(
+      "beforeend",
+      `
+      <div id="T${message.timestamp}" class=${messageType}>
+        ${message.text}
+      </div>`
+    );
+    // Scroll to end
+    this.page.scrollTop = this.page.scrollHeight;
+  };
 
-  messagesContainer.insertAdjacentHTML(
-    "beforeend",
-    `
-    <div id=${message.timestamp} class=${messageType}>
-      ${message.text}
-    </div>`
-  );
-  // Scroll to end
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  return chat.get().then((doc) => {
+    chat.messages = doc.data()?.messages || [];
+    chat.messages.forEach((message) => chat.render(message));
+    chat.onSnapshot((doc) => {
+      if (!doc.exists) return;
+      const messages = doc.data().messages;
+      const lastMessage = messages[messages.length - 1];
+      chat.render(lastMessage);
+    });
+    return chat;
+  });
 }
