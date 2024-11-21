@@ -1,3 +1,5 @@
+const { eventNames } = require("process");
+
 const darkModeLink = document.getElementById("dark-mode-css");
 const darkModeToggle = document.getElementById("dark-mode-toggle");
 
@@ -19,7 +21,6 @@ darkModeToggle.addEventListener("input", () => {
   localStorage.setItem("dark-mode", !darkModeLink.disabled);
 });
 
-
 var currentPage = window.location.pathname;
 currentPage = currentPage.replace("/", "").replace(".html", "");
 
@@ -32,15 +33,37 @@ if (selectedTab) {
   selectedTab.classList.add("selected-tab");
 }
 
-const f = document.getElementById("searchbar-form");
-const q = document.getElementById("navbar-searchbar");
-const google = "https://www.google.com/search?q=";
 
-function submitted(event) {
+const searchForm = document.querySelector("#searchbar-form");
+
+searchForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const url = google + q.value;
-  const win = window.open(url, "_blank");
-  win.focus();
-}
 
-f.addEventListener("submit", submitted);
+  const f = document.getElementById("navbar-searchbar").value.trim();
+  console.log("search submitted");
+  if (!f) {
+    return;
+  }
+
+  const listingsRef = db.collection("listings");
+  listingsRef.where("productType", "==", f).get();
+  console.log("Query executed").then((querySnapShot) => {
+    const searchResults = document.getElementById("search-results");
+    if (!searchResults) {
+      searchResults = document.createElement("div");
+      searchResults.id = "search-results";
+      document.body.appendChild(searchResults);
+    }
+    searchResults.innerHTML = "";
+  });
+
+  if (querySnapShot.empty) {
+    console.log("No results found:", searchResults);
+    searchResults.innerHTML = "<p>No matching results found</p>";
+  }
+
+  querySnapShot.forEach((doc) => {
+    const listing = doc.data();
+    console.log("Document Data:", listing);
+  });
+});
