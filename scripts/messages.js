@@ -9,20 +9,22 @@ firebase.auth().onAuthStateChanged((user) => {
   // no need to check if user exists,
   // it's impossible for a non-user to access this page in the first place
   currentUser = user;
-
-  populateContactsList();
-  openCurrentChat();
+  initializeMessages();
 });
 var chats = {};
 
-function populateContactsList() {
-  db.collection("users")
+function initializeMessages() {
+  return db
+    .collection("users")
     .doc(currentUser.uid)
     .get()
     .then((doc) => {
       if (!doc.exists) return;
 
+      const urlParams = new URLSearchParams(window.location.search);
+      const currentRecipientID = urlParams.get("to");
       const contacts = doc.data().contacts || [];
+
       for (const contactID of contacts) {
         db.collection("users")
           .doc(contactID)
@@ -42,17 +44,16 @@ function populateContactsList() {
 
             contactDiv.appendChild(contactImg);
             contactsContainer.appendChild(contactDiv);
+
+            if (currentRecipientID) {
+              openChat(currentRecipientID);
+              if (contactID == currentRecipientID) {
+                contactDiv.setAttribute("selected", true);
+              }
+            }
           });
       }
     });
-}
-
-function openCurrentChat() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const recipientID = urlParams.get("to");
-  if (recipientID) {
-    openChat(recipientID);
-  }
 }
 
 function openChat(recipientID) {
@@ -60,6 +61,11 @@ function openChat(recipientID) {
     .doc(recipientID)
     .get()
     .then((doc) => (chatHeader.innerText = doc.data().name));
+
+  for (const contact of contactsContainer.querySelectorAll(".contact")) {
+    contact.removeAttribute("selected");
+  }
+  document.getElementById(recipientID)?.setAttribute("selected", true);
 
   getChat(recipientID).then((chat) => {
     document.querySelector(".messages-container").replaceWith(chat.page);

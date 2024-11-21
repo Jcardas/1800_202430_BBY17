@@ -1,358 +1,307 @@
-body
-{
-    background-image: none;
-    background-color: #00130a;
+body {
+  background-image: none;
+  background-color: #00130a;
 }
 
-header
-{
-    background-image: none;
-    background-color: #00130a;
+header {
+  background-image: none;
+  background-color: #00130a;
 }
 
 /* Navbar ---------------------------------------------- */
 
-#navbar-searchbar 
-{
-    background-color: rgb(20, 51, 37);
-    background-image: url(/assets/search_white.svg);
+#navbar-searchbar {
+  background-color: rgb(20, 51, 37);
+  background-image: url(/assets/search_white.svg);
 
-  
-    color: white;
-    font-size: 15px;
-    width: 240px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border: none;
-    padding: 10px 35px;
-    outline: rgb(20, 51, 37);
-    transition: outline-color 0.3s ease-in-out; /* Smooth transition for outline */
-  }
+  color: white;
+  font-size: 15px;
+  width: 240px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: none;
+  padding: 10px 35px;
+  outline: rgb(20, 51, 37);
+  transition: outline-color 0.3s ease-in-out; /* Smooth transition for outline */
+}
 
-  .desktop-search-bar {
-    background-image: linear-gradient(to left, #019450, #00130a);
-  }
+.desktop-search-bar {
+  background-image: linear-gradient(to left, #019450, #00130a);
+}
 
-  .mobile-search-bar {
-    background-image: linear-gradient(to left, #019450, #00130a);
-  }
-  
-  .selected-tab {
-    border-radius: 20px;
-    background-color: #019450;
-    color: white;
-  }
+.mobile-search-bar {
+  background-image: linear-gradient(to left, #019450, #00130a);
+}
 
-  #dark-mode-toggle-container > p
-  {
-    color: white;
-    margin: 0;
-  }
+.selected-tab {
+  border-radius: 20px;
+  background-color: #019450;
+  color: white;
+}
+
+#dark-mode-toggle-container > p {
+  color: white;
+  margin: 0;
+}
 /* ----------------------------------------------------- */
 
 /* Menu Icon --------------------------------------------*/
-#menu
-{
+#menu {
   display: none;
 }
 
-#menu-white
-{
+#menu-white {
   display: block !important;
 }
 
 /* Dropdown Menu */
-.dropdown-menu
-{
-    background-color: #001b0e !important;
+.dropdown-menu {
+  background-color: #001b0e !important;
 }
 
-.dropdown-item
-{
-    color: white;
+.dropdown-item {
+  color: white;
 }
 
 /* ------------------------------------------------------- */
 
 /* Login Form ------------------------------------------- */
 #firebaseui-auth-container {
-    margin: 40px 0px 40px 0px;
-  }
+  margin: 40px 0px 40px 0px;
+}
 
-  .firebaseui-title
-  {
-    color: white;
-  }
-  
-  .mdl-textfield__input
-  {
-    color: white;
-  }
+.firebaseui-title {
+  color: white;
+}
 
-  .firebaseui-container {
-    background-image: none;
-    background-color: #001b0e;
-    border: solid 1px #019450;
-    box-shadow: none;
-  }
-  
-  .firebaseui-container:hover {
-    transform: scale(1.01);
-    box-shadow: 0px 2px 10px #013d212d;
-  }
+.mdl-textfield__input {
+  color: white;
+}
 
-  .mdl-textfield__label{
-    color: white;
-  }
-  
-  .firebaseui-container .firebaseui-idp-button {
-    background-color: #fff;
-    border: none;
-    color: white;
-  }
-  
-  .firebaseui-container .firebaseui-idp-button:hover {
-    background-color: #01783c; /* A slightly darker shade for hover effect */
-  }
-  
-  /* Submit button style */
-  .firebaseui-container .firebaseui-button {
-    border-radius: 10px;
-    background-color: #01944f00;
-    color: white;
-    border: solid 1px white;
-  }
-  
-  .firebaseui-container .firebaseui-button:hover {
-    background-color: white;
-    color: #019450;
-    border-color: #01944f57;
-  }
+.firebaseui-container {
+  background-image: none;
+  background-color: #001b0e;
+  border: solid 1px #019450;
+  box-shadow: none;
+}
 
-  .mdl-textfield.is-focused .mdl-textfield__label,
-  .mdl-textfield.is-dirty .mdl-textfield__label {
-    color: #019450 !important;
-  }
+.firebaseui-container:hover {
+  transform: scale(1.01);
+  box-shadow: 0px 2px 10px #013d212d;
+}
+
+.mdl-textfield__label {
+  color: white;
+}
+
+.firebaseui-container .firebaseui-idp-button {
+  background-color: #fff;
+  border: none;
+  color: white;
+}
+
+.firebaseui-container .firebaseui-idp-button:hover {
+  background-color: #01783c; /* A slightly darker shade for hover effect */
+}
+
+/* Submit button style */
+.firebaseui-container .firebaseui-button {
+  border-radius: 10px;
+  background-color: #01944f00;
+  color: white;
+  border: solid 1px white;
+}
+
+.firebaseui-container .firebaseui-button:hover {
+  background-color: white;
+  color: #019450;
+  border-color: #01944f57;
+}
+
+.mdl-textfield.is-focused .mdl-textfield__label,
+.mdl-textfield.is-dirty .mdl-textfield__label {
+  color: #019450 !important;
+}
 
 /* ------------------------------------------------------- */
 
-
 /* Cards --------*/
 
-.card
-{
-    background-color: #ffffff00;
+.card {
+  background-color: #ffffff00;
 }
 
-.card-title
-{
-    color: white;
+.card-title {
+  color: white;
 }
 
-.card-text
-{
-    color: #019450 !important;
-
+.card-text {
+  color: #019450 !important;
 }
 
-.listing-card:hover
-{
+.listing-card:hover {
   outline: 1px solid rgba(255, 255, 255, 0.715) !important;
 }
 
 /* --------------- */
 
-
 /* Account Page ----------------*/
 
-#account-header
-{
+#account-header {
   color: white;
 }
 
-.all-inputs::placeholder 
-{
+.all-inputs::placeholder {
   color: #727272;
 }
 
-.all-inputs
-{
+.all-inputs {
   border-bottom: solid 1px #cdcdcd;
 }
 
-#inputName
-{
+#inputName {
   background-image: url(/assets/user_white.svg);
 }
-#inputEmail
-{
+#inputEmail {
   background-image: url(/assets/mail_white.svg);
 }
-#inputAddress
-{
+#inputAddress {
   background-image: url(/assets/address_white.svg);
 }
-#inputAddress2
-{
+#inputAddress2 {
   background-image: url(/assets/address_white.svg);
 }
-#inputCity
-{
+#inputCity {
   background-image: url(/assets/city_white.svg);
 }
-#inputZip
-{
+#inputZip {
   background-image: url(/assets/zip_white.svg);
 }
 
-.verification-group
-{
+.verification-group {
   padding: 10px;
   border-radius: 8px;
   margin: 0 auto;
 }
 
-#proof-button
-{
+#proof-button {
   border: 1px solid #ccc;
 }
 
-#proof-button:hover
-{
+#proof-button:hover {
   background-color: white;
   color: #019450;
 }
 
 /* ----------------------------- */
 
-
-footer
-{
-    color: white;
+footer {
+  color: white;
 }
 
-.text-body-emphasis
-{
-    color: white !important;
+.text-body-emphasis {
+  color: white !important;
 }
 
-.lead
-{
-    color: white;
+.lead {
+  color: white;
 }
 
-.text-bg-success
-{
-    background-color: #001b0e !important;
-    box-shadow: 0px 0px 2px #019450;
+.text-bg-success {
+  background-color: #001b0e !important;
+  box-shadow: 0px 0px 2px #019450;
 }
 
-.btn-white
-{
-    background-color: #00130a;
-    border: solid 1px #019450;
+.btn-white {
+  background-color: #00130a;
+  border: solid 1px #019450;
 }
 
-.btn
-{
-    background-color: #019450;
-    color: #fff;
+.btn {
+  background-color: #019450;
+  color: #fff;
 }
 
-.btn-secondary
-{
-    background-color: #001b0e;
-    border: solid 1px #019450;
-    color: #019450;
+.btn-secondary {
+  background-color: #001b0e;
+  border: solid 1px #019450;
+  color: #019450;
 }
 
-.btn:hover
-{
-    background-color: white;
-    color: #019450;
+.btn:hover {
+  background-color: white;
+  color: #019450;
 }
 
-.bg-body-tertiary
-{
-    background-color: #001b0e !important;
-    color: white;
-    box-shadow: 0px 0px 2px #019450;
+.bg-body-tertiary {
+  background-color: #001b0e !important;
+  color: white;
+  box-shadow: 0px 0px 2px #019450;
 }
 
 :root {
-    --bs-border-color: #001b0e; 
+  --bs-border-color: #001b0e;
 }
 
-:root{
-    --bs-body-color: #fff;
+:root {
+  --bs-body-color: #fff;
 }
 
 /* Message Board ---------------------------------------- */
 
-
-#contacts-list
-{
+#contacts-list {
   background-color: rgb(20, 51, 37);
   border-right: 2px solid rgb(12, 31, 22);
 }
 
-#selected-contact {
+.contact[selected] {
   background-color: #019450;
   border-radius: 10px;
 }
 
-#current-chat
-{
+#current-chat {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-#chat-header
-{
+#chat-header {
   background-color: rgb(20, 51, 37);
 }
 
-#chat-content
-{
+#chat-content {
   background-color: rgb(14, 35, 26);
 }
 
-.messages-container
-{
+.messages-container {
   display: flex;
   flex-direction: column;
 }
 
-.incoming-message
-{
+.incoming-message {
   background-color: rgb(84, 84, 84);
   color: white;
 }
 
-.outgoing-message
-{
+.outgoing-message {
   background-color: #01944fc3;
   color: white;
 }
 
-#message-bar > input
-{
+#message-bar > input {
   background-color: rgb(20, 51, 37);
   color: white;
   outline: rgb(20, 51, 37);
   transition: outline-color 0.3s ease-in-out;
 }
 
-#message-bar > input:focus
-{
+#message-bar > input:focus {
   outline: none;
   outline: solid 2px #019450;
 }
 
-#message-send-button
-{
-  position:absolute;
+#message-send-button {
+  position: absolute;
   right: 0;
 
   background-color: #019450;
@@ -366,19 +315,16 @@ footer
   border-bottom-right-radius: 50%;
 }
 
-#message-send-button:hover
-{
+#message-send-button:hover {
   background-color: #00753e;
 }
 
-.plus-sign
-{
+.plus-sign {
   border-color: white;
   color: white;
 }
 
-.plus-sign:hover
-{
+.plus-sign:hover {
   background-color: white;
   color: black;
 }
@@ -399,7 +345,6 @@ footer
 
 /* THING */
 
-#product-desc
-{
+#product-desc {
   color: #e5e5e5;
 }

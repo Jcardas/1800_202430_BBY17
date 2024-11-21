@@ -693,7 +693,7 @@ input[type="file"] {
   border-radius: 50%;
 }
 
-#selected-contact {
+.contact[selected] {
   background-color: #019450;
   border-radius: 10px;
 }
@@ -800,8 +800,7 @@ input[type="file"] {
 
 /* Product listing Info Page -------------- */
 
-#listing-form-info
-{
+#listing-form-info {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -809,8 +808,7 @@ input[type="file"] {
   gap: 20px;
 }
 
-.form-img-container
-{
+.form-img-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -820,15 +818,13 @@ input[type="file"] {
   border: solid #019450;
 }
 
-.form-img-container:hover
-{
+.form-img-container:hover {
   background-color: #00502b48;
   color: white;
   cursor: pointer;
 }
 
-#input-product-photo-container
-{
+#input-product-photo-container {
   background-color: #eeeeee93;
   border-radius: 12px;
   width: 200px;
@@ -839,20 +835,17 @@ input[type="file"] {
   overflow: hidden;
 }
 
-#input-product-photo
-{
+#input-product-photo {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
 }
 
-#photo-text
-{
+#photo-text {
   margin-top: 40px;
 }
 
-.form-input
-{
+.form-input {
   background-size: 16px;
   background-repeat: no-repeat;
   padding-left: 20px;
@@ -865,33 +858,28 @@ input[type="file"] {
   box-shadow: none;
 }
 
-.form-input:focus 
-{
+.form-input:focus {
   background-color: #ffffff00;
   border-bottom: solid 2px #019450;
   outline: none;
   box-shadow: none;
 }
 
-.name-input
-{
+.name-input {
   background-position: 0px 9px;
   background-image: url(/assets/leaf.svg);
 }
 
-.form-group-2
-{
+.form-group-2 {
   display: flex;
   gap: 20px;
 }
 
-.price-input
-{
+.price-input {
   width: 100px;
   background-position: 0px 5px;
   background-image: url(/assets/dollar.svg);
 }
-
 
 /* Dark Mode Toggle Switch (Light Mode) -------- */
 
