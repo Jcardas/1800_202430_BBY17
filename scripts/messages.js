@@ -100,6 +100,7 @@ function getChat(recipientID) {
   chat.send = function () {
     const messageText = messageInput.value.trim();
     if (!messageText) return;
+    messageInput.value = "";
 
     const message = {
       from: currentUser.uid,
@@ -119,12 +120,14 @@ function getChat(recipientID) {
       { merge: true }
     )
       .then(() => {
-        messageInput.value = "";
         this.messages.push(message);
         // do not call chat.render()
         // it's called by chat.onSnapshot() when the server updates
       })
-      .catch(console.error);
+      .catch(() => {
+        alert("There's an error sending your message.");
+        messageInput.value = messageText;
+      });
   };
 
   chat.render = function (message) {
