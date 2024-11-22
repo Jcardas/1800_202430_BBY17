@@ -94,12 +94,11 @@
     <div class="mobile-search-bar">
       <!-- Search Bar -->
       <form id="searchbar-form" role="search">
-        <input
-          id="navbar-searchbar"
-          type="search"
-          placeholder="Filter by produce..."
-          aria-label="Search"
-        />
+        <input placeholder="Filter by produce..." list="produce" id="navbar-searchbar" name="produce-choice">
+        <datalist id="produce"> 
+          <!-- Search Results go here -->
+          <option value="Search Results"></option>
+        </datalist>
       </form>
       <!-- Filter Icon -->
       <a href="#"
