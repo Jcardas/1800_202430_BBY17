@@ -1,5 +1,3 @@
-const { eventNames } = require("process");
-
 const darkModeLink = document.getElementById("dark-mode-css");
 const darkModeToggle = document.getElementById("dark-mode-toggle");
 
@@ -33,10 +31,9 @@ if (selectedTab) {
   selectedTab.classList.add("selected-tab");
 }
 
-
 const searchForm = document.querySelector("#searchbar-form");
 
-searchForm.addEventListener("submit", async (event) => {
+searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const f = document.getElementById("navbar-searchbar").value.trim();
@@ -46,24 +43,25 @@ searchForm.addEventListener("submit", async (event) => {
   }
 
   const listingsRef = db.collection("listings");
-  listingsRef.where("productType", "==", f).get();
-  console.log("Query executed").then((querySnapShot) => {
-    const searchResults = document.getElementById("search-results");
-    if (!searchResults) {
-      searchResults = document.createElement("div");
-      searchResults.id = "search-results";
-      document.body.appendChild(searchResults);
-    }
-    searchResults.innerHTML = "";
-  });
-
-  if (querySnapShot.empty) {
-    console.log("No results found:", searchResults);
-    searchResults.innerHTML = "<p>No matching results found</p>";
-  }
-
-  querySnapShot.forEach((doc) => {
-    const listing = doc.data();
-    console.log("Document Data:", listing);
-  });
+  listingsRef
+    .where("name", "==", f)
+    .get()
+    .then((querySnapShot) => {
+      console.log("Query executed");
+      let searchResults = document.getElementById("search-results");
+      if (!searchResults) {
+        searchResults = document.createElement("div");
+        searchResults.id = "search-results";
+        document.body.appendChild(searchResults);
+      }
+      searchResults.innerHTML = "";
+      if (querySnapShot.empty) {
+        console.log("No results found:", searchResults);
+        searchResults.innerHTML = "<p>No matching results found</p>";
+      }
+      querySnapShot.forEach((doc) => {
+        const listing = doc.data();
+        console.log("Document Data:", listing);
+      });
+    });
 });
