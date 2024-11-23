@@ -972,6 +972,7 @@ input:checked + .slider:before {
 #product-photo {
   border-radius: 12px;
   aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 #price-type {
