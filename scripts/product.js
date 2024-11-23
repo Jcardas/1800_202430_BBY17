@@ -14,7 +14,7 @@ function retrieveProductData() {
     .get()
     .then((doc) => {
       const data = doc.data();
-      const type = data.type;
+      const name = data.name;
       const price = data.price;
       const photo = data.fileURL;
       const description = data.description;
@@ -22,7 +22,7 @@ function retrieveProductData() {
 
       productContainer.querySelector("#product-photo").src = photo;
       productContainer.querySelector("#price").innerText = price;
-      productContainer.querySelector("#product-type").innerText = type;
+      productContainer.querySelector("#product-name").innerText = name;
       productContainer.querySelector("#product-desc").innerText = description;
     });
 }

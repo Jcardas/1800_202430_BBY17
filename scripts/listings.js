@@ -2,7 +2,6 @@ const listingForm = document.getElementById("listing-form-info");
 const fileContainer = document.getElementById("form-type-img");
 const listingFile = document.getElementById("photo-video-input");
 const fileText = document.getElementById("photo-text");
-const submit = document.getElementById("post");
 
 var currentUser;
 firebase.auth().onAuthStateChanged((user) => {
@@ -11,7 +10,7 @@ firebase.auth().onAuthStateChanged((user) => {
   currentUser = user;
 });
 
-submit.addEventListener("click", async (e) => {
+listingForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   if (!currentUser) {
@@ -22,7 +21,9 @@ submit.addEventListener("click", async (e) => {
 
   let fileURL = "";
   // This code gets the selected product type (e.g Seeds or Produce)
-  const type = document.querySelector('input[name="productType"]:checked')?.value;
+  const type = document.querySelector(
+    'input[name="productType"]:checked'
+  )?.value;
 
   if (type) {
     console.log(`Selected type: ${type}`);
@@ -30,7 +31,7 @@ submit.addEventListener("click", async (e) => {
     console.log("No product type selected");
   }
 
-
+  const name = document.getElementById("name").value;
   const price = document.getElementById("price").value;
   const units = document.getElementById("unit").value;
   const description = document.getElementById("description").value;
@@ -49,6 +50,7 @@ submit.addEventListener("click", async (e) => {
   db.collection("listings")
     .add({
       type: type,
+      name: name,
       price: parseFloat(price),
       units: units,
       description: description,
@@ -81,11 +83,10 @@ window.onload = function () {
 
   // If productType is present, autofill the product type field
   if (productType) {
-    console.log('Product type was: ' + productType);
+    console.log("Product type was: " + productType);
     document.getElementById(productType).checked = true;
-  }
-  else{
-    console.log('No product was previously selected');
+  } else {
+    console.log("No product was previously selected");
   }
 };
 

@@ -9,7 +9,7 @@ function displayCardsDynamically() {
     .then((allProducts) => {
       allProducts.forEach((doc) => {
         const data = doc.data();
-        var type = data.type;
+        var name = data.name;
         var unit = data.units;
         var price = data.price;
         var productPhoto = data.fileURL;
@@ -18,7 +18,7 @@ function displayCardsDynamically() {
         newcard
           .querySelector("a")
           .setAttribute("href", `/each_product.html?id=${doc.id}`);
-        newcard.querySelector(".card-title").innerText = `\$${price} | ${type}`;
+        newcard.querySelector(".card-title").innerText = `\$${price} | ${name}`;
         newcard.querySelector(".card-text").innerText = unit;
         newcard.querySelector(".card-img").src = productPhoto;
 
