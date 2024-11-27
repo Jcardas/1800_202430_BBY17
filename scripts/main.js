@@ -4,37 +4,44 @@ determineFarmerStatus();
 function displayCardsDynamically() {
   let cardTemplate = document.getElementById("productCardTemplate");
 
-  db.collection("listings")
-    .get()
-    .then((allProducts) => {
-      allProducts.forEach((doc) => {
-        const data = doc.data();
-        var name = data.name;
-        var unit = data.units;
-        var price = data.price;
-        var productPhoto = data.fileURL;
+  let listingsRef = db.collection("listings");
+  const urlParams = new URLSearchParams(window.location.search);
+  const search = urlParams.get("product-name")?.trim();
+  console.log(search);
+  if (search) {
+    console.log("here");
+    listingsRef = listingsRef.where("name", "==", search);
+  }
 
-        let newcard = cardTemplate.content.cloneNode(true);
-        newcard
-          .querySelector("a")
-          .setAttribute("href", `/each_product.html?id=${doc.id}`);
-        newcard.querySelector(".card-title").innerText = `\$${price} | ${name}`;
-        newcard.querySelector(".card-text").innerText = unit;
-        newcard.querySelector(".card-img").src = productPhoto;
+  listingsRef.get().then((docs) => {
+    docs.forEach((doc) => {
+      const data = doc.data();
+      var name = data.name;
+      var unit = data.units;
+      var price = data.price;
+      var productPhoto = data.fileURL;
 
-        db.collection("users")
-          .doc(data.userID)
-          .get()
-          .then((doc) => {
-            const data = doc.data();
-            const avatar = data.avatar || "/assets/profile_photo.png";
-            const name = data.name;
-            newcard.querySelector(".product-profile-icon").src = avatar;
-            newcard.querySelector(".product-farmer-name").innerText = name;
-            document.getElementById("products-go-here").appendChild(newcard);
-          });
-      });
+      let newcard = cardTemplate.content.cloneNode(true);
+      newcard
+        .querySelector("a")
+        .setAttribute("href", `/each_product.html?id=${doc.id}`);
+      newcard.querySelector(".card-title").innerText = `\$${price} | ${name}`;
+      newcard.querySelector(".card-text").innerText = unit;
+      newcard.querySelector(".card-img").src = productPhoto;
+
+      db.collection("users")
+        .doc(data.userID)
+        .get()
+        .then((doc) => {
+          const data = doc.data();
+          const avatar = data.avatar || "/assets/profile_photo.png";
+          const name = data.name;
+          newcard.querySelector(".product-profile-icon").src = avatar;
+          newcard.querySelector(".product-farmer-name").innerText = name;
+          document.getElementById("products-go-here").appendChild(newcard);
+        });
     });
+  });
 }
 
 function determineFarmerStatus() {
