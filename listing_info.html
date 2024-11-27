@@ -42,7 +42,7 @@
 
     <!-- Link to our stylesheets -->
     <link rel="stylesheet" href="./styles/style.css" />
-    <link id="dark-mode-css" rel="stylesheet" href="./styles/dark_mode.css">
+    <link id="dark-mode-css" rel="stylesheet" href="./styles/dark_mode.css" />
   </head>
 
   <body>
@@ -51,15 +51,14 @@
 
     <!-- main -->
     <form id="listing-form-info">
-
       <!-- Product Image Box -->
       <div id="form-type-img" class="form-img-container">
         <div id="input-product-photo-container">
-          <img 
+          <img
             id="input-product-photo"
             src="./assets/farmers_marketplace.png"
             alt="input photo"
-            >
+          />
         </div>
         <p id="photo-text"><span>Add a photo or video</span></p>
         <input
@@ -79,9 +78,9 @@
           class="form-input name-input"
           id="name"
           placeholder="Product (e.g Carrots)"
+          required
         />
       </div>
-
 
       <!-- Product Type input (Produce or Seeds) -->
       <div class="form-type">
@@ -123,26 +122,26 @@
           />
         </div>
 
-      <!-- Product Units Dropdown -->
-      <div class="form-type">
-        <label for="unit">Unit:</label>
-        <select class="form-text" id="unit" required>
-          <option value="" disabled selected>Select a unit</option>
-          <option value="$ / unit">$ / unit</option>
-          <option value="$ / lbs">$ / lbs</option>
-          <option value="$ / can">$ / can</option>
-          <option value="$ / kg">$ / kg</option>
-          <option value="$ / tray">$ / tray</option>
-          <option value="$ / pint">$ / pint</option>
-          <option value="$ / quart">$ / quart</option>
-          <option value="$ / gallon">$ / gallon</option>
-          <option value="$ / box">$ / box</option>
-          <option value="$ / basket">$ / basket</option>
-          <option value="$ / bundle">$ / bundle</option>
-          <option value="$ / crate">$ / crate</option>
-          <option value="$ / sack">$ / sack</option>
-        </select>
-      </div>
+        <!-- Product Units Dropdown -->
+        <div class="form-type">
+          <label for="unit">Unit:</label>
+          <select class="form-text" id="unit" required>
+            <option value="" disabled selected>Select a unit</option>
+            <option value="$ / unit">$ / unit</option>
+            <option value="$ / lbs">$ / lbs</option>
+            <option value="$ / can">$ / can</option>
+            <option value="$ / kg">$ / kg</option>
+            <option value="$ / tray">$ / tray</option>
+            <option value="$ / pint">$ / pint</option>
+            <option value="$ / quart">$ / quart</option>
+            <option value="$ / gallon">$ / gallon</option>
+            <option value="$ / box">$ / box</option>
+            <option value="$ / basket">$ / basket</option>
+            <option value="$ / bundle">$ / bundle</option>
+            <option value="$ / crate">$ / crate</option>
+            <option value="$ / sack">$ / sack</option>
+          </select>
+        </div>
       </div>
 
       <!-- Product Description Input-->
@@ -152,29 +151,30 @@
           class="form-input form-text-description"
           id="description"
           placeholder="Description"
+          required
         />
       </div>
 
       <!-- Recurring Checkbox Input-->
       <div class="form-type">
         <label>
-        <input
-        type="checkbox"
-        id="recurring"
-        value="show-input"
-        onclick="checkInput(recurring);"
-        />
-        Resupplied?
+          <input
+            type="checkbox"
+            id="recurring"
+            value="show-input"
+            onclick="checkInput(recurring);"
+          />
+          Resupplied?
         </label>
       </div>
 
       <!-- Bazinga -->
       <div class="form-type">
         <input
-        type="text"
-        id="form-text-resupplied"
-        placeholder="How often?"
-        style="display: none;"
+          type="text"
+          id="form-text-resupplied"
+          placeholder="How often?"
+          style="display: none"
         />
       </div>
 

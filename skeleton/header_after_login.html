@@ -18,6 +18,7 @@
             type="search"
             placeholder="Filter by produce..."
             aria-label="Search"
+            name="product-name"
           />
         </form>
         <!-- Filter Icon -->
@@ -94,12 +95,11 @@
     <div class="mobile-search-bar">
       <!-- Search Bar -->
       <form id="searchbar-form" role="search">
-        <input
-          id="navbar-searchbar"
-          type="search"
-          placeholder="Filter by produce..."
-          aria-label="Search"
-        />
+        <input placeholder="Filter by produce..." list="produce" id="navbar-searchbar" name="product-name">
+        <datalist id="produce"> 
+          <!-- Search Results go here -->
+          <option value="Search Results"></option>
+        </datalist>
       </form>
       <!-- Filter Icon -->
       <a href="#"
