@@ -10,7 +10,7 @@ header {
 
 /* Navbar ---------------------------------------------- */
 
-#navbar-searchbar {
+.navbar-searchbar {
   background-color: rgb(20, 51, 37);
   background-image: url(/assets/search_white.svg);
 

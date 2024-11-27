@@ -80,11 +80,11 @@ header {
   margin-bottom: 2px;
 }
 
-#searchbar-form {
+.searchbar-form {
   padding: 0px 5px 0px 5px;
 }
 
-#navbar-searchbar {
+.navbar-searchbar {
   background-color: rgb(224, 232, 225);
   background-image: url(/assets/search.svg);
   background-position: 10px 12px;
@@ -102,7 +102,7 @@ header {
   transition: outline-color 0.3s ease-in-out; /* Smooth transition for outline */
 }
 
-#navbar-searchbar:focus {
+.navbar-searchbar:focus {
   outline: none;
   outline: 2px solid #019450; /* Change outline color */
 }
@@ -215,7 +215,7 @@ header {
     align-items: center;
   }
 
-  #navbar-searchbar {
+  .navbar-searchbar {
     width: 230px;
   }
 
