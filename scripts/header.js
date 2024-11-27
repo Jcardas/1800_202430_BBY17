@@ -2,6 +2,7 @@ const darkModeLink = document.getElementById("dark-mode-css");
 const darkModeToggle = document.getElementById("dark-mode-toggle");
 
 initializeDarkMode();
+populateSearchSuggestions();
 
 function initializeDarkMode() {
   let darkMode;
@@ -22,11 +23,32 @@ darkModeToggle.addEventListener("input", () => {
 var currentPage = window.location.pathname;
 currentPage = currentPage.replace("/", "").replace(".html", "");
 
-console.log(currentPage);
-
 var selectedTab = document.getElementById(currentPage);
 if (selectedTab) {
   console.log(selectedTab);
 
   selectedTab.classList.add("selected-tab");
+}
+
+function populateSearchSuggestions() {
+  const datalist = document.getElementById("product-names");
+  getExistingProductNames().then((names) => {
+    names.forEach((name) => {
+      const option = document.createElement("option");
+      option.value = name;
+      option.innerText = name;
+      datalist.appendChild(option);
+    });
+  });
+}
+
+function getExistingProductNames() {
+  return db
+    .collection("listings")
+    .get()
+    .then((docs) => {
+      const names = new Set();
+      docs.forEach((doc) => names.add(doc.data().name));
+      return names;
+    });
 }

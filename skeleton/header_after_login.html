@@ -16,8 +16,9 @@
           <input
             id="navbar-searchbar"
             type="search"
-            placeholder="Filter by produce..."
+            placeholder="Seach product name..."
             aria-label="Search"
+            list="product-names"
             name="product-name"
           />
         </form>
@@ -36,7 +37,7 @@
           <a href="messages.html" class="nav-link px-3">Messages</a>
         </li>
       </ul>
-    </div>   
+    </div>
 
     <!-- Profile icon dropdown -->
     <div id="profile-icon" class="dropdown">
@@ -74,10 +75,7 @@
           <div id="dark-mode-toggle-container">
             <p>Dark Mode</p>
             <label class="switch">
-              <input
-                type="checkbox"
-                id="dark-mode-toggle"
-              />
+              <input type="checkbox" id="dark-mode-toggle" />
               <span class="slider round"></span>
             </label>
           </div>
@@ -95,11 +93,12 @@
     <div class="mobile-search-bar">
       <!-- Search Bar -->
       <form id="searchbar-form" role="search">
-        <input placeholder="Filter by produce..." list="produce" id="navbar-searchbar" name="product-name">
-        <datalist id="produce"> 
-          <!-- Search Results go here -->
-          <option value="Search Results"></option>
-        </datalist>
+        <input
+          placeholder="Seach product name..."
+          id="navbar-searchbar"
+          list="product-names"
+          name="product-name"
+        />
       </form>
       <!-- Filter Icon -->
       <a href="#"
@@ -108,5 +107,9 @@
     </div>
   </div>
 </header>
+
+<datalist id="product-names">
+  <option value="search result">sd</option>
+</datalist>
 
 <script src="./scripts/header.js"></script>
