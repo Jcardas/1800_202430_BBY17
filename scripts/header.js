@@ -46,11 +46,28 @@ function setupSearchForms() {
   function submit(event) {
     const form = event.target;
     const input = form.querySelector("input");
-    if (!existingProductNames.has(input.value)) {
+
+    input.value = input.value.trim();
+    if (existingProductNames.has(input.value)) return;
+
+    let products = [...existingProductNames];
+    let chosenProduct = products[0];
+    let minDistance = levenshtein(chosenProduct, input.value);
+    for (let i = 1; i < products.length; ++i) {
+      let product = products[i];
+      let distance = levenshtein(product, input.value);
+      if (distance < minDistance) {
+        chosenProduct = product;
+        minDistance = distance;
+      }
+    }
+    const SIMILARITY_THRESHOLD = 5;
+    if (minDistance >= SIMILARITY_THRESHOLD) {
       event.preventDefault();
-      alert("No products exist with that name.");
+      alert("No products exist with that name");
       return;
     }
+    input.value = chosenProduct;
   }
 
   for (const form of document.querySelectorAll(".searchbar-form")) {
