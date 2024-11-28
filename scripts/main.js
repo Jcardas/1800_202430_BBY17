@@ -7,7 +7,6 @@ function displayCardsDynamically() {
   let listingsRef = db.collection("listings");
   const urlParams = new URLSearchParams(window.location.search);
   const search = urlParams.get("product-name")?.trim();
-  console.log(search);
   if (search) {
     console.log("here");
     listingsRef = listingsRef.where("name", "==", search);
