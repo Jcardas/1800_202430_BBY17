@@ -93,10 +93,10 @@ window.onload = function () {
 function checkInput(checkbox) {
   if (checkbox.checked) {
     console.log("Checked");
-    document.getElementById("form-resupplied").style.display = "block";
+    document.getElementById("form-resupplied").disabled = false;
   } else {
     console.log("not checked");
-    document.getElementById("form-resupplied").style.display = "none";
+    document.getElementById("form-resupplied").disabled = true;
   }
 }
 
