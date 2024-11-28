@@ -756,7 +756,7 @@ input[type="file"] {
 
 #chat-content {
   max-width: 100%;
-  height: 100%;
+  height: calc(100% - 64px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -767,6 +767,7 @@ input[type="file"] {
 .messages-container {
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
 }
 
 .incoming-message {
