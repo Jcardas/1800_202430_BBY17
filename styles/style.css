@@ -160,6 +160,19 @@ header {
   #product-photo {
     width: 300px;
   }
+
+  /* Listing */
+
+  .main-listing-container
+{
+  a{
+    div{
+      img{
+        width: 100px;
+      }
+    }
+  }
+}
 }
 
 /* Additional adjustments for slightly larger screens (e.g., tablets) */
@@ -194,6 +207,19 @@ header {
 
   #product-photo {
     width: 350px;
+  }
+
+  /* Listing */
+
+  .main-listing-container
+  {
+    a{
+      div{
+        img{
+          width: 200px;
+        }
+      }
+    }
   }
 }
 
@@ -246,6 +272,19 @@ header {
 
   #product-photo {
     width: 500px;
+  }
+
+  /* Listing */
+
+  .main-listing-container
+  {
+    a{
+      div{
+        img{
+          width: 200px;
+        }
+      }
+    }
   }
 }
 
@@ -800,6 +839,35 @@ input[type="file"] {
 }
 /* ------------------------------------------------------- */
 
+/* Listing Page */
+
+.main-listing-container
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  a{
+    text-decoration: none;
+    color: #1f1f1f;
+    :hover{
+      outline: solid 5px #019450;
+    }
+
+    div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      img{
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
 /* Product listing Info Page -------------- */
 
 #listing-form-info {
@@ -880,6 +948,10 @@ input[type="file"] {
 
 .form-description
 {
+  width: 220px;
+  background-color: #ffffff00;
+  border: none;
+  border-bottom: solid 1px black;
 }
 
 #form-resupplied:disabled

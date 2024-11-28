@@ -331,6 +331,16 @@ footer {
   color: black;
 }
 
+/* Listing Page */
+
+.main-listing-container
+{
+  a{
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
 /* Posting */
 
 .listing-type {
@@ -349,4 +359,40 @@ footer {
 
 #product-desc {
   color: #e5e5e5;
+}
+
+/* Product listing Info Page -------------- */
+
+#input-product-photo-container {
+  background-color: #55555593;
+}
+
+.form-input {
+  background-color: #ffffff00;
+  border-bottom: solid 1px rgb(255, 255, 255);
+}
+
+.form-input:focus {
+  background-color: #ffffff00;
+  border-bottom: solid 2px #019450;
+}
+
+.name-input {
+  color: white;
+}
+
+.form-description
+{
+  border-bottom: solid 1px white;
+  color: white;
+}
+
+#form-resupplied:disabled
+{
+  color: #c6c6c6;
+}
+
+.price-input {
+  color: white;
+  background-image: url(/assets/dollar_white.svg);
 }
