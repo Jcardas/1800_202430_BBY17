@@ -53,3 +53,10 @@ messageButton.addEventListener("click", () => {
       .then(() => location.assign(`messages.html?to=${sellerID}`));
   });
 });
+
+function saveListingDocIDAndRedirect() {
+  let params = new URL(window.location.href)
+  let ID = params.searchParams.get("docID");
+  localStorage.setItem('listingDocID', ID);
+  window.location.href = 'review.html';
+}

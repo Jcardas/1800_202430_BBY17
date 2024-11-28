@@ -127,7 +127,7 @@
           <label for="unit">Unit:</label>
           <select class="form-text" id="unit" required>
             <option value="" disabled selected>Select a unit</option>
-            <option value="$ / unit">$ / unit</option>
+            <option value="$ / each">$ / each</option>
             <option value="$ / lbs">$ / lbs</option>
             <option value="$ / can">$ / can</option>
             <option value="$ / kg">$ / kg</option>
@@ -135,24 +135,27 @@
             <option value="$ / pint">$ / pint</option>
             <option value="$ / quart">$ / quart</option>
             <option value="$ / gallon">$ / gallon</option>
+            <option value="$ / dozen">$ / dozen</option>
             <option value="$ / box">$ / box</option>
             <option value="$ / basket">$ / basket</option>
             <option value="$ / bundle">$ / bundle</option>
             <option value="$ / crate">$ / crate</option>
             <option value="$ / sack">$ / sack</option>
+            <option value="$ / lot">$ / lot</option>
           </select>
         </div>
       </div>
 
       <!-- Product Description Input-->
       <div class="form-type">
-        <input
-          type="text"
-          class="form-input form-text-description"
+        <textarea
+          class="form-description"
           id="description"
-          placeholder="Description"
+          placeholder="Product description..."
           required
-        />
+          maxlength="200"
+        >
+        </textarea>
       </div>
 
       <div class="form-group-2">
@@ -180,7 +183,7 @@
         </div>
       </div>
 
-      <button type="submit" id="post">Post</button>
+      <button type="submit" class="btn m-3 mb-4" id="post">Post</button>
     </form>
 
     <div id="header-container"></div>

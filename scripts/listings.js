@@ -35,7 +35,7 @@ listingForm.addEventListener("submit", async (e) => {
   const price = document.getElementById("price").value;
   const units = document.getElementById("unit").value;
   const description = document.getElementById("description").value;
-  const resupplies = document.getElementById("form-text-resupplied").value;
+  const resupplies = document.getElementById("form-resupplied").value;
 
   if (listingFile.files.length == 0) {
     alert("You must provide a photo.");
@@ -98,11 +98,4 @@ function checkInput(checkbox) {
     console.log("not checked");
     document.getElementById("form-resupplied").disabled = true;
   }
-}
-
-function saveListingDocIDAndRedirect() {
-  let params = new URL(window.location.href)
-  let ID = params.searchParams.get("docID");
-  localStorage.setItem('listingDocID', ID);
-  window.location.href = 'review.html';
 }
