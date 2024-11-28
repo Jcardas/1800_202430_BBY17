@@ -74,7 +74,7 @@ header {
   padding-right: 10px;
 }
 
-#filter-icon {
+.filter-icon {
   width: 16px;
   height: 16px;
   margin-bottom: 2px;
