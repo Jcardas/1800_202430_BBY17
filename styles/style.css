@@ -117,9 +117,11 @@ header {
 
 .dropdown-menu {
   margin-top: 100px;
-}
-
-.dropdown-item {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(255, 255, 255),
+    rgb(244, 248, 242)
+  );
 }
 /* MOBILE SECTION ---------------------------------- */
 
