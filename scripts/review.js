@@ -1,9 +1,7 @@
-/*TODO - add a function to either listing.js or product.js 
-* that saves the listing ID to local storage
-*/
 var listingDocID = localStorage.getItem("listingDocID");
+console.log("Retrieved listing ID:", listingDocID);
 
-function getLisitngName(id) {
+function getListingName(id) {
     db.collection("listings")
     .doc(id)
     .get()
@@ -13,7 +11,7 @@ function getLisitngName(id) {
     });
 }
 
-getLisitngName(listingDocID);
+getListingName(listingDocID);
 
 const stars = document.querySelectorAll('.star');
 
@@ -28,8 +26,8 @@ stars.forEach((star, index) => {
 
 function writeReview() {
     console.log("inside write review");
-    let listingTitle = document.getElementById("listing-title").value;
-    let listingDescription = document.getElementById("listing-description").value;
+    let listingTitle = document.getElementById("review-title").value;
+    let listingDescription = document.getElementById("review-description").value;
     let fresh = document.querySelector('input[name="fresh"]:checked').value;
 
     const stars = document.querySelectorAll('.star');
@@ -56,7 +54,7 @@ function writeReview() {
             rating: listingRating,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         }).then(() => {
-            window.location.href = "thanks.html"; // Redirect to the thanks page
+            window.location.href = "thanks.html";
         });
     } else {
         console.log("No user is signed in");

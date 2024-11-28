@@ -56,7 +56,7 @@ messageButton.addEventListener("click", () => {
 
 function saveListingDocIDAndRedirect() {
   let params = new URL(window.location.href)
-  let ID = params.searchParams.get("docID");
+  let ID = params.searchParams.get("id");
   localStorage.setItem('listingDocID', ID);
   window.location.href = 'review.html';
 }
