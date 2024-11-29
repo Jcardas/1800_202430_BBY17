@@ -90,3 +90,11 @@ function ifProfileIsNotComplete(user, then, otherwise = (i) => i) {
       }
     });
 }
+
+// Function to hide the loading wheels.
+function hideLoadingWheel()
+{
+  for (const loadingWheel of document.querySelectorAll(".loading-wheel")) {
+    loadingWheel.style.display = "none";
+  }
+}

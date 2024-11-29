@@ -14,46 +14,60 @@ firebase.auth().onAuthStateChanged((user) => {
 var chats = {};
 
 function initializeMessages() {
-  return db
-    .collection("users")
-    .doc(currentUser.uid)
-    .get()
-    .then((doc) => {
-      if (!doc.exists) return;
+    return db
+      .collection("users")
+      .doc(currentUser.uid)
+      .get()
+      .then((doc) => {
+        if (!doc.exists) return;
 
-      const urlParams = new URLSearchParams(window.location.search);
-      const currentRecipientID = urlParams.get("to");
-      const contacts = doc.data().contacts || [];
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentRecipientID = urlParams.get("to");
+        const contacts = doc.data().contacts || [];
 
-      for (const contactID of contacts) {
-        db.collection("users")
-          .doc(contactID)
-          .get()
-          .then((doc) => doc.data()?.avatar || "/assets/profile_photo.png")
-          .then((avatarURL) => {
-            const contactImg = document.createElement("img");
-            const contactDiv = document.createElement("div");
+        // Start a counter for the number of contacts loaded
+        let contactsToLoad = 0;
+        contactsToLoad = contacts.length;
+        // If no cards to load, hide the loading wheel immediately
+        if (contactsToLoad === 0) {
+          hideLoadingWheel();
+          return;
+        }
 
-            contactImg.className = "contact-photo";
-            contactImg.src = avatarURL;
-            contactDiv.id = contactID;
-            contactDiv.className = "contact";
-            contactDiv.onclick = function () {
-              openChat(contactID);
-            };
+        for (const contactID of contacts) {
+            db.collection("users")
+            .doc(contactID)
+            .get()
+            .then((doc) => doc.data()?.avatar || "/assets/profile_photo.png")
+            .then((avatarURL) => {
+              const contactImg = document.createElement("img");
+              const contactDiv = document.createElement("div");
 
-            contactDiv.appendChild(contactImg);
-            contactsContainer.appendChild(contactDiv);
+              contactImg.className = "contact-photo";
+              contactImg.src = avatarURL;
+              contactDiv.id = contactID;
+              contactDiv.className = "contact";
+              contactDiv.onclick = function () {
+                openChat(contactID);
+              };
 
-            if (currentRecipientID) {
-              openChat(currentRecipientID);
-              if (contactID == currentRecipientID) {
-                contactDiv.setAttribute("selected", true);
+              contactDiv.appendChild(contactImg);
+              contactsContainer.appendChild(contactDiv);
+
+              if (currentRecipientID) {
+                openChat(currentRecipientID);
+                if (contactID == currentRecipientID) {
+                  contactDiv.setAttribute("selected", true);
+                }
               }
-            }
-          });
-      }
-    });
+            });
+          // Decrement the counter and hide the loading wheel if all contacts are loaded
+          contactsToLoad--;
+          if (contactsToLoad === 0) {
+            hideLoadingWheel();
+          }
+        }
+      });
 }
 
 function openChat(recipientID) {

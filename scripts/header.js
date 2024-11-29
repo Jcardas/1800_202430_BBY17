@@ -27,8 +27,6 @@ currentPage = currentPage.replace("/", "").replace(".html", "");
 
 var selectedTab = document.getElementById(currentPage);
 if (selectedTab) {
-  console.log(selectedTab);
-
   selectedTab.classList.add("selected-tab");
 }
 
