@@ -92,9 +92,34 @@ function ifProfileIsNotComplete(user, then, otherwise = (i) => i) {
 }
 
 // Function to hide the loading wheels.
-function hideLoadingWheel()
-{
+function hideLoadingWheel() {
   for (const loadingWheel of document.querySelectorAll(".loading-wheel")) {
     loadingWheel.style.display = "none";
   }
 }
+
+function getProductsFromFile() {
+  const productOptionsContainer = document.getElementById(
+    "product-options-go-here"
+  );
+  let entries = [];
+
+  // Gets the products file for reference.
+  fetch("/assets/products.csv")
+    .then((res) => res.text())
+    .then((text) => {
+      // Gets an array of products from the file, splitting on each \n.
+      entries = text.split("\n");
+
+      // Loops through each entry.
+      entries.forEach((entry) => {
+        const productOption = document.createElement("option");
+        productOption.value = entry;
+
+        // Append the entry as an option in the datalist.
+        productOptionsContainer.appendChild(productOption);
+      });
+    });
+}
+
+getProductsFromFile();
