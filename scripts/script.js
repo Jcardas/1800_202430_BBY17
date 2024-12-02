@@ -1,3 +1,5 @@
+determineFarmerStatus();
+
 $("#footer-container").load("./skeleton/footer.html");
 
 firebase.auth().onAuthStateChanged((user) => {
