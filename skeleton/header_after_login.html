@@ -44,53 +44,65 @@
       </ul>
     </div>
 
-    <!-- Profile icon dropdown -->
-    <div id="profile-icon" class="dropdown">
-      <a
-        href="#"
-        class="d-block link-body-emphasis text-decoration-none"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        <img
-          id="avatar"
-          src="./assets/profile_photo.png"
-          alt="avatar"
-          width="30"
-          height="30"
-          style="object-fit: cover; border-radius: 20px"
-        />
-      </a>
-      <ul class="dropdown-menu text-small">
-        <li id="profile"><a class="dropdown-item" href="#">Profile</a></li>
-        <li>
-          <a id="account" class="dropdown-item" onclick="showAccountSettings()"
-            >Account Settings</a
-          >
-        </li>
-        <li>
-          <a id="mylistings" class="dropdown-item" href="#">My Listings </a>
-        </li>
-        <li>
-          <a id="bookmarks" class="dropdown-item" onclick="showBookmarks()"
-            >Bookmarks</a
-          >
-        </li>
-        <li>
-          <div id="dark-mode-toggle-container">
-            <p>Dark Mode</p>
-            <label class="switch">
-              <input type="checkbox" id="dark-mode-toggle" />
-              <span class="slider round"></span>
-            </label>
-          </div>
-        </li>
-        <li><hr class="dropdown-divider" /></li>
-        <li>
-          <a class="dropdown-item" onclick="logout()">Sign out</a>
-        </li>
-      </ul>
+    <!-- Post Button & Profile icon dropdown -->
+    <div class="post-button-profile-icon">
+
+      <div class="make-a-post" style="display: none">
+        <a href="listing.html" class="plus-sign">+</a>
+      </div>
+
+      <div id="profile-icon" class="dropdown">
+        <a
+          href="#"
+          class="d-block link-body-emphasis text-decoration-none"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            id="avatar"
+            src="./assets/profile_photo.png"
+            alt="avatar"
+            width="30"
+            height="30"
+            style="object-fit: cover; border-radius: 20px"
+          />
+        </a>
+        <ul class="dropdown-menu text-small">
+          <li>
+            <a class="make-a-post dropdown-item" href="listing.html" style="display: none;"
+              >Post</a
+            >
+          </li>
+          <li>
+            <a id="account" class="dropdown-item" onclick="showAccountSettings()"
+              >Account Settings</a
+            >
+          </li>
+          <li>
+            <a id="mylistings" class="dropdown-item" href="#">My Listings </a>
+          </li>
+          <li>
+            <a id="bookmarks" class="dropdown-item" onclick="showBookmarks()"
+              >Bookmarks</a
+            >
+          </li>
+          <li>
+            <div id="dark-mode-toggle-container">
+              <p>Dark Mode</p>
+              <label class="switch">
+                <input type="checkbox" id="dark-mode-toggle" />
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </li>
+          <li><hr class="dropdown-divider" /></li>
+          <li>
+            <a class="dropdown-item" onclick="logout()">Sign out</a>
+          </li>
+        </ul>
+      </div>
     </div>
+
   </div>
 
   <!-- SEARCH ICON, BAR, AND FILTER (Hidden in larger viewport)-->

@@ -18,7 +18,8 @@ header {
 }
 
 .navbar-row1 {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20% auto 20%;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 5px;
@@ -49,6 +50,33 @@ header {
   background-color: #019450;
   color: white;
 }
+
+.post-button-profile-icon
+{
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.make-a-post
+{
+  display: flex; 
+  text-align: center; 
+  align-items: center;
+
+  h2{
+      margin-top: 6px; 
+      margin-right: 10px;
+      color: #019450;
+  }
+
+  a{
+    border-color: #019450;
+    color: #019450;
+  }
+}
+
 
 #profile-icon {
   margin-right: 10px;
@@ -231,6 +259,7 @@ header {
 /* Adjustments for even wider viewports (e.g., small laptops) */
 @media (min-width: 768px) {
   .navbar-row1 {
+    display: flex;
     justify-content: space-between;
   }
 
@@ -660,7 +689,7 @@ input[type="file"] {
 }
 
 .plus-sign:hover {
-  background-color: black;
+  background-color: #019450;
   color: white;
 }
 
