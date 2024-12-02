@@ -48,7 +48,7 @@
 
     <!-- Link to our stylesheets -->
     <link rel="stylesheet" href="./styles/style.css" />
-    <link id="dark-mode-css" rel="stylesheet" href="./styles/dark_mode.css">
+    <link id="dark-mode-css" rel="stylesheet" href="./styles/dark_mode.css" />
   </head>
 
   <body>
@@ -59,54 +59,46 @@
 
     <!-- Entire Chat Container -->
     <div id="chat-container">
-
       <!-- Contacts List Sidebar -->
       <aside id="contacts-list">
         <!-- Auto populated contact photos -->
-        <div id="contacts-go-here">
-          <!-- <div id=`${contact-id}` class="contact">
-          <img src="/assets/profile_photo.png" class="contact-photo">
-          </div> -->
-        </div>
+        <div id="contacts-go-here"></div>
         <!-- Loading Wheel -->
-        <div class="loading-wheel spinner-border text-success m-4" role="status">
+        <div
+          class="loading-wheel spinner-border text-success m-4"
+          role="status"
+        >
           <span class="sr-only"></span>
         </div>
       </aside>
 
       <!-- The current initialized chat (This should be the flexbox for the send bar, the header, and the messages) -->
       <article id="current-chat">
-
         <!-- The header for the chat (e.g farmer name) -->
         <section id="chat-header">Select a contact</section>
 
         <!-- The Contents of the chat (Messages) -->
         <section id="chat-content">
-
           <div class="messages-container">
             <!-- <div class="outgoing-message">This is an example outgoing message.</div>
             <div class="incoming-message">This is an example incoming message</div> -->
           </div>
           <!-- The message bar with send button -->
           <div id="message-bar" style="display: none">
-            <input type="text" id="message-bar-input" placeholder="Type a message...">
-            <button id="message-send-button">
-              ↑
-            </button>
+            <input
+              type="text"
+              id="message-bar-input"
+              placeholder="Type a message..."
+            />
+            <button id="message-send-button">↑</button>
           </div>
         </section>
       </article>
     </div>
 
-
     <template>
-      <img 
-        src="/assets/profile_photo.png" 
-        alt="profile icon"
-      >
+      <img src="/assets/profile_photo.png" alt="profile icon" />
     </template>
-     
-    </body>
 
     <!-- footer -->
     <div id="footer-container"></div>
