@@ -60,7 +60,7 @@ listingForm.addEventListener("submit", async (e) => {
     })
     .then(() => {
       alert("Listing submitted successfully!");
-      listingForm.reset();
+      window.location.assign("main.html");
     })
     .catch((error) => {
       console.error("Error saving listing", error);
