@@ -73,8 +73,27 @@ header {
 
   a{
     border-color: #019450;
-    color: #019450;
+    text-decoration: none;
+    color: white;
   }
+}
+
+.floating-btn
+{
+  background-color: #019450;
+  border-radius: 12px;
+  position: fixed;
+  z-index: 1;
+  bottom: 30px;
+  right: 30px;
+}
+
+.floating-btn:hover{
+  box-shadow: 0px 5px 8px #00000035;
+}
+
+.floating-btn:active{
+  background-color: #00502b;
 }
 
 
