@@ -135,9 +135,13 @@ function generateProductOptions() {
 
 function setupNameAutocorrect() {
   const nameInput = document.getElementById("name");
+  nameInput.oninput = function () {
+    nameInput.classList.remove("invalid-name");
+  };
   nameInput.onchange = function () {
     if (!autocorrect(nameInput, validProductNames)) {
       nameInput.focus();
+      nameInput.classList.add("invalid-name");
     }
   };
 }
