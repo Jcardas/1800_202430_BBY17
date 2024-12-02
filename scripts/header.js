@@ -56,10 +56,11 @@ function setupSearchForms() {
   // so we need to setup both
   for (const form of document.querySelectorAll(".searchbar-form")) {
     form.onsubmit = function (event) {
+      event.preventDefault();
       const form = event.target;
       const input = form.querySelector("input");
-      if (!autocorrect(input, existingProductNames)) {
-        event.preventDefault();
+      if (autocorrect(input, existingProductNames)) {
+        window.location.assign(`main.html?product-name=${input.value}`);
       }
     };
   }
