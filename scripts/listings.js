@@ -10,6 +10,7 @@ firebase.auth().onAuthStateChanged((user) => {
   // it's impossible for a non-user to access this page in the first place
   currentUser = user;
 });
+generateProductOptions();
 
 listingForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -102,4 +103,23 @@ function checkInput(checkbox) {
     console.log("not checked");
     document.getElementById("form-resupplied").disabled = true;
   }
+}
+
+function generateProductOptions() {
+  const productOptions = document.getElementById("product-options");
+
+  // Gets the products file for reference.
+  fetch("/assets/products.csv")
+    .then((res) => res.text())
+    .then((text) => {
+      // Gets an array of products from the file, splitting on each \n.
+      const entries = text.split("\n");
+
+      // for each entry, append it to #product-options
+      entries.forEach((entry) => {
+        const productOption = document.createElement("option");
+        productOption.value = entry;
+        productOptions.appendChild(productOption);
+      });
+    });
 }

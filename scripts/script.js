@@ -97,35 +97,3 @@ function hideLoadingWheel() {
     loadingWheel.style.display = "none";
   }
 }
-
-// Declare entries as an empty list initially
-let entries = [];
-
-function getProductsFromFile() {
-  const productOptionsContainer = document.getElementById(
-    "product-options-go-here"
-  );
-
-  console.log("What")
-
-  // As long as there isn't already entries... 
-  if(entries.length === 0){
-
-    // Gets the products file for reference.
-    fetch("/assets/products.csv")
-      .then((res) => res.text())
-      .then((text) => {
-        // Gets an array of products from the file, splitting on each \n.
-        entries = text.split("\n");
-
-        // Loops through each entry.
-        entries.forEach((entry) => {
-          const productOption = document.createElement("option");
-          productOption.value = entry;
-
-          // Append the entry as an option in the datalist.
-          productOptionsContainer.appendChild(productOption);
-        });
-      });
-  }
-}
