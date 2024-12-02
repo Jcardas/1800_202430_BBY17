@@ -54,7 +54,8 @@ function writeReview() {
             rating: listingRating,
             timestamp: firebase.firestore.FieldValue.serverTimestamp()
         }).then(() => {
-            window.location.href = "thanks.html";
+            alert("Review has been posted");
+            window.location.href = "main.html";
         });
     } else {
         console.log("No user is signed in");
