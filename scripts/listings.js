@@ -1,6 +1,7 @@
 const listingForm = document.getElementById("listing-form-info");
 const fileContainer = document.getElementById("form-type-img");
 const listingFile = document.getElementById("photo-video-input");
+const productPhoto = document.getElementById("input-product-photo");
 const fileText = document.getElementById("photo-text");
 
 var currentUser;
@@ -42,7 +43,6 @@ listingForm.addEventListener("submit", async (e) => {
     return;
   }
 
-  // TODO: allow uploading multiple files
   const file = listingFile.files[0];
   const fileRef = storage.ref(`listings/${currentUser.uid}/${file.name}`);
   fileURL = await fileRef.put(file).then(() => fileRef.getDownloadURL());
@@ -73,7 +73,11 @@ fileText.addEventListener("click", () => listingFile.click());
 
 listingFile.addEventListener("change", () => {
   const postURL = URL.createObjectURL(listingFile.files[0]);
-  fileContainer.src = postURL;
+  productPhoto.parentElement.style.width = "300px";
+  productPhoto.src = postURL;
+  productPhoto.style.objectFit = "cover";
+  productPhoto.style.height = productPhoto.style.width = "100%";
+  fileText.style.display = "none";
 });
 
 window.onload = function () {
