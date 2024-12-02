@@ -14,6 +14,9 @@ function _min(d0, d1, d2, bx, ay) {
 }
 
 function levenshtein(a, b) {
+  a = a.toLowerCase();
+  b = b.toLowerCase();
+
   if (a === b) {
     return 0;
   }

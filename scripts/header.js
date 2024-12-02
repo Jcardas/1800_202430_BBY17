@@ -57,6 +57,13 @@ function setupSearchForms() {
   }
 
   function submit(event) {
+    function compareTo(other) {
+      return (
+        levenshtein(other, input.value) /
+        Math.max(other.length, input.value.length)
+      );
+    }
+
     const form = event.target;
     const input = form.querySelector("input");
     input.value = input.value.trim();
@@ -65,24 +72,32 @@ function setupSearchForms() {
 
     let products = [...existingProductNames];
     let chosenProduct = products[0];
-    let minDistance = levenshtein(chosenProduct, input.value);
+    let minDistance = compareTo(chosenProduct);
     for (let i = 1; i < products.length; ++i) {
       let product = products[i];
-      let distance = levenshtein(product, input.value);
+      let distance = compareTo(product);
       if (distance < minDistance) {
         chosenProduct = product;
         minDistance = distance;
       }
     }
 
-    const SIMILARITY_THRESHOLD = 5;
-    if (minDistance < SIMILARITY_THRESHOLD) {
+    const MATCH_THRESHOLD = 0.5;
+    const MAYBE_THRESHOLD = 0.75;
+
+    if (minDistance <= MATCH_THRESHOLD) {
       input.value = chosenProduct;
       return;
     }
-
+    if (
+      minDistance <= MAYBE_THRESHOLD &&
+      confirm(`Did you mean ${chosenProduct}?`)
+    ) {
+      input.value = chosenProduct;
+      return;
+    }
     event.preventDefault();
-    alert("No products exist with that name");
+    alert("No products exist with that name.");
     return;
   }
 }
