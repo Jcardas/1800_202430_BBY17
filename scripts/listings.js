@@ -11,6 +11,7 @@ firebase.auth().onAuthStateChanged((user) => {
   currentUser = user;
 });
 generateProductOptions();
+setupNameAutocorrect();
 
 listingForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -34,6 +35,12 @@ listingForm.addEventListener("submit", async (e) => {
   }
 
   const name = document.getElementById("name").value;
+  if (!validProductNames.has(name)) {
+    alert("Invalid product name.");
+    document.getElementById("name").focus();
+    return;
+  }
+
   const price = document.getElementById("price").value;
   const units = document.getElementById("unit").value;
   const description = document.getElementById("description").value;
@@ -105,6 +112,7 @@ function checkInput(checkbox) {
   }
 }
 
+var validProductNames = new Set();
 function generateProductOptions() {
   const productOptions = document.getElementById("product-options");
 
@@ -118,8 +126,18 @@ function generateProductOptions() {
       // for each entry, append it to #product-options
       entries.forEach((entry) => {
         const productOption = document.createElement("option");
-        productOption.value = entry;
         productOptions.appendChild(productOption);
+        productOption.value = entry;
+        validProductNames.add(entry);
       });
     });
+}
+
+function setupNameAutocorrect() {
+  const nameInput = document.getElementById("name");
+  nameInput.onchange = function () {
+    if (!autocorrect(nameInput, validProductNames)) {
+      nameInput.focus();
+    }
+  };
 }

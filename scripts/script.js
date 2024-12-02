@@ -97,3 +97,43 @@ function hideLoadingWheel() {
     loadingWheel.style.display = "none";
   }
 }
+
+function autocorrect(input, correct_matches) {
+  function compareTo(other) {
+    return (
+      levenshtein(other, input.value) /
+      Math.max(other.length, input.value.length)
+    );
+  }
+
+  input.value = input.value.trim();
+  if (correct_matches.has(input.value)) return true;
+
+  let products = [...correct_matches];
+  let chosenProduct = products[0];
+  let minDistance = compareTo(chosenProduct);
+  for (let i = 1; i < products.length; ++i) {
+    let product = products[i];
+    let distance = compareTo(product);
+    if (distance < minDistance) {
+      chosenProduct = product;
+      minDistance = distance;
+    }
+  }
+
+  const MATCH_THRESHOLD = 0.5;
+  const MAYBE_THRESHOLD = 0.75;
+
+  if (minDistance <= MATCH_THRESHOLD) {
+    input.value = chosenProduct;
+    return true;
+  }
+  if (
+    minDistance <= MAYBE_THRESHOLD &&
+    confirm(`Did you mean ${chosenProduct}?`)
+  ) {
+    input.value = chosenProduct;
+    return true;
+  }
+  alert("Invalid product name.");
+}
