@@ -78,23 +78,3 @@ function displayCardsDynamically() {
     hideLoadingWheel(); // Hide the loading wheel if there is an error.
   });
 }
-
-function determineFarmerStatus() {
-  firebase.auth().onAuthStateChanged((user) => {
-    db.collection("users")
-      .doc(user.uid)
-      .get()
-      .then((doc) => {
-        if (!doc.exists) return;
-
-        if (doc.data().isFarmer) {
-          // currently there is only one "make-a-post" button,
-          // but loop through all in case we add more in the future
-          // (e.g. one floating in the cards, one in the navbar)
-          for (const button of document.querySelectorAll(".make-a-post")) {
-            button.style.display = "";
-          }
-        }
-      });
-  });
-}
