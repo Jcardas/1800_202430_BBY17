@@ -65,3 +65,14 @@ function setupSearchForms() {
     };
   }
 }
+
+const searchButton = document.querySelector(".desktop-search-bar .filter-icon");
+
+searchButton.addEventListener("click", function () {
+  const searchInput = document.querySelector(".desktop-search-bar .navbar-searchbar").value.trim();
+
+  if (searchInput) {
+    
+    window.location.href = `main.html?product-name=${encodeURIComponent(searchInput)}`;
+  }
+});
