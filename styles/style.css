@@ -998,6 +998,7 @@ input[type="file"] {
 .name-input {
   background-position: 0px 9px;
   background-image: url(/assets/leaf.svg);
+  width: 265px;
 }
 
 .form-group-2 {
@@ -1008,7 +1009,7 @@ input[type="file"] {
 
 .form-description
 {
-  width: 220px;
+  width: 265px;
   background-color: #ffffff00;
   border: none;
   border-bottom: solid 1px black;
