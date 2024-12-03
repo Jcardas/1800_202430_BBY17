@@ -37,9 +37,9 @@ function logout() {
     .auth()
     .signOut()
     .then(() => {
-      console.log("logging out user");
+      gotoURL("/index.html");
     })
-    .catch((error) => {});
+    .catch((error) => console.log(error));
 }
 
 function gotoURL(url) {
