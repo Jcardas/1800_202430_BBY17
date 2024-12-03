@@ -206,7 +206,6 @@ header {
   color: white;
 }
 
-
 .search-icon {
   position: absolute;
   left: 10px;
@@ -1188,4 +1187,10 @@ input:checked + .slider:before {
   z-index: 1;
   padding: 12px;
   cursor: pointer;
+}
+
+.review-btn
+{
+  font-size: small;
+  padding: 0px 4px;
 }

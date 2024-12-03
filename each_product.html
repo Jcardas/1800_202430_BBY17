@@ -60,7 +60,6 @@
         <h3 id="price-type">
           $<span id="price"></span> | <span id="product-name"></span>
         </h3>
-
         <div class="product-profile">
           <img
             class="product-profile-icon"
@@ -68,15 +67,12 @@
             alt=""
           />
           <p class="product-farmer-name"></p>
+          <button class="btn review-btn mx-3" onclick="saveListingDocIDAndRedirect()">Review</button>
         </div>
-
         <hr class="line-divider" />
-
         <p id="product-desc"></p>
       </div>
-
       <button id="message-button" class="btn">Message Farmer</button>
-      <button class="btn review-btn" onclick="saveListingDocIDAndRedirect()">Write Review</button>
     </div>
 
     <div id="footer-container"></div>
@@ -89,5 +85,6 @@
     <script src="./scripts/firebase.js"></script>
     <script src="./scripts/review.js"></script>
     <script src="./scripts/product.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>
