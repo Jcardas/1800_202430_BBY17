@@ -66,7 +66,7 @@ function setupSearchForms() {
   }
 }
 
-const searchButton = document.querySelector(".desktop-search-bar .filter-icon");
+const searchButton = document.querySelector(".desktop-search-bar .search-icon");
 
 searchButton.addEventListener("click", function () {
   const searchInput = document.querySelector(".desktop-search-bar .navbar-searchbar").value.trim();

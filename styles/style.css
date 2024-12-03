@@ -179,6 +179,7 @@ header {
 }
 
 .desktop-search-bar {
+  position: relative;
   background-image: linear-gradient(to left, #019450, white);
   background-position: right;
   border-top-right-radius: 20px;
@@ -205,6 +206,14 @@ header {
   color: white;
 }
 
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  z-index: 1;
+  padding: 12px;
+  background-color: green;
+}
 /* MOBILE SECTION ---------------------------------- */
 
 /* Basic styling for viewports that are 320px or wider */
