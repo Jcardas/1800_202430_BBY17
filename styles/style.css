@@ -211,6 +211,7 @@ header {
   left: 10px;
   z-index: 1;
   padding: 12px;
+  cursor: pointer;
 }
 /* MOBILE SECTION ---------------------------------- */
 

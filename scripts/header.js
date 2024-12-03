@@ -30,6 +30,13 @@ if (selectedTab) {
   selectedTab.classList.add("selected-tab");
 }
 
+for (const searchButton of document.querySelectorAll(".search-icon")) {
+  searchButton.onclick = function () {
+    const input = searchButton.parentElement.querySelector("input");
+    search(input);
+  };
+}
+
 const existingProductNames = new Set();
 function getExistingProductNames() {
   return db
@@ -57,22 +64,15 @@ function setupSearchForms() {
   for (const form of document.querySelectorAll(".searchbar-form")) {
     form.onsubmit = function (event) {
       event.preventDefault();
-      const form = event.target;
-      const input = form.querySelector("input");
-      if (autocorrect(input, existingProductNames)) {
-        window.location.assign(`main.html?product-name=${input.value}`);
-      }
+      search(event.target.querySelector("input"));
     };
   }
 }
 
-const searchButton = document.querySelector(".desktop-search-bar .search-icon");
-
-searchButton.addEventListener("click", function () {
-  const searchInput = document.querySelector(".desktop-search-bar .navbar-searchbar").value.trim();
-
-  if (searchInput) {
-    
-    window.location.href = `main.html?product-name=${encodeURIComponent(searchInput)}`;
+// there are 2 inputs, one for desktop and one for mobile,
+// the function needs to know which one it is
+function search(input) {
+  if (autocorrect(input, existingProductNames)) {
+    window.location.assign(`main.html?product-name=${input.value}`);
   }
-});
+}
