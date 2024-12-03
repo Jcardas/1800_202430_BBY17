@@ -51,6 +51,10 @@ header {
   color: white;
 }
 
+.selected-tab.dropdown-item{
+  border-radius: 0px;
+}
+
 .post-button-profile-icon
 {
   justify-self: end;
@@ -194,14 +198,16 @@ header {
 {
   cursor: pointer;
 }
+.dropdown-item:hover
+{
+  background-color: rgba(12, 98, 59, 0.331) !important;
+  color: white;
+}
+
 /* MOBILE SECTION ---------------------------------- */
 
 /* Basic styling for viewports that are 320px or wider */
 @media (min-width: 20px) {
-  body {
-    /* background-color: rgba(0, 8, 255, 0.078); */
-  }
-
   .hero-text {
     text-align: center;
   }
