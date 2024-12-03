@@ -2,9 +2,6 @@ const darkModeLink = document.getElementById("dark-mode-css");
 const darkModeToggle = document.getElementById("dark-mode-toggle");
 
 initializeDarkMode();
-getExistingProductNames()
-  .then(populateSearchSuggestions)
-  .then(setupSearchForms);
 
 function initializeDarkMode() {
   let darkMode;
@@ -28,13 +25,6 @@ currentPage = currentPage.replace("/", "").replace(".html", "");
 var selectedTab = document.getElementById(currentPage);
 if (selectedTab) {
   selectedTab.classList.add("selected-tab");
-}
-
-for (const searchButton of document.querySelectorAll(".search-icon")) {
-  searchButton.onclick = function () {
-    const input = searchButton.parentElement.querySelector("input");
-    search(input);
-  };
 }
 
 const existingProductNames = new Set();

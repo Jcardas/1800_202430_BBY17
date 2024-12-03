@@ -1,5 +1,4 @@
 displayCardsDynamically();
-determineFarmerStatus();
 
 function displayCardsDynamically() {
   let cardTemplate = document.getElementById("productCardTemplate");
