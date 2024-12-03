@@ -29,7 +29,7 @@ window.addEventListener("beforeunload", (e) => {
 });
 
 function populateData() {
-  firebase.auth().onAuthStateChanged((user) => {
+  getCurrentUser().then((user) => {
     // it should already be impossible for non-users to access this page
     // so no need to check if user exists
 
@@ -63,7 +63,7 @@ function populateData() {
 
 function saveProfile(e) {
   e.preventDefault();
-  firebase.auth().onAuthStateChanged((user) => {
+  getCurrentUser().then((user) => {
     const name = document.getElementById("inputName").value;
     const email = document.getElementById("inputEmail").value;
     const address = document.getElementById("inputAddress").value;

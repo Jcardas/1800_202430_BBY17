@@ -44,7 +44,7 @@ messageButton.addEventListener("click", () => {
   // in case the button is clicked before firebase responds with who the seller is
   if (!sellerID) return;
 
-  firebase.auth().onAuthStateChanged((user) => {
+  getCurrentUser().then((user) => {
     db.collection("users")
       .doc(user.uid)
       .update({
@@ -55,8 +55,8 @@ messageButton.addEventListener("click", () => {
 });
 
 function saveListingDocIDAndRedirect() {
-  let params = new URL(window.location.href)
+  let params = new URL(window.location.href);
   let ID = params.searchParams.get("id");
-  localStorage.setItem('listingDocID', ID);
-  window.location.href = 'review.html';
+  localStorage.setItem("listingDocID", ID);
+  window.location.href = "review.html";
 }

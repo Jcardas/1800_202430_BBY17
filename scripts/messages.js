@@ -5,7 +5,7 @@ const messageInput = messageBar.querySelector("input");
 const sendButton = messageBar.querySelector("button");
 
 var currentUser;
-firebase.auth().onAuthStateChanged((user) => {
+getCurrentUser().then((user) => {
   // no need to check if user exists,
   // it's impossible for a non-user to access this page in the first place
   currentUser = user;

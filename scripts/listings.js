@@ -5,7 +5,7 @@ const productPhoto = document.getElementById("input-product-photo");
 const fileText = document.getElementById("photo-text");
 
 var currentUser;
-firebase.auth().onAuthStateChanged((user) => {
+getCurrentUser().then((user) => {
   // no need to check if user exists,
   // it's impossible for a non-user to access this page in the first place
   currentUser = user;
@@ -18,7 +18,7 @@ listingForm.addEventListener("submit", async (e) => {
 
   if (!currentUser) {
     // the user is definitely logged in, but we still need this check
-    // in case they click "submit" before firebase.auth().onAuthStateChanged responds
+    // in case they click "submit" before getCurrentUser().then responds
     return;
   }
 

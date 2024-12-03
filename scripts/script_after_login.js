@@ -1,5 +1,4 @@
 determineFarmerStatus();
-
 setupSearchButtons();
 
 getExistingProductNames()
@@ -16,7 +15,7 @@ function setupSearchButtons() {
 }
 
 function determineFarmerStatus() {
-  firebase.auth().onAuthStateChanged((user) => {
+  getCurrentUser().then((user) => {
     db.collection("users")
       .doc(user.uid)
       .get()

@@ -1,6 +1,26 @@
-$("#footer-container").load("./skeleton/footer.html");
+let userLoaded = false;
+/**
+ * A shortcut to get the current user.
+ *
+ * @author https://github.com/atishpatel
+ * @link https://github.com/firebase/firebase-js-sdk/issues/462#issuecomment-425479634
+ * @return a Promise that resolves to either the current user or null.
+ */
+function getCurrentUser() {
+  return new Promise((resolve, reject) => {
+    if (userLoaded) {
+      resolve(firebase.auth().currentUser);
+    }
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      userLoaded = true;
+      unsubscribe();
+      resolve(user);
+    }, reject);
+  });
+}
 
-firebase.auth().onAuthStateChanged((user) => {
+$("#footer-container").load("./skeleton/footer.html");
+getCurrentUser().then((user) => {
   if (user) {
     $("#header-container").load("./skeleton/header_after_login.html");
     ifProfileIsNotComplete(
