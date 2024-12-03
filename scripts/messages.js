@@ -9,40 +9,39 @@ firebase.auth().onAuthStateChanged((user) => {
   // no need to check if user exists,
   // it's impossible for a non-user to access this page in the first place
   currentUser = user;
-  initializeMessages();
+  initializeMessages().then(hideLoadingWheel).then(openCurrentChat);
 });
+
+var readMessages = [];
+if (localStorage.getItem("read-messages")) {
+  readMessages = JSON.parse(localStorage.getItem("read-messages"));
+}
 var chats = {};
 
 function initializeMessages() {
-    return db
-      .collection("users")
-      .doc(currentUser.uid)
-      .get()
-      .then((doc) => {
-        if (!doc.exists) return;
+  return db
+    .collection("users")
+    .doc(currentUser.uid)
+    .get()
+    .then((doc) => {
+      if (!doc.exists) return;
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const currentRecipientID = urlParams.get("to");
-        const contacts = doc.data().contacts || [];
+      const contacts = doc.data().contacts || [];
 
-        // Start a counter for the number of contacts loaded
-        let contactsToLoad = 0;
-        contactsToLoad = contacts.length;
-        // If no cards to load, hide the loading wheel immediately
-        if (contactsToLoad === 0) {
-          hideLoadingWheel();
-          return;
-        }
-
-        for (const contactID of contacts) {
-            db.collection("users")
+      const promises = [];
+      for (const contactID of contacts) {
+        promises.push(
+          db
+            .collection("users")
             .doc(contactID)
             .get()
             .then((doc) => doc.data()?.avatar || "/assets/profile_photo.png")
             .then((avatarURL) => {
+              const notification = document.createElement("span");
               const contactImg = document.createElement("img");
               const contactDiv = document.createElement("div");
 
+              notification.className = "notification";
               contactImg.className = "contact-photo";
               contactImg.src = avatarURL;
               contactDiv.id = contactID;
@@ -52,22 +51,24 @@ function initializeMessages() {
               };
 
               contactDiv.appendChild(contactImg);
+              contactDiv.appendChild(notification);
               contactsContainer.appendChild(contactDiv);
 
-              if (currentRecipientID) {
-                openChat(currentRecipientID);
-                if (contactID == currentRecipientID) {
-                  contactDiv.setAttribute("selected", true);
-                }
-              }
-            });
-          // Decrement the counter and hide the loading wheel if all contacts are loaded
-          contactsToLoad--;
-          if (contactsToLoad === 0) {
-            hideLoadingWheel();
-          }
-        }
-      });
+              return getChat(contactID);
+            })
+        );
+      }
+
+      return Promise.all(promises);
+    });
+}
+
+function openCurrentChat() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentRecipientID = urlParams.get("to");
+  if (currentRecipientID) {
+    openChat(currentRecipientID);
+  }
 }
 
 function openChat(recipientID) {
@@ -80,8 +81,16 @@ function openChat(recipientID) {
     contact.removeAttribute("selected");
   }
   document.getElementById(recipientID)?.setAttribute("selected", true);
+  document
+    .getElementById(recipientID)
+    .querySelector(".notification").innerText = "";
 
   getChat(recipientID).then((chat) => {
+    for (const msg of chat.messages) {
+      readMessages.push(msg.timestamp);
+    }
+    localStorage.setItem("read-messages", JSON.stringify(readMessages));
+
     document.querySelector(".messages-container").replaceWith(chat.page);
     messageInput.onkeydown = function (event) {
       if (event.key === "Enter") {
@@ -93,6 +102,7 @@ function openChat(recipientID) {
       chat.send();
     };
     messageBar.style.display = "";
+    chat.page.scrollTop = chat.page.scrollHeight;
   });
 }
 
@@ -110,6 +120,7 @@ function getChat(recipientID) {
   chats[recipientID] = chat;
 
   chat.page = document.querySelector(".messages-container").cloneNode();
+  chat.contact = document.getElementById(recipientID);
 
   chat.send = function () {
     const messageText = messageInput.value.trim();
@@ -135,8 +146,7 @@ function getChat(recipientID) {
     )
       .then(() => {
         this.messages.push(message);
-        // do not call chat.render()
-        // it's called by chat.onSnapshot() when the server updates
+        // do not call chat.render(), it's called by chat.onSnapshot() when the server updates
       })
       .catch(() => {
         alert("There's an error sending your message.");
@@ -152,6 +162,24 @@ function getChat(recipientID) {
       messageType = "outgoing-message";
     } else {
       messageType = "incoming-message";
+    }
+
+    // notification
+    if (messageType == "incoming-message") {
+      if (chat.contact.hasAttribute("selected")) {
+        readMessages.push(message.timestamp);
+        localStorage.setItem("read-messages", JSON.stringify(readMessages));
+      } else if (!readMessages.includes(parseInt(message.timestamp))) {
+        const notification = chat.contact.querySelector(".notification");
+        if (notification.innerText.length == 0) {
+          notification.innerText = 1;
+        } else {
+          notification.innerText = 1 + parseInt(notification.innerText);
+        }
+        // move contact to first
+        chat.contact.remove();
+        contactsContainer.prepend(chat.contact);
+      }
     }
 
     this.page.insertAdjacentHTML(

@@ -790,6 +790,7 @@ input[type="file"] {
   border-right: 2px solid #a7a7a7;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
+  overflow-y: scroll;
 }
 
 /* TEMPORARY FOR EXAMPLE */
@@ -798,17 +799,24 @@ input[type="file"] {
 }
 
 .contact {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   aspect-ratio: 1/1;
-}
 
-.contact-photo {
-  aspect-ratio: 1/1;
-  height: 55%;
-  border-radius: 50%;
+  .contact-photo {
+    aspect-ratio: 1/1;
+    height: 55%;
+    border-radius: 50%;
+  }
+
+  .notification {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+  }
 }
 
 .contact[selected] {
