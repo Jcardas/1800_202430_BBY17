@@ -31,3 +31,15 @@ function allowMakingPosts() {
     button.style.display = "";
   }
 }
+
+function addContact(userId, contactId) {
+  const user = db.collection("users").doc(userId);
+
+  return user.get().then((doc) => {
+    if (!doc.data().contacts?.[contactId]) {
+      const update = {};
+      update[`contacts.${contactId}`] = 1;
+      return user.update(update);
+    }
+  });
+}

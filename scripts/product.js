@@ -45,12 +45,9 @@ messageButton.addEventListener("click", () => {
   if (!sellerID) return;
 
   getCurrentUser().then((user) => {
-    db.collection("users")
-      .doc(user.uid)
-      .update({
-        contacts: firebase.firestore.FieldValue.arrayUnion(sellerID),
-      })
-      .then(() => location.assign(`messages.html?to=${sellerID}`));
+    addContact(user.uid, sellerID).then(() =>
+      location.assign(`messages.html?to=${sellerID}`)
+    );
   });
 });
 

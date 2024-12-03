@@ -5,18 +5,13 @@ const messageInput = messageBar.querySelector("input");
 const sendButton = messageBar.querySelector("button");
 
 var currentUser;
-getCurrentUser().then((user) => {
-  // no need to check if user exists,
-  // it's impossible for a non-user to access this page in the first place
-  currentUser = user;
-  initializeMessages().then(hideLoadingWheel).then(openCurrentChat);
-});
-
-var readMessages = [];
-if (localStorage.getItem("read-messages")) {
-  readMessages = JSON.parse(localStorage.getItem("read-messages"));
-}
 var chats = {};
+
+getCurrentUser()
+  .then((user) => (currentUser = user))
+  .then(initializeMessages)
+  .then(hideLoadingWheel)
+  .then(openCurrentChat);
 
 function initializeMessages() {
   return db
@@ -26,10 +21,10 @@ function initializeMessages() {
     .then((doc) => {
       if (!doc.exists) return;
 
-      const contacts = doc.data().contacts || [];
+      const contacts = doc.data().contacts || {};
 
       const promises = [];
-      for (const contactID of contacts) {
+      for (const contactID in contacts) {
         promises.push(
           db
             .collection("users")
@@ -86,10 +81,13 @@ function openChat(recipientID) {
     .querySelector(".notification").innerText = "";
 
   getChat(recipientID).then((chat) => {
-    for (const msg of chat.messages) {
-      readMessages.push(msg.timestamp);
+    // mark the last message as read
+    const incomingMessages = chat.messages.filter(
+      (message) => message.from != currentUser.uid
+    );
+    if (incomingMessages.length > 0) {
+      markMessageAsRead(incomingMessages[incomingMessages.length - 1]);
     }
-    localStorage.setItem("read-messages", JSON.stringify(readMessages));
 
     document.querySelector(".messages-container").replaceWith(chat.page);
     messageInput.onkeydown = function (event) {
@@ -134,16 +132,11 @@ function getChat(recipientID) {
       // but is used as id for the message element
     };
 
-    db.collection("users")
-      .doc(recipientID)
-      .update({
-        contacts: firebase.firestore.FieldValue.arrayUnion(currentUser.uid),
-      });
+    // add us to their contact
+    // the function has a built-in check whether we're already added
+    addContact(recipientID, currentUser.uid);
 
-    this.set(
-      { messages: firebase.firestore.FieldValue.arrayUnion(message) },
-      { merge: true }
-    )
+    this.update({ messages: firebase.firestore.FieldValue.arrayUnion(message) })
       .then(() => {
         this.messages.push(message);
         // do not call chat.render(), it's called by chat.onSnapshot() when the server updates
@@ -167,18 +160,21 @@ function getChat(recipientID) {
     // notification
     if (messageType == "incoming-message") {
       if (chat.contact.hasAttribute("selected")) {
-        readMessages.push(message.timestamp);
-        localStorage.setItem("read-messages", JSON.stringify(readMessages));
-      } else if (!readMessages.includes(parseInt(message.timestamp))) {
-        const notification = chat.contact.querySelector(".notification");
-        if (notification.innerText.length == 0) {
-          notification.innerText = 1;
-        } else {
-          notification.innerText = 1 + parseInt(notification.innerText);
-        }
-        // move contact to first
-        chat.contact.remove();
-        contactsContainer.prepend(chat.contact);
+        markMessageAsRead(message);
+      } else {
+        getLastReadMessage(message.from).then((lastRead) => {
+          if (message.timestamp > lastRead) {
+            const notification = chat.contact.querySelector(".notification");
+            if (notification.innerText.length == 0) {
+              notification.innerText = 1;
+            } else {
+              notification.innerText = 1 + parseInt(notification.innerText);
+            }
+            // move contact to first
+            chat.contact.remove();
+            contactsContainer.prepend(chat.contact);
+          }
+        });
       }
     }
 
@@ -204,4 +200,18 @@ function getChat(recipientID) {
     });
     return chat;
   });
+}
+
+function getLastReadMessage(from) {
+  return db
+    .collection("users")
+    .doc(currentUser.uid)
+    .get()
+    .then((doc) => doc.data().contacts[from]);
+}
+
+function markMessageAsRead(message) {
+  const update = {};
+  update[`contacts.${message.from}`] = message.timestamp;
+  return db.collection("users").doc(currentUser.uid).update(update);
 }
