@@ -1,4 +1,5 @@
-determineFarmerStatus();
+userIsFarmer().then((yes) => yes && allowMakingPosts());
+
 setupSearchButtons();
 
 getExistingProductNames()
@@ -14,21 +15,19 @@ function setupSearchButtons() {
   }
 }
 
-function determineFarmerStatus() {
-  getCurrentUser().then((user) => {
-    db.collection("users")
-      .doc(user.uid)
+function userIsFarmer() {
+  return getCurrentUser().then((user) =>
+    db
+      .collection("users")
+      .doc(user?.uid)
       .get()
-      .then((doc) => {
-        if (!doc.exists) return;
+      .then((doc) => doc?.data()?.isFarmer)
+  );
+}
 
-        if (doc.data().isFarmer) {
-          // there may be multiple "make a post" buttons,
-          // loop through all of them
-          for (const button of document.querySelectorAll(".make-a-post")) {
-            button.style.display = "";
-          }
-        }
-      });
-  });
+function allowMakingPosts() {
+  // there may be multiple "make a post" buttons, loop through all of them
+  for (const button of document.querySelectorAll(".make-a-post")) {
+    button.style.display = "";
+  }
 }
