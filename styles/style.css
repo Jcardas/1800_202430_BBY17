@@ -1259,14 +1259,18 @@ input:checked + .slider:before {
   object-fit: cover;
 }
 
-#price-type {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  align-self: flex-start;
+#price {
+  margin-bottom: 10px;
+}
 
-  #price {
-    font-size: 0.7em;
-  }
+#product-rating {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.star {
+  color: #019450;
 }
 
 .product-profile-info-container {
@@ -1284,9 +1288,11 @@ input:checked + .slider:before {
 }
 
 #product-info-container {
+  min-width: 300px;
   align-items: start;
 
   h3 {
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
   }
