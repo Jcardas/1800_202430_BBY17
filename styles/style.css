@@ -37,12 +37,24 @@ header {
   padding: 0; /* This line removes the random padding around list elements */
   margin: 0;
   align-items: center;
-}
 
-#tab-selector li {
-  padding: 3px 0px 3px 0px;
-  margin-right: 5px; /* Adds space between items */
-  font-size: 15px;
+  li {
+    padding: 3px 0px 3px 0px;
+    margin-right: 5px; /* Adds space between items */
+    font-size: 15px;
+  }
+
+  #messages {
+    position: relative;
+
+    .notification {
+      position: absolute;
+      top: -20%;
+      right: 5%;
+      font-weight: bold;
+      color: red;
+    }
+  }
 }
 
 .selected-tab {
@@ -816,6 +828,8 @@ input[type="file"] {
     position: absolute;
     top: 10%;
     right: 10%;
+    font-weight: bold;
+    color: red;
   }
 }
 
