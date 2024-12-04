@@ -134,6 +134,81 @@
       </a>
     </div>
   </div>
+
+  <!-- Filters Dropdown -->
+  <section class="filters-container">
+
+      <label for="price-range"><div class="filter-label price-sorter">Price<span class="sort-arrow">↑</span></div></label>
+      <label for="unit-selector"><div class="filter-label unit-label">Unit</div></label>
+      <label for="review-range"><div class="filter-label review-sorter">Reviews <span class="sort-arrow">↑</span></div></label>
+
+      <div class="filters-item">
+        <!-- Price Range slider -->
+        <input type="range" name="price" id="price-range" class="filter-slider" min="0" max="1000" step="1" list="price-markers">
+        <datalist id="price-markers">
+          <!-- Option markers grow exponentially to assist with selecting lower numbers -->
+          <option value="0"></option>
+          <option value="2"></option>
+          <option value="3"></option>
+          <option value="4"></option>
+          <option value="5"></option>
+          <option value="6"></option>
+          <option value="7"></option>
+          <option value="8"></option>
+          <option value="9"></option>
+          <option value="10"></option>
+          <option value="15"></option>
+          <option value="20"></option>
+          <option value="25"></option>
+          <option value="30"></option>
+          <option value="35"></option>
+          <option value="40"></option>
+          <option value="45"></option>
+          <option value="50"></option>
+          <option value="100"></option>
+          <option value="200"></option>
+          <option value="400"></option>
+          <option value="600"></option>
+          <option value="800"></option>
+        </datalist>
+      </div>
+
+      <div class="filters-item">
+       <select name="unit-selector" id="unit-selector">
+        <option value="" disabled selected>$ / </option>
+        <option value="$ / each">$ / each</option>
+        <option value="$ / lbs">$ / lbs</option>
+        <option value="$ / can">$ / can</option>
+        <option value="$ / kg">$ / kg</option>
+        <option value="$ / tray">$ / tray</option>
+        <option value="$ / pint">$ / pint</option>
+        <option value="$ / quart">$ / quart</option>
+        <option value="$ / gallon">$ / gallon</option>
+        <option value="$ / dozen">$ / dozen</option>
+        <option value="$ / box">$ / box</option>
+        <option value="$ / basket">$ / basket</option>
+        <option value="$ / bundle">$ / bundle</option>
+        <option value="$ / crate">$ / crate</option>
+        <option value="$ / sack">$ / sack</option>
+        <option value="$ / lot">$ / lot</option>
+       </select>
+      </div>
+
+    <div class="filters-item">
+       <!-- Review range slider -->
+       <input type="range" name="reviews" id="review-range" class="filter-slider" min="0" max="5">           
+       <datalist id="review-markers">
+        <!-- Option markers grow exponentially to assist with selecting lower numbers -->
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3"></option>
+        <option value="4"></option>
+        <option value="5"></option>
+       </datalist>
+
+    </div>
+
+  </section>
 </header>
 
 <datalist id="product-names">
