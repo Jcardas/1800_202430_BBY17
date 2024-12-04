@@ -58,15 +58,25 @@
 
       <div id="product-info-container">
         <h3 id="price-type">
-          $<span id="price"></span> | <span id="product-name"></span>
+          <span>
+            $<span id="price"></span>
+            |
+            <span id="product-name"></span>
+          </span>
+          <img
+            id="edit-post"
+            src="/assets/post.svg"
+            width="30"
+            alt="edit post button"
+            style="display: none"
+            title="edit post"
+            onclick="editPost()"
+          />
         </h3>
         <div class="product-profile">
           <img class="product-profile-icon" src="/assets/profile_photo.png" />
           <p class="product-farmer-name"></p>
-          <button
-            class="btn review-btn mx-3"
-            onclick="saveListingDocIDAndRedirect()"
-          >
+          <button class="btn review-btn mx-3" onclick="reviewProduct()">
             Review
           </button>
         </div>

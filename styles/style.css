@@ -1182,6 +1182,11 @@ input:checked + .slider:before {
 
 #product-info-container {
   align-items: start;
+
+  h3 {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 #product-desc {

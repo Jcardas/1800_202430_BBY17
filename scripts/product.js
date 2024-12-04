@@ -24,6 +24,12 @@ function retrieveProductData() {
       productContainer.querySelector("#price").innerText = price;
       productContainer.querySelector("#product-name").innerText = name;
       productContainer.querySelector("#product-desc").innerText = description;
+
+      getCurrentUser().then((user) => {
+        if (user.uid == sellerID) {
+          productContainer.querySelector("#edit-post").style.display = "";
+        }
+      });
     });
 }
 
@@ -51,9 +57,15 @@ messageButton.addEventListener("click", () => {
   });
 });
 
-function saveListingDocIDAndRedirect() {
+function reviewProduct() {
   let params = new URL(window.location.href);
   let ID = params.searchParams.get("id");
   localStorage.setItem("listingDocID", ID);
   window.location.href = "review.html";
+}
+
+function editPost() {
+  const params = new URL(window.location.href);
+  const id = params.searchParams.get("id");
+  window.location.assign(`listing_info.html?edit=${id}`)
 }
