@@ -15,13 +15,14 @@ function retrieveProductData() {
     .then((doc) => {
       const data = doc.data();
       const name = data.name;
+      const unit = data.units.slice(1);
       const price = data.price;
       const photo = data.fileURL;
       const description = data.description;
       sellerID = data.userID;
 
       productContainer.querySelector("#product-photo").src = photo;
-      productContainer.querySelector("#price").innerText = price;
+      productContainer.querySelector("#price").innerText = `\$${price}${unit}`;
       productContainer.querySelector("#product-name").innerText = name;
       productContainer.querySelector("#product-desc").innerText = description;
 
@@ -67,5 +68,5 @@ function reviewProduct() {
 function editPost() {
   const params = new URL(window.location.href);
   const id = params.searchParams.get("id");
-  window.location.assign(`listing_info.html?edit=${id}`)
+  window.location.assign(`listing_info.html?edit=${id}`);
 }

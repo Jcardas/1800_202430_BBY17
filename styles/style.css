@@ -1242,6 +1242,10 @@ input:checked + .slider:before {
   margin-top: 20px;
   margin-bottom: 30px;
   align-self: flex-start;
+
+  #price {
+    font-size: 0.7em;
+  }
 }
 
 .product-profile-info-container {
