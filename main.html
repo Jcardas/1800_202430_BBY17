@@ -53,10 +53,10 @@
 
     <!-- main -->
     <div class="main">
-
       <!-- Post button which is always floating bottom right -->
       <div class="make-a-post" style="display: none">
-        <a class="floating-btn" href="listing.html"><img src="/assets/post.svg" width="50" alt="post button">
+        <a class="floating-btn" href="listing.html"
+          ><img src="/assets/post.svg" width="50" alt="post button" />
         </a>
       </div>
 
@@ -72,32 +72,30 @@
       <span class="sr-only"></span>
     </div>
     <!-- Product Template -->
-    <template id="productCardTemplate">
-      <div class="col">
-        <a href="/each_product.html" class="productLink">
-          <div class="listing-card card rounded-4 bg-transparent border-0">
-            <img
-              src="assets/blueberries.jpg"
-              class="card-img rounded-4 p-2"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Price | Product</h5>
-              <p class="card-text text-secondary">$ / unit</p>
+    <div class="col" id="productCardTemplate" style="display: none !important">
+      <a href="/each_product.html" class="productLink">
+        <div class="listing-card card rounded-4 bg-transparent border-0">
+          <img
+            src="assets/blueberries.jpg"
+            class="card-img rounded-4 p-2"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">Price | Product</h5>
+            <p class="card-text text-secondary">$ / unit</p>
 
-              <div class="product-profile">
-                <img
-                  class="product-profile-icon"
-                  src="/assets/profile_photo.png"
-                  alt=""
-                />
-                <p class="product-farmer-name">Farmer Name</p>
-              </div>
+            <div class="product-profile">
+              <img
+                class="product-profile-icon"
+                src="/assets/profile_photo.png"
+                alt=""
+              />
+              <p class="product-farmer-name">Farmer Name</p>
             </div>
           </div>
-        </a>
-      </div>
-    </template>
+        </div>
+      </a>
+    </div>
 
     <div id="footer-container"></div>
     <!---------------------------------------------->

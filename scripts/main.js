@@ -9,23 +9,29 @@ function displayPosts() {
     listingsRef = listingsRef.where("name", "==", search);
   }
 
-  listingsRef.get().then((docs) => {
+  listingsRef.onSnapshot((docs) => {
     const promises = [];
-    docs.forEach((doc) => promises.push(addPostToPage(doc)));
+    docs.forEach((doc) => promises.push(addCard(doc)));
     Promise.all(promises)
       .then(hideLoadingWheel)
       .catch((error) => console.error("Error getting user data:", error));
   });
 }
 
-function addPostToPage(doc) {
+function addCard(doc) {
+  if (document.getElementById(doc.id)) {
+    return Promise.resolve(null);
+  }
+
   const data = doc.data();
   var name = data.name;
   var unit = data.units;
   var price = data.price;
   var productPhoto = data.fileURL;
 
-  let newcard = cardTemplate.content.cloneNode(true);
+  let newcard = cardTemplate.cloneNode(true);
+  newcard.style.display = "";
+  newcard.id = doc.id;
   newcard
     .querySelector("a")
     .setAttribute("href", `/each_product.html?id=${doc.id}`);
