@@ -65,6 +65,7 @@ listingForm.addEventListener("submit", async (e) => {
       resupplies: resupplies,
       userID: currentUser.uid,
       fileURL: fileURL || null,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     })
     .then(() => {
       alert("Listing submitted successfully!");
