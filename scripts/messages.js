@@ -5,7 +5,7 @@ const messageInput = messageBar.querySelector("input");
 const sendButton = messageBar.querySelector("button");
 
 var currentUser;
-var chats = {};
+const chats = {};
 
 getCurrentUser()
   .then((user) => (currentUser = user))
@@ -17,19 +17,15 @@ function initializeMessages() {
   const userDoc = db.collection("users").doc(currentUser.uid);
   return userDoc
     .get()
-    .then((doc) => {
-      if (!doc.exists) return;
-      return updateContactsList(doc.data().contacts || {});
-    })
+    .then((doc) => updateContactsContainer(doc.data()?.contacts ?? {}))
     .then(() => {
-      userDoc.onSnapshot((doc) => {
-        if (!doc.exists) return;
-        return updateContactsList(doc.data().contacts || {});
-      });
+      userDoc.onSnapshot((doc) =>
+        updateContactsContainer(doc.data()?.contacts ?? {})
+      );
     });
 }
 
-function updateContactsList(contacts) {
+function updateContactsContainer(contacts) {
   const promises = [];
   for (const contactId in contacts) {
     promises.push(renderContact(contactId));
@@ -120,12 +116,7 @@ function getChat(recipientID) {
     return Promise.resolve(chats[recipientID]);
   }
 
-  var chat;
-  if (recipientID < currentUser.uid) {
-    chat = db.collection("messages").doc(`${recipientID}+${currentUser.uid}`);
-  } else {
-    chat = db.collection("messages").doc(`${currentUser.uid}+${recipientID}`);
-  }
+  const chat = db.collection("messages").doc(getChatID(recipientID));
   chats[recipientID] = chat;
 
   chat.page = document.querySelector(".messages-container").cloneNode();
@@ -208,14 +199,6 @@ function getChat(recipientID) {
     });
     return chat;
   });
-}
-
-function getLastReadMessage(from) {
-  return db
-    .collection("users")
-    .doc(currentUser.uid)
-    .get()
-    .then((doc) => doc.data().contacts[from]);
 }
 
 function markMessageAsRead(message) {

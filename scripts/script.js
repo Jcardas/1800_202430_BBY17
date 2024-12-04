@@ -157,3 +157,7 @@ function autocorrect(input, correct_matches) {
   }
   alert("Invalid product name.");
 }
+
+function sum(array) {
+  return array.reduce((a, b) => a + b, 0);
+}

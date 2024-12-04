@@ -1,4 +1,17 @@
-userIsFarmer().then((yes) => yes && allowMakingPosts());
+var currentUser;
+const newMessages = {};
+const notification = document.querySelector("#messages .notification");
+
+getCurrentUser()
+  .then((user) => (currentUser = user))
+  .then(() => {
+    if (window.location.pathname != "/messages.html") {
+      initializeNotification();
+    }
+    if (userIsFarmer()) {
+      allowMakingPosts();
+    }
+  });
 
 setupSearchButtons();
 
@@ -16,13 +29,11 @@ function setupSearchButtons() {
 }
 
 function userIsFarmer() {
-  return getCurrentUser().then((user) =>
-    db
-      .collection("users")
-      .doc(user?.uid)
-      .get()
-      .then((doc) => doc?.data()?.isFarmer)
-  );
+  return db
+    .collection("users")
+    .doc(currentUser?.uid)
+    .get()
+    .then((doc) => doc?.data()?.isFarmer);
 }
 
 function allowMakingPosts() {
@@ -42,4 +53,70 @@ function addContact(userId, contactId) {
       return user.update(update);
     }
   });
+}
+
+function initializeNotification() {
+  const userDoc = db.collection("users").doc(currentUser.uid);
+  return userDoc
+    .get()
+    .then((doc) => updateContactsList(doc.data()?.contacts ?? {}))
+    .then(() => {
+      userDoc.onSnapshot((doc) =>
+        updateContactsList(doc.data()?.contacts ?? {})
+      );
+    });
+}
+
+function updateContactsList(contacts) {
+  const promises = [];
+  for (const contactId in contacts) {
+    promises.push(initializeChat(contactId));
+  }
+  return Promise.all(promises);
+}
+
+function getChatID(recipientID) {
+  if (recipientID < currentUser.uid) {
+    return `${recipientID}+${currentUser.uid}`;
+  } else {
+    return `${currentUser.uid}+${recipientID}`;
+  }
+}
+
+function getLastReadMessage(from) {
+  return db
+    .collection("users")
+    .doc(currentUser.uid)
+    .get()
+    .then((doc) => doc.data().contacts[from]);
+}
+
+function initializeChat(contactId) {
+  if (Object.hasOwn(newMessages, contactId)) {
+    return Promise.resolve(null);
+  }
+
+  function updateNewMessages(messages) {
+    newMessages[contactId] = 0;
+    messages.forEach((message) => {
+      if (message.from != currentUser.uid && message.timestamp > lastRead) {
+        newMessages[contactId] += 1;
+      }
+    });
+    const total = sum(Object.values(newMessages));
+    notification.innerText = total > 0 ? total : "";
+  }
+
+  let lastRead;
+  return getLastReadMessage(contactId)
+    .then((res) => (lastRead = res))
+    .then(() => {
+      const chat = db.collection("messages").doc(getChatID(contactId));
+      return chat.get().then((doc) => {
+        updateNewMessages(doc.data()?.messages ?? []);
+        chat.onSnapshot((doc) => {
+          updateNewMessages(doc.data()?.messages ?? []);
+        });
+      });
+    });
 }
