@@ -322,6 +322,7 @@ input[type="range"] {
     width: 300px;
   }
 
+
   #edit-post {
     align-self: center;
     background-color: rgb(20, 51, 37);
@@ -1271,6 +1272,7 @@ input:checked + .slider:before {
 
 .star {
   color: #019450;
+  cursor: default;
 }
 
 .product-profile-info-container {

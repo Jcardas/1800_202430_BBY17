@@ -103,6 +103,7 @@ reviewBtn.onclick = function () {
     isReviewing = true;
     reviewBtn.innerText = "Cancel";
     stars.forEach((star) => {
+      star.style.cursor = "pointer"; 
       star.innerText = "star_outline";
       star.style.color = "#e5e5e5";
     });
