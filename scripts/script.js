@@ -162,34 +162,30 @@ function sum(array) {
   return array.reduce((a, b) => a + b, 0);
 }
 
-function viewMyListings(){
+function viewMyListings() {
   getCurrentUser().then((user) => {
-    let userId = user.uid
-    viewFarmerListings(userId)
-  })
+    let userId = user.uid;
+    viewFarmerListings(userId);
+  });
 }
 
+function viewFarmerListings(farmerId) {
+  if (farmerId == "clicked") {
+    const urlParams = new URLSearchParams(window.location.search);
+    const listingId = urlParams.get("id")?.trim();
 
-function viewFarmerListings(farmerId){
+    const listings = db.collection("listings");
 
-    if(farmerId == 'clicked'){
-      const urlParams = new URLSearchParams(window.location.search);
-      const listingId = urlParams.get("id")?.trim();
-
-      const listings = db.collection("listings")
-
-      listings
+    listings
       .doc(listingId)
       .get()
       .then((docSnapshot) => {
         if (docSnapshot.exists) {
-          // Retrieve the "name" field from the user document
           const userId = docSnapshot.data().userID;
           window.location.assign(`main.html?farmer-id=${userId}`);
         }
-      })
-    } else
-    {
-      window.location.assign(`main.html?farmer-id=${farmerId}`);
-    }
+      });
+  } else {
+    window.location.assign(`main.html?farmer-id=${farmerId}`);
+  }
 }

@@ -9,16 +9,16 @@ function displayPosts() {
   const searchProduct = urlParams.get("product-name")?.trim();
   if (searchProduct) {
     listingsRef = listingsRef.where("name", "==", searchProduct);
-    pageName.innerText = (searchProduct);
+    pageName.innerText = searchProduct;
   }
 
   // Searches based on farmer ID
   const searchFarmer = urlParams.get("farmer-id")?.trim();
-  
+
   if (searchFarmer) {
     // Reference the "users" collection
     const farmersRef = db.collection("users");
-  
+
     // Fetch the document for the given user ID
     farmersRef
       .doc(searchFarmer)
@@ -27,7 +27,7 @@ function displayPosts() {
         if (docSnapshot.exists) {
           // Retrieve the "name" field from the user document
           const userName = docSnapshot.data().name;
-  
+
           // Update the pageName with the user's name
           pageName.innerText = userName;
         }
