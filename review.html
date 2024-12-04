@@ -58,21 +58,10 @@
     <!-- main STUFF GOES HERE. -->
 
     <div class="container">
-      <br />
-      <h1>Review for <span id="listingName"> Listing Name</span></h1>
-      <br />
+      <h1>Review for <span id="listingName"></span></h1>
       <form>
         <div class="form-group">
-          <label for="exampleFormControlInput1">Add a title</label>
-          <input
-            type="text"
-            class="form-control"
-            id="review-title"
-            placeholder="Title"
-          />
-        </div>
-        <br />
-        <div class="form-group">
+          <br />
           <div class="card-body">
             <p>Rate your overall experience:</p>
             <span class="material-icons star" id="star1">star_outline</span>
@@ -81,55 +70,10 @@
             <span class="material-icons star" id="star4">star_outline</span>
             <span class="material-icons star" id="star5">star_outline</span>
           </div>
-          <br />
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1"
-              >What did you think of the produce?</label
-            >
-            <textarea
-              class="form-control"
-              id="review-description"
-              rows="3"
-            ></textarea>
-          </div>
-          <br />
-          <label
-            >Fresh? <span style="display: inline-block; width: 26pt"></span
-          ></label>
-
-          <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="fresh"
-              value="Yes"
-            />
-            <label>Yes</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="fresh"
-              value="No"
-            />
-            <label>No</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="fresh"
-              value="unSure"
-              checked=""
-            />
-            <label>Not sure</label>
-          </div>
-          <br />
           <div class="d-flex justify-content-end">
             <button
               type="button"
-              class="btn btn-lg btn-primary pull-right"
+              class="btn btn-primary"
               onclick="writeReview()"
             >
               Submit
