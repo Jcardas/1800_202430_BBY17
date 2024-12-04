@@ -138,9 +138,13 @@ function getChat(recipientID) {
     // the function has a built-in check whether we're already added
     addContact(recipientID, currentUser.uid);
 
-    this.update({ messages: firebase.firestore.FieldValue.arrayUnion(message) })
+    this.set(
+      { messages: firebase.firestore.FieldValue.arrayUnion(message) },
+      { merge: true }
+    )
       .then(() => this.messages.push(message))
-      .catch(() => {
+      .catch((error) => {
+        console.log(error);
         alert("There's an error sending your message.");
         messageInput.value = messageText;
       });
