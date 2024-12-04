@@ -55,9 +55,10 @@ function addCard(doc) {
 
   const data = doc.data();
   var name = data.name;
-  var unit = data.units;
+  var unit = data.units.slice(1);
   var price = data.price;
   var productPhoto = data.fileURL;
+  var rating = data.averageRating;
 
   let newcard = cardTemplate.cloneNode(true);
   newcard.style.display = "";
@@ -65,9 +66,10 @@ function addCard(doc) {
   newcard
     .querySelector("a")
     .setAttribute("href", `/each_product.html?id=${doc.id}`);
-  newcard.querySelector(".card-title").innerText = `\$${price} | ${name}`;
-  newcard.querySelector(".card-text").innerText = unit;
+  newcard.querySelector(".name").innerText = name;
+  newcard.querySelector(".price").innerText = `$${price}${unit}`;
   newcard.querySelector(".card-img").src = productPhoto;
+  setRating(newcard, rating);
 
   return db
     .collection("users")
@@ -85,4 +87,19 @@ function addCard(doc) {
       // Append card to the page
       document.getElementById("products-go-here").appendChild(newcard);
     });
+}
+
+function setRating(card, rating) {
+  if (!rating) return;
+
+  card.querySelector(".rating").style.display = "flex";
+  for (let i = 1; i <= rating; ++i) {
+    card.querySelector(`.star${i}`).innerText = "star";
+  }
+  const nextStar = card.querySelector(`.star${Math.ceil(rating)}`);
+  if (rating % 1 > 0.75) {
+    nextStar.innerText = "star";
+  } else if (rating % 1 > 0.25) {
+    nextStar.innerText = "star_half";
+  }
 }

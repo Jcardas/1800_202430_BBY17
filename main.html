@@ -45,6 +45,10 @@
     <!-- Link to our stylesheets -->
     <link rel="stylesheet" href="./styles/style.css" />
     <link id="dark-mode-css" rel="stylesheet" href="./styles/dark_mode.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -61,24 +65,64 @@
       </div>
 
       <h2 class="p-2" id="page-name">Home</h2>
+
       <!-- Here is the products inserted from firebase  -->
       <div
         id="products-go-here"
         class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3"
       ></div>
     </div>
+
     <!-- Loading Wheel -->
     <div class="loading-wheel spinner-border text-success m-3" role="status">
       <span class="sr-only"></span>
     </div>
+
     <!-- Product Template -->
     <div class="col" id="productCardTemplate" style="display: none !important">
       <a href="/each_product.html" class="productLink">
         <div class="listing-card card rounded-4 bg-transparent border-0">
           <img src="assets/default.svg" class="card-img rounded-4 p-2" />
           <div class="card-body">
-            <h5 class="card-title">Price | Product</h5>
-            <p class="card-text text-secondary">$ / unit</p>
+            <h5
+              class="card-title"
+              style="display: flex; justify-content: space-between"
+            >
+              <span class="name"></span>
+              <span class="rating" style="display: none; align-items: center">
+                <span
+                  class="material-icons star star1"
+                  style="font-size: 20px !important"
+                >
+                  star_outline
+                </span>
+                <span
+                  class="material-icons star star2"
+                  style="font-size: 20px !important"
+                >
+                  star_outline
+                </span>
+                <span
+                  class="material-icons star star3"
+                  style="font-size: 20px !important"
+                >
+                  star_outline
+                </span>
+                <span
+                  class="material-icons star star4"
+                  style="font-size: 20px !important"
+                >
+                  star_outline
+                </span>
+                <span
+                  class="material-icons star star5"
+                  style="font-size: 20px !important"
+                >
+                  star_outline
+                </span>
+              </span>
+            </h5>
+            <p class="card-text text-secondary price">$ / unit</p>
 
             <div class="product-profile">
               <img
