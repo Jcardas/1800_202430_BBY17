@@ -14,47 +14,58 @@ getCurrentUser()
   .then(openCurrentChat);
 
 function initializeMessages() {
-  return db
-    .collection("users")
-    .doc(currentUser.uid)
+  const userDoc = db.collection("users").doc(currentUser.uid);
+  return userDoc
     .get()
     .then((doc) => {
       if (!doc.exists) return;
+      return updateContactsList(doc.data().contacts || {});
+    })
+    .then(() => {
+      userDoc.onSnapshot((doc) => {
+        if (!doc.exists) return;
+        return updateContactsList(doc.data().contacts || {});
+      });
+    });
+}
 
-      const contacts = doc.data().contacts || {};
+function updateContactsList(contacts) {
+  const promises = [];
+  for (const contactId in contacts) {
+    promises.push(renderContact(contactId));
+  }
+  return Promise.all(promises);
+}
 
-      const promises = [];
-      for (const contactID in contacts) {
-        promises.push(
-          db
-            .collection("users")
-            .doc(contactID)
-            .get()
-            .then((doc) => doc.data()?.avatar || "/assets/profile_photo.png")
-            .then((avatarURL) => {
-              const notification = document.createElement("span");
-              const contactImg = document.createElement("img");
-              const contactDiv = document.createElement("div");
+function renderContact(contactId) {
+  if (document.getElementById(contactId)) {
+    return Promise.resolve(null);
+  }
 
-              notification.className = "notification";
-              contactImg.className = "contact-photo";
-              contactImg.src = avatarURL;
-              contactDiv.id = contactID;
-              contactDiv.className = "contact";
-              contactDiv.onclick = function () {
-                openChat(contactID);
-              };
+  return db
+    .collection("users")
+    .doc(contactId)
+    .get()
+    .then((doc) => doc.data()?.avatar || "/assets/profile_photo.png")
+    .then((avatarURL) => {
+      const notification = document.createElement("span");
+      const contactImg = document.createElement("img");
+      const contactDiv = document.createElement("div");
 
-              contactDiv.appendChild(contactImg);
-              contactDiv.appendChild(notification);
-              contactsContainer.appendChild(contactDiv);
+      notification.className = "notification";
+      contactImg.className = "contact-photo";
+      contactImg.src = avatarURL;
+      contactDiv.id = contactId;
+      contactDiv.className = "contact";
+      contactDiv.onclick = function () {
+        openChat(contactId);
+      };
 
-              return getChat(contactID);
-            })
-        );
-      }
+      contactDiv.appendChild(contactImg);
+      contactDiv.appendChild(notification);
+      contactsContainer.appendChild(contactDiv);
 
-      return Promise.all(promises);
+      return getChat(contactId);
     });
 }
 
@@ -137,10 +148,7 @@ function getChat(recipientID) {
     addContact(recipientID, currentUser.uid);
 
     this.update({ messages: firebase.firestore.FieldValue.arrayUnion(message) })
-      .then(() => {
-        this.messages.push(message);
-        // do not call chat.render(), it's called by chat.onSnapshot() when the server updates
-      })
+      .then(() => this.messages.push(message))
       .catch(() => {
         alert("There's an error sending your message.");
         messageInput.value = messageText;
