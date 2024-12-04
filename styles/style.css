@@ -25,6 +25,13 @@ header {
   padding-bottom: 5px;
 }
 
+.navbar-row-pre-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
 #logo {
   margin-left: 10px;
 }
@@ -416,6 +423,12 @@ input[type="range"] {
 /* Adjustments for even wider viewports (e.g., small laptops) */
 @media (min-width: 768px) {
   .navbar-row1 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .navbar-row-pre-login
+  {
     display: flex;
     justify-content: space-between;
   }
@@ -890,7 +903,7 @@ input[type="file"] {
 #chat-container {
   display: flex;
   justify-content: center;
-  width: fit-content;
+  width: 90vw;
   height: 80vh;
   margin: auto;
   border-radius: 10px;
