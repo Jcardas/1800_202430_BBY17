@@ -304,6 +304,7 @@ input[type="range"] {
   }
 
   #edit-post {
+    align-self: center;
     background-color: rgb(20, 51, 37);
     border-radius: 50%;
     padding: 2px;
