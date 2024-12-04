@@ -88,7 +88,7 @@ function alignFilterMenu(event){
       y: rect.bottom + window.scrollY, // The bottom of the box
     };
   
-    filterMenu.style.left = `${position.x - 265}px`;
+    filterMenu.style.left = `${position.x - 278}px`;
     filterMenu.style.top = `${position.y + 20}px`;
 
     displayFilters();
@@ -99,4 +99,16 @@ function displayFilters() {
   filterMenu.style.display = filterMenu.style.display === "none" || filterMenu.style.display === ""
     ? "grid"
     : "none";
+}
+
+function changePriceSorting()
+{
+  const priceSorter = document.getElementById("price-sorter");
+  priceSorter.innerText = priceSorter.innerText === "Price ↑" ? "Price ↓" : "Price ↑";
+}
+
+function changeReviewSorting()
+{
+  const reviewSorter = document.getElementById("review-sorter");
+  reviewSorter.innerText = reviewSorter.innerText === "Reviews ↑" ? "Reviews ↓" : "Reviews ↑";
 }
