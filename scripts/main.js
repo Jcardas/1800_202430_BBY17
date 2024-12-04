@@ -1,12 +1,42 @@
 let cardTemplate = document.getElementById("productCardTemplate");
+const pageName = document.getElementById("page-name");
+
 displayPosts();
 
 function displayPosts() {
   let listingsRef = db.collection("listings");
   const urlParams = new URLSearchParams(window.location.search);
-  const search = urlParams.get("product-name")?.trim();
-  if (search) {
-    listingsRef = listingsRef.where("name", "==", search);
+  const searchProduct = urlParams.get("product-name")?.trim();
+  if (searchProduct) {
+    listingsRef = listingsRef.where("name", "==", searchProduct);
+    pageName.innerText = (searchProduct);
+  }
+
+  // Searches based on farmer ID
+  const searchFarmer = urlParams.get("farmer-id")?.trim();
+  
+  if (searchFarmer) {
+    // Reference the "users" collection
+    const farmersRef = db.collection("users");
+  
+    // Fetch the document for the given user ID
+    farmersRef
+      .doc(searchFarmer)
+      .get()
+      .then((docSnapshot) => {
+        if (docSnapshot.exists) {
+          // Retrieve the "name" field from the user document
+          const userName = docSnapshot.data().name;
+  
+          // Update the pageName with the user's name
+          pageName.innerText = userName;
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching user document:", error);
+        pageName.innerText = "Error retrieving user data";
+      });
+    listingsRef = listingsRef.where("userID", "==", searchFarmer);
   }
 
   listingsRef.onSnapshot((docs) => {

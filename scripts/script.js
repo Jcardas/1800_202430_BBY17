@@ -161,3 +161,14 @@ function autocorrect(input, correct_matches) {
 function sum(array) {
   return array.reduce((a, b) => a + b, 0);
 }
+
+function viewMyListings(){
+  getCurrentUser().then((user) => {
+    let userId = user.uid
+    viewFarmerListings(userId)
+  })
+}
+
+function viewFarmerListings(farmerId){
+    window.location.assign(`main.html?farmer-id=${farmerId}`);
+}
