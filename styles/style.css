@@ -634,6 +634,7 @@ input[type="range"] {
   height: 0;
   margin: 20px 0;
   align-items: center;
+  cursor: pointer;
 }
 
 .product-profile-icon {

@@ -169,6 +169,27 @@ function viewMyListings(){
   })
 }
 
+
 function viewFarmerListings(farmerId){
-    window.location.assign(`main.html?farmer-id=${farmerId}`);
+
+    if(farmerId == 'clicked'){
+      const urlParams = new URLSearchParams(window.location.search);
+      const listingId = urlParams.get("id")?.trim();
+
+      const listings = db.collection("listings")
+
+      listings
+      .doc(listingId)
+      .get()
+      .then((docSnapshot) => {
+        if (docSnapshot.exists) {
+          // Retrieve the "name" field from the user document
+          const userId = docSnapshot.data().userID;
+          window.location.assign(`main.html?farmer-id=${userId}`);
+        }
+      })
+    } else
+    {
+      window.location.assign(`main.html?farmer-id=${farmerId}`);
+    }
 }
