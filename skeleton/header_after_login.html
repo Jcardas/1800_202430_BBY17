@@ -90,7 +90,14 @@
             >
           </li>
           <li>
-            <a id="mylistings" class="dropdown-item make-a-post" href="#" onclick="viewMyListings()" style="display: none">My Listings </a>
+            <a
+              id="mylistings"
+              class="dropdown-item make-a-post"
+              href="#"
+              onclick="viewMyListings()"
+              style="display: none"
+              >My Listings
+            </a>
           </li>
           <li>
             <div id="dark-mode-toggle-container">
@@ -126,26 +133,38 @@
       </form>
       <!-- Filter Icon -->
       <a href="#">
-        <img class="filter-icon" src="./assets/filter.svg" alt="filter-icon" onclick="alignFilterMenu(event)"/>
+        <img
+          class="filter-icon"
+          src="./assets/filter.svg"
+          alt="filter-icon"
+          onclick="alignFilterMenu(event)"
+        />
       </a>
     </div>
   </div>
 
   <!-- Filters Dropdown -->
   <section id="filters-container">
+    <label for="price-max" class="filter-label"
+      ><button id="price-sorter" onclick="changePriceSorting()">
+        Price ↑
+      </button></label
+    >
+    <label for="unit-selector" class="filter-label"><div>Unit</div></label>
+    <label for="review-range" class="filter-label"
+      ><button id="review-sorter" onclick="changeReviewSorting()">
+        Reviews ↑
+      </button></label
+    >
 
-      <label for="price-max" class="filter-label"><button id="price-sorter" onclick="changePriceSorting()">Price ↑</button></label>
-      <label for="unit-selector" class="filter-label"><div unit-label">Unit</div></label>
-      <label for="review-range" class="filter-label"><button id="review-sorter" onclick="changeReviewSorting()">Reviews ↑</button></label>
+    <div class="filters-item">
+      <!-- Price Range slider -->
+      <input type="number" name="price-max" id="price-max" class="form-input" />
+    </div>
 
-      <div class="filters-item">
-        <!-- Price Range slider -->
-        <input type="number" name="price-max" id="price-max" class="form-input">
-      </div>
-
-      <div class="filters-item">
-       <select name="unit-selector" id="unit-selector">
-        <option value="" disabled selected>$ / </option>
+    <div class="filters-item">
+      <select name="unit-selector" id="unit-selector">
+        <option value="" disabled selected>$ /</option>
         <option value="$ / each">$ / each</option>
         <option value="$ / lbs">$ / lbs</option>
         <option value="$ / can">$ / can</option>
@@ -161,23 +180,28 @@
         <option value="$ / crate">$ / crate</option>
         <option value="$ / sack">$ / sack</option>
         <option value="$ / lot">$ / lot</option>
-       </select>
-      </div>
+      </select>
+    </div>
 
     <div class="filters-item">
-       <!-- Review range slider -->
-       <input type="range" name="reviews" id="review-range" class="filter-slider" min="0" max="5">           
-       <datalist id="review-markers">
+      <!-- Review range slider -->
+      <input
+        type="range"
+        name="reviews"
+        id="review-range"
+        class="filter-slider"
+        min="0"
+        max="5"
+      />
+      <datalist id="review-markers">
         <!-- Option markers grow exponentially to assist with selecting lower numbers -->
         <option value="1"></option>
         <option value="2"></option>
         <option value="3"></option>
         <option value="4"></option>
         <option value="5"></option>
-       </datalist>
-
+      </datalist>
     </div>
-
   </section>
 </header>
 
