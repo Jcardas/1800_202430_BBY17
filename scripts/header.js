@@ -1,5 +1,6 @@
 const darkModeLink = document.getElementById("dark-mode-css");
 const darkModeToggle = document.getElementById("dark-mode-toggle");
+const filterMenu = document.getElementById("filters-container");
 
 initializeDarkMode();
 
@@ -65,4 +66,37 @@ function search(input) {
   if (autocorrect(input, existingProductNames)) {
     window.location.assign(`main.html?product-name=${input.value}`);
   }
+}
+
+// Filter Menu Dropdown ------------
+
+window.addEventListener('resize', hideMenuOnResize);
+// Hide the menu when the page is resized, to prevent misalignment.
+function hideMenuOnResize() {
+  filterMenu.style.display = "none"
+}
+
+// Aligns the filter menu below the search bar when the icon is clicked.
+function alignFilterMenu(event){
+    // Gets the element that triggered the function
+    const callerElement = event.target;
+
+    // Gets a rectangle and location bounding the element, then determines the location of it.
+    const rect = callerElement.getBoundingClientRect();
+    const position = {
+      x: rect.left + window.scrollX, // The location of the left of the box around the element
+      y: rect.bottom + window.scrollY, // The bottom of the box
+    };
+  
+    filterMenu.style.left = `${position.x - 265}px`;
+    filterMenu.style.top = `${position.y + 20}px`;
+
+    displayFilters();
+}
+
+function displayFilters() {
+  // Toggle the filter menu
+  filterMenu.style.display = filterMenu.style.display === "none" || filterMenu.style.display === ""
+    ? "grid"
+    : "none";
 }

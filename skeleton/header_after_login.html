@@ -27,9 +27,10 @@
         <!-- Filter Icon -->
         <a href="#">
           <img
-            class="filter-icon"
+            class="desktop-filter filter-icon"
             src="./assets/filter.svg"
             alt="filter-icon"
+            onclick="alignFilterMenu(event)"
           />
         </a>
       </div>
@@ -130,13 +131,13 @@
       </form>
       <!-- Filter Icon -->
       <a href="#">
-        <img class="filter-icon" src="./assets/filter.svg" alt="filter-icon" />
+        <img class="filter-icon" src="./assets/filter.svg" alt="filter-icon" onclick="alignFilterMenu(event)"/>
       </a>
     </div>
   </div>
 
   <!-- Filters Dropdown -->
-  <section class="filters-container">
+  <section id="filters-container">
 
       <label for="price-range"><div class="filter-label price-sorter">Price<span class="sort-arrow">↑</span></div></label>
       <label for="unit-selector"><div class="filter-label unit-label">Unit</div></label>
