@@ -8,9 +8,7 @@ getCurrentUser()
     if (window.location.pathname != "/messages.html") {
       initializeNotification();
     }
-    if (userIsFarmer()) {
-      allowMakingPosts();
-    }
+    getFarmerStatus().then((isFarmer) => isFarmer && allowMakingPosts());
   });
 
 setupSearchButtons();
@@ -28,7 +26,7 @@ function setupSearchButtons() {
   }
 }
 
-function userIsFarmer() {
+function getFarmerStatus() {
   return db
     .collection("users")
     .doc(currentUser?.uid)
