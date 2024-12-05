@@ -145,17 +145,15 @@
 
   <!-- Filters Dropdown -->
   <section id="filters-container">
-    <label for="price-max" class="filter-label"
-      ><button id="price-sorter" onclick="changePriceSorting()">
-        Price ↑
-      </button></label
-    >
+    <label for="price-max" class="filter-label">
+      <button id="price-sorter" onclick="changePriceSorting()">Price ↑</button>
+    </label>
     <label for="unit-selector" class="filter-label"><div>Unit</div></label>
-    <label for="review-range" class="filter-label"
-      ><button id="review-sorter" onclick="changeReviewSorting()">
+    <label for="review-range" class="filter-label">
+      <button id="review-sorter" onclick="changeReviewSorting()">
         Reviews ↑
-      </button></label
-    >
+      </button>
+    </label>
 
     <div class="filters-item">
       <!-- Price Range slider -->
@@ -192,15 +190,8 @@
         class="filter-slider"
         min="1"
         max="5"
+        value="1"
       />
-      <datalist id="review-markers">
-        <!-- Option markers grow exponentially to assist with selecting lower numbers -->
-        <option value="1"></option>
-        <option value="2"></option>
-        <option value="3"></option>
-        <option value="4"></option>
-        <option value="5"></option>
-      </datalist>
     </div>
   </section>
 </header>
