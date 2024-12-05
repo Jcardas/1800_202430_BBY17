@@ -43,7 +43,7 @@ function retrieveProductData() {
 var currentRating;
 function setRating(rating) {
   currentRating = rating;
-  reviewStars.forEach((star) => (star.style.color = ""));
+  stars.forEach((star) => (star.style.color = ""));
   for (let i = 1; i <= rating; ++i) {
     productContainer.querySelector(`.star${i}`).innerText = "star";
   }
@@ -85,7 +85,7 @@ reviewBtn.onclick = function () {
     isReviewing = false;
     reviewBtn.innerText = "Review";
     let rating = 0;
-    reviewStars.forEach((star) => {
+    stars.forEach((star) => {
       if (star.textContent === "star") {
         rating++;
       }
@@ -101,7 +101,7 @@ reviewBtn.onclick = function () {
   } else {
     isReviewing = true;
     reviewBtn.innerText = "Cancel";
-    reviewStars.forEach((star) => {
+    stars.forEach((star) => {
       star.style.cursor = "pointer";
       star.innerText = "star_outline";
       star.style.color = "#e5e5e5";
@@ -143,7 +143,10 @@ function getAverageRating() {
     .collection("listings")
     .doc(listingID)
     .get()
-    .then((doc) => sum(Object.values(doc.data().ratings)));
+    .then((doc) => {
+      const ratings = Object.values(doc.data().ratings);
+      return sum(ratings) / ratings.length;
+    });
 }
 
 function postAverageRating(rating) {
