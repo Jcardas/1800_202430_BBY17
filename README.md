@@ -17,11 +17,11 @@ List technologies (with version numbers), API's, icons, fonts, images, media or 
 * HTML, CSS, JavaScript
 * Bootstrap 5.0 (Frontend library)
 * Firebase 8.0 (BAAS - Backend as a Service)
-* ...
 
 ## 4. Complete setup/installion/usage
 State what a user needs to do when they come to your project.  How do others start using your code or application?
 Here are the steps ...
+Vist our website for yourself! https://project-2d9ac.web.app/.
 * A user will need to create an account when entering the website
 * Depending if the user is a farmer, they can upload proof in the accounts page which is manually verified
 * Verified farmers gain the option to post their own produce
@@ -37,27 +37,40 @@ Here are some known bugs:
 
 ## 6. Features for Future
 What we'd like to build in the future:
-* ...
-* ...
-* ...
+* When you click on the listing instead of going to a new page blur the background and have the listing pop up as a card
+* Create more options for different seed types and maybe misc items(honey, jam, wool, etc)
+* Hosting the server on nodejs
 	
 ## 7. Contents of Folder
 Content of the project folder:
 
 ```
  Top level of project folder: 
-├── .gitignore               # Git ignore file
-├── index.html               # landing HTML file, this is what users see when you come to url
-└── README.md
+├── assets              # All selfmade images, online images, and icons
+├── scripts             # Folder for all javascript
+└── skeleton            # Folder for header and footer
+└──styles               # Folder for css
 
-It has the following subfolders and files:
-├── .git                     # Folder for git repo
-├── images                   # Folder for images
-    /blah.jpg                # Acknowledge source
+It has the following subfolders and files:                 
+├── assets                   # Folder for images
+    /corn.jpg                
+    /leaf.svg
+    /favicon.ico             # Favi icon for website
+    /...
 ├── scripts                  # Folder for scripts
-    /blah.js                 # 
+    /account.js              # js files
+    /firebase.js
+    /header.js
+    /...
+├── skeleton                 # Folder for header and footer
+    /footer.html
+    /header_after_login.html
+    /header_before_login.html
 ├── styles                   # Folder for styles
-    /blah.css                # 
+    /dark_mode.css           # Styling for darkmode
+    /style.css               # Regular styling
+├── .gitignore
+├── *.html                   # All html pages on the website
 
 
 
