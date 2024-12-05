@@ -2,10 +2,9 @@
 
 ## 1. Project Description
 
-State your app in a nutshell, or one-sentence pitch. Give some elaboration on what the core features are.  
-This browser based web application to ...
+We are developing an online marketplace for farmers to sell excess seeds and crops, and community members to buy fresh produce straight from the farm.
 
-* We are developing an online marketplace for farmers to sell excess seeds and crops, and community members to buy fresh produce straight from the farm.
+Anyone can buy, but only verified farmers can post. Buyers can search for products by name, and filter/sort by price or review. They can contact sellers via our built-in messenger. Sellers can post and edit/delete their posts.
 
 ## 2. Names of Contributors
 
