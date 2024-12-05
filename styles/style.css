@@ -262,15 +262,13 @@ input[type="range"] {
   justify-content: center;
 }
 
-#price-sorter
-{
+#price-sorter {
   border: none;
   border-radius: 8px;
   padding: 2px 6px;
 }
 
-#review-sorter
-{
+#review-sorter {
   border: none;
   border-radius: 8px;
   padding: 2px 6px;
@@ -329,7 +327,6 @@ input[type="range"] {
     width: 300px;
   }
 
-
   #edit-post {
     align-self: center;
     background-color: rgb(20, 51, 37);
@@ -375,10 +372,6 @@ input[type="range"] {
 
 /* Additional adjustments for slightly larger screens (e.g., tablets) */
 @media (min-width: 480px) {
-  body {
-    /* background-color: rgba(30, 255, 0, 0.181); */
-  }
-
   .hero-text {
     text-align: center;
   }
@@ -427,8 +420,7 @@ input[type="range"] {
     justify-content: space-between;
   }
 
-  .navbar-row-pre-login
-  {
+  .navbar-row-pre-login {
     display: flex;
     justify-content: space-between;
   }
