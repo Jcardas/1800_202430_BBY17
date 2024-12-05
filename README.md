@@ -23,8 +23,11 @@ List technologies (with version numbers), API's, icons, fonts, images, media or 
 State what a user needs to do when they come to your project.  How do others start using your code or application?
 Here are the steps ...
 * A user will need to create an account when entering the website
-* Depending if the user is a farmer who 
-* ...
+* Depending if the user is a farmer, they can upload proof in the accounts page which is manually verified
+* Verified farmers gain the option to post their own produce
+* A user who is not verified can see these made posts and contact the farmer about the post through our chatbox
+* Verified farmers may also edit and delete their own listings
+* To find or fitler listings, you can either search with our searchbar or fitler button through price, rating, and more
 
 ## 5. Known Bugs and Limitations
 Here are some known bugs:
