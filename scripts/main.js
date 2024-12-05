@@ -5,47 +5,61 @@ displayPosts();
 
 function displayPosts() {
   let listingsRef = db.collection("listings");
-  const urlParams = new URLSearchParams(window.location.search);
-  const searchProduct = urlParams.get("product-name")?.trim();
-  if (searchProduct) {
-    listingsRef = listingsRef.where("name", "==", searchProduct);
-    pageName.innerText = searchProduct;
-  }
 
-  // Searches based on farmer ID
-  const searchFarmer = urlParams.get("farmer-id")?.trim();
-
-  if (searchFarmer) {
-    // Reference the "users" collection
-    const farmersRef = db.collection("users");
-
-    // Fetch the document for the given user ID
-    farmersRef
-      .doc(searchFarmer)
-      .get()
-      .then((docSnapshot) => {
-        if (docSnapshot.exists) {
-          // Retrieve the "name" field from the user document
-          const userName = docSnapshot.data().name;
-
-          // Update the pageName with the user's name
-          pageName.innerText = userName;
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching user document:", error);
-        pageName.innerText = "Error retrieving user data";
-      });
-    listingsRef = listingsRef.where("userID", "==", searchFarmer);
-  }
-
-  listingsRef.onSnapshot((docs) => {
+  applyFilter(listingsRef).onSnapshot((docs) => {
     const promises = [];
     docs.forEach((doc) => promises.push(addCard(doc)));
     Promise.all(promises)
       .then(hideLoadingWheel)
       .catch((error) => console.error("Error getting user data:", error));
   });
+}
+
+function applyFilter(listingsRef) {
+  const productName = urlParams.get("product-name")?.trim();
+  const searchFarmer = urlParams.get("farmer-id")?.trim();
+  const price = urlParams.get("price");
+  const unit = urlParams.get("unit");
+  const priceSort = urlParams.get("price-sort");
+  const review = urlParams.get("review");
+  const reviewSort = urlParams.get("review-sort");
+
+  if (productName) {
+    listingsRef = listingsRef.where("name", "==", productName);
+    pageName.innerText = productName;
+  }
+
+  if (searchFarmer) {
+    listingsRef = listingsRef.where("userID", "==", searchFarmer);
+    db.collection("users")
+      .doc(searchFarmer)
+      .get()
+      .then((doc) => doc.data().name)
+      .then((farmerName) => (pageName.innerText = farmerName))
+      .catch((error) => console.error("Error fetching user document:", error));
+  }
+
+  if (price) {
+    listingsRef = listingsRef.where("price", "<=", parseFloat(price));
+  }
+
+  if (priceSort) {
+    listingsRef = listingsRef.orderBy("price", priceSort);
+  }
+
+  if (unit) {
+    listingsRef = listingsRef.where("units", "==", unit);
+  }
+
+  if (review) {
+    listingsRef = listingsRef.where("averageRating", ">=", parseFloat(review));
+  }
+
+  if (reviewSort) {
+    listingsRef = listingsRef.orderBy("averageRating", reviewSort);
+  }
+
+  return listingsRef;
 }
 
 function addCard(doc) {

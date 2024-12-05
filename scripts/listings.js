@@ -6,7 +6,6 @@ const fileText = document.getElementById("photo-text");
 
 var currentUser;
 var validProductNames = new Set();
-const urlParams = new URLSearchParams(window.location.search);
 
 getCurrentUser()
   .then((user) => (currentUser = user))

@@ -66,7 +66,6 @@ function renderContact(contactId) {
 }
 
 function openCurrentChat() {
-  const urlParams = new URLSearchParams(window.location.search);
   const currentRecipientID = urlParams.get("to");
   if (currentRecipientID) {
     openChat(currentRecipientID);

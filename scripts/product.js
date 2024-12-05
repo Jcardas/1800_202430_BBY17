@@ -8,7 +8,6 @@ var isReviewing = false;
 retrieveProductData().then(retrieveSellerData);
 
 function retrieveProductData() {
-  const urlParams = new URLSearchParams(window.location.search);
   listingID = urlParams.get("id");
 
   return db

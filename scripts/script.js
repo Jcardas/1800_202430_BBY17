@@ -1,3 +1,5 @@
+const urlParams = new URLSearchParams(window.location.search);
+
 let userLoaded = false;
 /**
  * A shortcut to get the current user.
@@ -127,7 +129,9 @@ function autocorrect(input, correct_matches) {
   }
 
   input.value = input.value.trim();
-  if (correct_matches.has(input.value)) return true;
+  if (input.value.length == 0 || correct_matches.has(input.value)) {
+    return true;
+  }
 
   let products = [...correct_matches];
   let chosenProduct = products[0];
@@ -171,7 +175,6 @@ function viewMyListings() {
 
 function viewFarmerListings(farmerId) {
   if (farmerId == "clicked") {
-    const urlParams = new URLSearchParams(window.location.search);
     const listingId = urlParams.get("id")?.trim();
 
     const listings = db.collection("listings");

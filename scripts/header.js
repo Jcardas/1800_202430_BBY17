@@ -1,6 +1,11 @@
 const darkModeLink = document.getElementById("dark-mode-css");
 const darkModeToggle = document.getElementById("dark-mode-toggle");
 const filterMenu = document.getElementById("filters-container");
+const priceSorter = document.getElementById("price-sorter");
+const priceInput = document.getElementById("price-max");
+const priceUnit = document.getElementById("unit-selector");
+const reviewSorter = document.getElementById("review-sorter");
+const reviewStars = document.querySelectorAll(".review-star");
 
 initializeDarkMode();
 
@@ -64,7 +69,44 @@ function setupSearchForms() {
 // the function needs to know which one it is
 function search(input) {
   if (!autocorrect(input, existingProductNames)) return;
-  window.location.assign(`main.html?product-name=${input.value}`);
+
+  const params = [];
+
+  const farmerId = urlParams.get("farmer-id");
+  if (farmerId) {
+    params.push(`farmer-id=${farmerId}`);
+  }
+
+  const name = input.value;
+  if (name.length > 0) {
+    params.push(`product-name=${name}`);
+  }
+
+  const price = priceInput.value;
+  const priceSort = priceSorter.innerText;
+  if (price.length > 0 && !isNaN(price)) {
+    params.push(`price=${price}`);
+    params.push(`price-sort=${priceSort == "Price ↑" ? "asc" : "desc"}`);
+  }
+
+  const unit = priceUnit.value;
+  if (unit.length > 0) {
+    params.push(`unit=${unit}`);
+  }
+
+  let review = 0;
+  reviewStars.forEach((star) => {
+    if (star.innerText == "star") ++review;
+  });
+  const reviewSort = reviewSorter.innerText;
+  if (review > 0) {
+    params.push(`review=${review}`);
+    params.push(`review-sort=${reviewSort == "Review ↑" ? "asc" : "desc"}`);
+  }
+
+  if (params.length > 0) {
+    window.location.assign(`main.html?${params.join("&")}`);
+  }
 }
 
 // Filter Menu Dropdown ------------
@@ -102,18 +144,15 @@ function displayFilters() {
 }
 
 function changePriceSorting() {
-  const priceSorter = document.getElementById("price-sorter");
   priceSorter.innerText =
     priceSorter.innerText === "Price ↑" ? "Price ↓" : "Price ↑";
 }
 
 function changeReviewSorting() {
-  const reviewSorter = document.getElementById("review-sorter");
   reviewSorter.innerText =
     reviewSorter.innerText === "Reviews ↑" ? "Reviews ↓" : "Reviews ↑";
 }
 
-const reviewStars = document.querySelectorAll(".review-star");
 reviewStars.forEach(
   (star, index) =>
     (star.onclick = () => {
