@@ -39,7 +39,7 @@ function applyFilter(listingsRef) {
       .catch((error) => console.error("Error fetching user document:", error));
   }
 
-  if (price) {
+  if (price && !review) {
     listingsRef = listingsRef.where("price", "<=", parseFloat(price));
   }
 

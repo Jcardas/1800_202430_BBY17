@@ -156,6 +156,7 @@ function changeReviewSorting() {
 reviewStars.forEach(
   (star, index) =>
     (star.onclick = () => {
+      priceInput.value = "";
       for (let i = 0; i <= index; i++) {
         reviewStars[i].innerText = "star";
       }
@@ -164,3 +165,6 @@ reviewStars.forEach(
       }
     })
 );
+
+priceInput.oninput = () =>
+  reviewStars.forEach((star) => (star.innerText = "star_outline"));
