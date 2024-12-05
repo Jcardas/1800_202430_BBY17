@@ -44,7 +44,7 @@ function retrieveProductData() {
 var currentRating;
 function setRating(rating) {
   currentRating = rating;
-  stars.forEach((star) => (star.style.color = ""));
+  reviewStars.forEach((star) => (star.style.color = ""));
   for (let i = 1; i <= rating; ++i) {
     productContainer.querySelector(`.star${i}`).innerText = "star";
   }
@@ -86,7 +86,7 @@ reviewBtn.onclick = function () {
     isReviewing = false;
     reviewBtn.innerText = "Review";
     let rating = 0;
-    stars.forEach((star) => {
+    reviewStars.forEach((star) => {
       if (star.textContent === "star") {
         rating++;
       }
@@ -102,8 +102,8 @@ reviewBtn.onclick = function () {
   } else {
     isReviewing = true;
     reviewBtn.innerText = "Cancel";
-    stars.forEach((star) => {
-      star.style.cursor = "pointer"; 
+    reviewStars.forEach((star) => {
+      star.style.cursor = "pointer";
       star.innerText = "star_outline";
       star.style.color = "#e5e5e5";
     });

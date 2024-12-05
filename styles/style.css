@@ -289,10 +289,6 @@ input[type="range"] {
   border-radius: 6px;
 }
 
-#review-range {
-  width: 100px;
-}
-
 /* MOBILE SECTION ---------------------------------- */
 
 /* Basic styling for viewports that are 320px or wider */

@@ -112,3 +112,16 @@ function changeReviewSorting() {
   reviewSorter.innerText =
     reviewSorter.innerText === "Reviews ↑" ? "Reviews ↓" : "Reviews ↑";
 }
+
+const reviewStars = document.querySelectorAll(".review-star");
+reviewStars.forEach(
+  (star, index) =>
+    (star.onclick = () => {
+      for (let i = 0; i <= index; i++) {
+        reviewStars[i].innerText = "star";
+      }
+      for (let i = index + 1; i < 5; i++) {
+        reviewStars[i].innerText = "star_outline";
+      }
+    })
+);
