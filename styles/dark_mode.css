@@ -333,9 +333,8 @@ footer {
 
 /* Listing Page */
 
-.main-listing-container
-{
-  a{
+.main-listing-container {
+  a {
     text-decoration: none;
     color: #fff;
   }
@@ -381,14 +380,12 @@ footer {
   color: white;
 }
 
-.form-description
-{
+.form-description {
   border-bottom: solid 1px white;
   color: white;
 }
 
-#form-resupplied:disabled
-{
+#form-resupplied:disabled {
   color: #c6c6c6;
 }
 
