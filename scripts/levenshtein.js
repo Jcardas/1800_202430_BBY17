@@ -1,19 +1,20 @@
-/*
- * Source: https://github.com/gustf/js-levenshtein
- * License: MIT
+/**
+ * To calculate the Levenshtein distance between two strings.
+ *
+ * @author Gustaf Andersson
+ * @link https://github.com/gustf/js-levenshtein
  */
-
-function _min(d0, d1, d2, bx, ay) {
-  return d0 < d1 || d2 < d1
-    ? d0 > d2
-      ? d2 + 1
-      : d0 + 1
-    : bx === ay
-    ? d1
-    : d1 + 1;
-}
-
 function levenshtein(a, b) {
+  function _min(d0, d1, d2, bx, ay) {
+    return d0 < d1 || d2 < d1
+      ? d0 > d2
+        ? d2 + 1
+        : d0 + 1
+      : bx === ay
+      ? d1
+      : d1 + 1;
+  }
+
   a = a.toLowerCase();
   b = b.toLowerCase();
 
