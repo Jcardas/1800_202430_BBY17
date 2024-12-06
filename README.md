@@ -28,7 +28,9 @@ List team members and/or short bio's here...
 
 ## 4. Complete setup/installion/usage
 
-The website is hosted at <https://project-2d9ac.web.app>. For development, clone this repo and run it using VS Code Live Server.
+For user testing, the website is hosted at <https://project-2d9ac.web.app>.
+
+For development, clone this repo and run it using VSCode Live Server. You must also contact our team to be given the Firebase API key, because it's not committed.
 
 You must sign up for an account before being able to do anything. Afterwards, basic features are outlined in [Project Description](#1-project-description).
 
