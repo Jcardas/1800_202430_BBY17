@@ -1,5 +1,7 @@
 # Farmer's Marketplace
 
+<https://project-2d9ac.web.app/>.
+
 ## 1. Project Description
 
 We are developing an online marketplace for farmers to sell excess seeds and crops, and community members to buy fresh produce straight from the farm.
@@ -26,16 +28,9 @@ List team members and/or short bio's here...
 
 ## 4. Complete setup/installion/usage
 
-State what a user needs to do when they come to your project.  How do others start using your code or application?
-Here are the steps ...
-Vist our website for yourself! <https://project-2d9ac.web.app/>.
+The website is hosted at <https://project-2d9ac.web.app>. For development, clone this repo and run it using VS Code Live Server.
 
-* A user will need to create an account when entering the website
-* Depending if the user is a farmer, they can upload proof in the accounts page which is manually verified
-* Verified farmers gain the option to post their own produce
-* A user who is not verified can see these made posts and contact the farmer about the post through our chatbox
-* Verified farmers may also edit and delete their own listings
-* To find or fitler listings, you can either search with our searchbar or fitler button through price, rating, and more
+You must sign up for an account before being able to do anything. Afterwards, basic features are outlined in [Project Description](#1-project-description).
 
 ## 5. Known Bugs and Limitations
 
