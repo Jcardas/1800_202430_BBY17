@@ -101,10 +101,10 @@ reviewBtn.onclick = function () {
   } else {
     isReviewing = true;
     reviewBtn.innerText = "Cancel";
+    const starsColor = darkModeToggle.checked ? "#e5e5e5" : "#1f1f1f";
     stars.forEach((star) => {
-      star.style.cursor = "pointer";
       star.innerText = "star_outline";
-      star.style.color = "#e5e5e5";
+      star.style.color = starsColor;
     });
   }
 };
