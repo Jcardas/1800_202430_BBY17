@@ -50,7 +50,7 @@ This restriction is from Firebase itself, there's nothing we can do other than m
 * When you click on the listing instead of going to a new page blur the background and have the listing pop up as a card.
 * Create more options for different seed types and maybe misc items (e.g. honey, jam, wool).
 * A system to automatically keep track of inventory, and automatically archive (hidden in the UI but kept in the database) sold out listings.
-* Hosting the server on nodejs and running our own SQL database. This would solve issue #2.
+* Hosting the server on nodejs and running our own SQL database. This would solve issue #3 (cannot filter by price and review at the same time).
 
 ## 7. Contents of Folder
 
