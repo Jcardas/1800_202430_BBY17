@@ -1,6 +1,6 @@
 # Farmer's Marketplace
 
-<https://project-2d9ac.web.app/>.
+<https://project-2d9ac.web.app/>
 
 ## 1. Project Description
 
