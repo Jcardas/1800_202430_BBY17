@@ -34,11 +34,16 @@ You must sign up for an account before being able to do anything. Afterwards, ba
 
 ## 5. Known Bugs and Limitations
 
-Here are some known bugs:
+There aren't any known bugs, but there are some issues and limitations:
 
-* ...
-* ...
-* ...
+* Horribly inefficient Firestore querying, because we prioritized rapid development over algorithm efficiency. The number of Firestore queries can probably be reduced to 1/5 after optimization.
+* Similarly, very inefficient usage of Cloud Storage. Specifically,
+  * There should be -- but isn't -- a cache. So we're re-requesting the same images every time the user changes page.
+  * There should be -- but isn't -- a limit on user-uploaded file size. So we're paying for it if users upload 4K images.
+  * *We're already paying for it. The bill comes to about $1. 🥲*
+* Unable to filter by price and review at the same time; you must choose one.
+This restriction is from Firebase itself, there's nothing we can do other than moving to a different database.
+* In hindsight, there's no reason that users must sign up for an account to be able to view posts. We didn't think of in the early phase of the development; when we realized it, it's already too hard to refactor.
 
 ## 6. Features for Future
 
