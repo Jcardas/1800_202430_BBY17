@@ -111,7 +111,6 @@ function search(input) {
 
 // Filter Menu Dropdown ------------
 
-window.addEventListener("resize", hideMenuOnResize);
 // Hide the menu when the page is resized, to prevent misalignment.
 function hideMenuOnResize() {
   filterMenu.style.display = "none";
@@ -152,19 +151,3 @@ function changeReviewSorting() {
   reviewSorter.innerText =
     reviewSorter.innerText === "Reviews ↑" ? "Reviews ↓" : "Reviews ↑";
 }
-
-reviewStars.forEach(
-  (star, index) =>
-    (star.onclick = () => {
-      priceInput.value = "";
-      for (let i = 0; i <= index; i++) {
-        reviewStars[i].innerText = "star";
-      }
-      for (let i = index + 1; i < 5; i++) {
-        reviewStars[i].innerText = "star_outline";
-      }
-    })
-);
-
-priceInput.oninput = () =>
-  reviewStars.forEach((star) => (star.innerText = "star_outline"));

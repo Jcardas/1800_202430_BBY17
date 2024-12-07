@@ -2,6 +2,24 @@ var currentUser;
 const newMessages = {};
 const notification = document.querySelector("#messages .notification");
 
+window.addEventListener("resize", hideMenuOnResize);
+
+reviewStars.forEach(
+  (star, index) =>
+    (star.onclick = () => {
+      priceInput.value = "";
+      for (let i = 0; i <= index; i++) {
+        reviewStars[i].innerText = "star";
+      }
+      for (let i = index + 1; i < 5; i++) {
+        reviewStars[i].innerText = "star_outline";
+      }
+    })
+);
+
+priceInput.oninput = () =>
+  reviewStars.forEach((star) => (star.innerText = "star_outline"));
+
 getCurrentUser()
   .then((user) => (currentUser = user))
   .then(() => {
