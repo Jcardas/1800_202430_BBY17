@@ -65,7 +65,6 @@ function logout() {
 }
 
 function gotoURL(url) {
-  console.log(window.location.pathname);
   if (window.location.pathname != url) {
     window.location.assign(url);
   }

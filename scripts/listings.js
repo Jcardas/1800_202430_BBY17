@@ -79,12 +79,6 @@ function submitPost() {
     'input[name="productType"]:checked'
   )?.value;
 
-  if (type) {
-    console.log(`Selected type: ${type}`);
-  } else {
-    console.log("No product type selected");
-  }
-
   const name = document.getElementById("name").value;
   if (!validProductNames.has(name)) {
     alert("Invalid product name.");
