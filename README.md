@@ -63,7 +63,7 @@ This restriction is from Firebase itself, there's nothing we can do other than m
 
 It has the following subfolders and files:                 
 ├── assets                   # Folder for images
-    /corn.jpg                
+    /blueberries.jpg                
     /leaf.svg
     /favicon.ico             # Favi icon for website
     /...
